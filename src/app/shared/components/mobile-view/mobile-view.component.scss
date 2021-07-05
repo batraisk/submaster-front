@@ -1,0 +1,12 @@
+.device-container {
+  &.mobile {
+    height: 278px;
+    width: 157px;
+    background-image: url("/assets/images/iPhone SE - 2.svg");
+  }
+  &.desktop {
+    height: 278px;
+    width: 495px;
+    background-image: url("/assets/images/iMac - 19.svg");
+  }
+}

@@ -1,0 +1,64 @@
+<form nz-form>
+  <div nz-row>
+    <div nz-col [nzSpan]="11" [nzXl]="8">
+      <h1>Main info</h1>
+      <nz-space nzDirection="vertical" [nzSize]="'large'" class="mt-4" style="width:100%">
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="name">Page name</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="name" type="text" id="name" placeholder="My page">
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="domain">Page domain and URL</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+              <input type="text" nz-input id="domain"/>
+            </nz-input-group>
+            <ng-template #addOnBeforeTemplate>
+              <nz-select [(ngModel)]="domain" [ngModelOptions]="{standalone: true}">
+                <nz-option nzLabel="https://submaster.com/" nzValue="https://submaster.com/"></nz-option>
+              </nz-select>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="username">Instagram username</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="name" type="text" id="username" placeholder="my_instagram_username">
+          </nz-form-control>
+        </nz-form-item>
+      </nz-space>
+    </div>
+    <div nz-col nzSpan="1" style="text-align:center; padding: 10px 0;">
+      <nz-divider [nzOrientation]="'center'" [nzType]="'vertical'" style="height: 100%;"></nz-divider>
+    </div>
+    <div nz-col [nzSpan]="11" [nzXl]="8">
+      <h1>Metrics</h1>
+      <nz-space nzDirection="vertical" [nzSize]="'large'" class="mt-4" style="width:100%">
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="pixel">Facebook pixel</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="pixel" type="text" id="pixel">
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="token">Facebook Server Side token</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="token" type="text" id="token">
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="metrika">Yandex.Metrica</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="metrika" type="text" id="metrika">
+          </nz-form-control>
+        </nz-form-item>
+      </nz-space>
+    </div>
+  </div>
+</form>

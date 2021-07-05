@@ -1,0 +1,40 @@
+@import "variables";
+
+.app-header {
+  background: white;
+  display: flex;
+  height: $header-h;
+  margin: 0;
+  padding: 0 24px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+
+  .summary {
+    display: flex;
+  }
+
+  .locale, .wallet {
+    align-items: center;
+    font-size: 16px;
+    display: flex;
+
+    i {
+      padding-top: 4px;
+      font-size: 19px;
+
+      svg {
+        padding-top: 4px;
+      }
+    }
+
+    img {
+      margin-top: 2px;
+      margin-right: 8px;
+    }
+  }
+
+  .title {
+    font-size: 24px;
+  }
+}

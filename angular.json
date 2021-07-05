@@ -56,9 +56,17 @@
             ],
             "styles": [
               "src/theme.less",
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/scss/global.scss",
+              "node_modules/roboto-fontface/css/roboto/roboto-fontface.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/assets/scss",
+                "src/assets/images"
+              ]
+            }
           },
           "configurations": {
             "production": {

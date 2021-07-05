@@ -1,3 +1,6 @@
+@import "variables";
+$sider-width: 256px;
+
 :host {
   display: flex;
   text-rendering: optimizeLegibility;
@@ -5,54 +8,93 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+::ng-deep {
+  .ant-menu-item {
+    color: #8585A8 !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &-selected {
+      color: #2F54EB !important;
+      background: #D6E4FF !important;
+
+      &:after {
+        content: none !important;
+      }
+    }
+  }
+}
+
 .app-layout {
   height: 100vh;
 }
 
-.menu-sidebar {
-  position: relative;
-  z-index: 10;
-  min-height: 100vh;
-  box-shadow: 2px 0 6px rgba(0,21,41,.35);
-}
+.menu {
+  background: inherit;
+  padding: 16px 24px;
 
-.header-trigger {
-  height: 64px;
-  padding: 20px 24px;
-  font-size: 20px;
-  cursor: pointer;
-  transition: all .3s,padding 0s;
-}
+  .support-container {
+    padding: 0;
+    margin-top: 24px;
 
-.trigger:hover {
-  color: #1890ff;
+    .support {
+      background: white;
+      color: #597EF7;
+      font-size: 16px;
+      height: 40px;
+      line-height: 24px;
+    }
+  }
+
+  li {
+    color: #8585A8;
+    padding: 0;
+    align-items: center;
+    font-size: 16px;
+    display: flex;
+
+    i {
+      font-size: 20px;
+    }
+
+    &.support-container {
+      padding: 0 !important;
+    }
+
+    &:not(.support-container) {
+      padding-left: 12px !important;
+      padding-right: 12px !important;
+    }
+  }
 }
 
 .sidebar-logo {
   position: relative;
-  height: 64px;
+  height: $header-h;
   padding-left: 24px;
   overflow: hidden;
-  line-height: 64px;
-  background: #001529;
   transition: all .3s;
 }
 
 .sidebar-logo img {
   display: inline-block;
-  height: 32px;
-  width: 32px;
-  vertical-align: middle;
 }
 
 .sidebar-logo h1 {
   display: inline-block;
-  margin: 0 0 0 20px;
-  color: #fff;
+  margin: 0 0 0 6px;
+  padding: 0;
+  color: #434343;
   font-weight: 600;
-  font-size: 14px;
-  font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
+  font-size: 24px;
   vertical-align: middle;
+  line-height: $header-h;
 }
 
 nz-header {
@@ -70,11 +112,18 @@ nz-header {
 }
 
 nz-content {
-  margin: 24px;
+  //margin: 24px;
 }
 
 .inner-content {
-  padding: 24px;
+  padding: 16px 24px;
   background: #fff;
   height: 100%;
+  margin-left: $side-nav-width;
+}
+
+nz-sider {
+  background: $side-nav-bg;
+  height: 100%;
+  position: fixed;
 }

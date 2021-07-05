@@ -1,0 +1,39 @@
+@mixin margins($orientation) {
+  &-1 {
+    margin-#{$orientation}: 2px;
+  }
+  &-2 {
+    margin-#{$orientation}: 4px;
+  }
+  &-3 {
+    margin-#{$orientation}: 8px;
+  }
+  &-4 {
+    margin-#{$orientation}: 16px;
+  }
+  &-5 {
+    margin-#{$orientation}: 24px;
+  }
+};
+
+$blue-6: #2F54EB;
+
+$side-nav-bg: #F5F7FC;
+$primary: $blue-6;
+$side-nav-width: 256px;
+
+$header-h: 58px;
+
+// COLORS
+$geek-blue-1: #F0F5FF;
+$calendula-gold-2: #FFF1B8;
+$lime-2: #F4FFB8;
+$volcano-6: #FA541C;
+$sunrise-yellow-6: #FADB14;
+$daybreak-blue-6: #1890FF;
+$magenta-1: #FFF0F6;
+$magenta-6: #EB2F96;
+$sunrise-yellow-6: #FADB14;
+$neutral-8: #595959;
+$golden-purple-9: #22075E;
+$golden-purple-6: #722ED1;

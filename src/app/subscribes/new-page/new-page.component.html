@@ -1,0 +1,35 @@
+<nz-divider class="divider-top"></nz-divider>
+<nz-steps [nzCurrent]="current">
+  <nz-step nzTitle="Edit page details"></nz-step>
+  <nz-step nzTitle="Edit welcome page"></nz-step>
+  <nz-step nzTitle="Edit additional pages"></nz-step>
+</nz-steps>
+<nz-divider class="divider-bottom"></nz-divider>
+
+
+<div class="steps-content mt-5">
+  <div *ngIf="this.current == 0">
+    <app-page-details></app-page-details>
+  </div>
+  <div *ngIf="this.current == 1">
+    <app-welcome-page></app-welcome-page>
+  </div>
+  <div *ngIf="this.current == 2">
+    <app-additional-pages></app-additional-pages>
+  </div>
+</div>
+<div style="height: 112px"></div>
+<div class="steps-action d-flex">
+  <button nz-button nzType="default" (click)="cancel()" *ngIf="current == 0">
+    <span>Cancel</span>
+  </button>
+  <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
+    <span>Previous</span>
+  </button>
+  <button nz-button nzType="primary" class="ml-4" (click)="next()" *ngIf="current < 2">
+    <span>Next</span>
+  </button>
+  <button nz-button nzType="primary" class="ml-4" (click)="done()" *ngIf="current === 2">
+    <span>Finish</span>
+  </button>
+</div>

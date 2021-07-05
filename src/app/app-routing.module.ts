@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+// import { subscribesRouting } from './subscribes/subsribes-routing.module';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/welcome' },
-  { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) }
+  // ...subscribesRouting
+  // { path: '', pathMatch: 'full', redirectTo: '' },
+  { path: '', loadChildren: () => import('./subscribes/subscribes.module').then(m => m.SubscribesModule) }
 ];
 
 @NgModule({

@@ -1,0 +1,59 @@
+<form nz-form>
+  <div nz-row>
+    <div nz-col [nzSpan]="11" [nzXl]="8">
+      <h1>Success page</h1>
+      <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24">Title</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="title" type="text" id="title">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="description">Description</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <nz-textarea-count [nzMaxCharacterCount]="100">
+              <textarea rows="3" id="description" name="description" nz-input></textarea>
+            </nz-textarea-count>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="button-text">Button text</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="button-text" type="text" id="button-text">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="button-text">Download link</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="download-link" type="text" id="download-link">
+          </nz-form-control>
+        </nz-form-item>
+      </nz-space>
+    </div>
+
+    <div nz-col nzSpan="1" style="text-align:center; padding: 10px 0;">
+      <nz-divider [nzOrientation]="'center'" [nzType]="'vertical'" style="height: 100%;"></nz-divider>
+    </div>
+
+    <div nz-col [nzSpan]="11" [nzXl]="8">
+      <h1>Out of stock page</h1>
+      <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="stock-title">Title</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="stock-title" type="text" id="stock-title">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="stock-description">Description</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <nz-textarea-count [nzMaxCharacterCount]="100">
+              <textarea rows="3" id="stock-description" name="stock-description" nz-input></textarea>
+            </nz-textarea-count>
+          </nz-form-control>
+        </nz-form-item>
+      </nz-space>
+    </div>
+  </div>
+</form>

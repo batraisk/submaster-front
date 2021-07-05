@@ -1,0 +1,107 @@
+<form nz-form>
+  <div nz-row>
+    <div nz-col [nzSpan]="11" [nzXl]="8">
+      <h1>Welcome page info</h1>
+      <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24">Background</nz-form-label>
+          <div nz-row style="width:100%" class="mt-2">
+            <div nz-col [nzSpan]="11" [nzXl]="10">
+              <button nz-button [nzBlock]="true" nzType="primary" nzSize="small" [nzGhost]="true">Youtube link</button>
+            </div>
+            <div nz-col [nzSpan]="2" [nzXl]="4" style="text-align:center; line-height:30px">or</div>
+            <div nz-col [nzSpan]="11" [nzXl]="10">
+              <button nz-button [nzBlock]="true" nzType="primary" nzSize="small" [nzGhost]="true">Upload image</button>
+            </div>
+          </div>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="title">Title</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="title" type="text" id="title">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="description">Description</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <nz-textarea-count [nzMaxCharacterCount]="100">
+              <textarea rows="3" id="description" name="description" nz-input></textarea>
+            </nz-textarea-count>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="button-text">Button text</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="button-text" type="text" id="button-text">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="timer-time">Timer time in seconds</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2 d-flex align-items-center">
+            <input nz-input name="timer-time" type="text" id="timer-time">
+            <nz-switch
+              class="ml-4"
+              [(ngModel)]="switchValue"
+              nzCheckedChildren="ON"
+              nzUnCheckedChildren="OFF"
+              [ngModelOptions]="{standalone: true}"
+            ></nz-switch>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="timer-text">Timer text</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="timer-text" type="text" id="timer-text">
+          </nz-form-control>
+        </nz-form-item>
+      </nz-space>
+    </div>
+
+    <div nz-col nzSpan="1" style="text-align:center; padding: 10px 0;">
+      <nz-divider [nzOrientation]="'center'" [nzType]="'vertical'" style="height: 100%;"></nz-divider>
+    </div>
+
+    <div nz-col [nzSpan]="11" [nzXl]="15">
+      <h1>Design</h1>
+      <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
+        <nz-form-item *nzSpaceItem>
+          <div nz-row style="width:100%">
+            <div nz-col [nzSpan]="11">
+              <nz-form-label [nzSpan]="24" nzFor="timer-text">Layout</nz-form-label>
+              <nz-form-control [nzSpan]="24" class="mt-2 w-100">
+                <nz-select ngModel="Image on half screen" class="w-100" [ngModelOptions]="{standalone: true}">
+                  <nz-option nzLabel="Image on half screen" nzValue="Image on half screen"></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </div>
+            <div nz-col [nzSpan]="1"></div>
+            <div nz-col [nzSpan]="12">
+              <nz-form-label [nzSpan]="24" nzFor="theme">Color theme</nz-form-label>
+              <nz-form-control [nzSpan]="24" class="mt-2 w-100">
+                <nz-radio-group [nzSize]="'large'" [(ngModel)]="radioValue" nzName="theme" [ngModelOptions]="{standalone: true}">
+                  <label *ngFor="let theme of themes" nz-radio [nzValue]="theme" [class]="theme"></label>
+                </nz-radio-group>
+              </nz-form-control>
+            </div>
+          </div>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24">Preview</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2 w-100">
+            <nz-radio-group class="radio-devices" [(ngModel)]="view" nzName="theme" [ngModelOptions]="{standalone: true}">
+              <label nz-radio-button nzValue="mobile">
+                <i nz-icon nzType="mobile" nzTheme="outline"></i>
+              </label>
+              <label nz-radio-button nzValue="desktop">
+                <i nz-icon nzType="desktop" nzTheme="outline"></i>
+              </label>
+            </nz-radio-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem [nzJustify]="'center'">
+          <app-mobile-view [device]="view"></app-mobile-view>
+        </nz-form-item>
+      </nz-space>
+    </div>
+  </div>
+</form>
