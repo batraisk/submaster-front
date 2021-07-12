@@ -1,0 +1,34 @@
+<div nz-row class="card-container">
+  <div nz-col [nzSpan]="6" [nzXl]="6">
+    <h2>{{page.welcome_title}}</h2>
+    <p>{{page.welcome_description}}</p>
+  </div>
+  <div nz-col [nzSpan]="18" [nzXl]="18" class="description">
+    <div class="header d-flex align-items-center">
+      <div class="d-flex align-items-center">
+        <div class="avatar"></div>
+        <span class="ml-3">{{page.instagram_login}}</span>
+      </div>
+      <botton nz-button nzType="text"><i nz-icon nzType="more" nzTheme="outline"></i></botton>
+    </div>
+    <div class="body">
+      {{page.page_name}}
+      <nz-row [nzGutter]="16">
+        <nz-col [nzSpan]="8">
+          <nz-statistic [nzValue]="(73 / 100 | percent)!" [nzTitle]="'CTR'"></nz-statistic>
+        </nz-col>
+        <nz-col [nzSpan]="8">
+          <nz-statistic [nzValue]="(17 | number)" [nzTitle]="'Subscribers'"></nz-statistic>
+        </nz-col>
+        <nz-col [nzSpan]="8">
+          <nz-statistic [nzValue]="(500 | number)" [nzTitle]="'Views'"></nz-statistic>
+        </nz-col>
+      </nz-row>
+    </div>
+    <div class="footer">
+      <button nz-button>Edit</button>
+<!--      <button nz-button (click)="openPage">https://submaster/pages/{{page.url}}</button>-->
+      <a href="http://localhost:3000/pages/{{page.url}}" target="_blank">https://submaster/pages/{{page.url}}</a>
+    </div>
+  </div>
+</div>

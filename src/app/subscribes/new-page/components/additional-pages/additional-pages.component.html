@@ -1,4 +1,4 @@
-<form nz-form>
+<form nz-form [formGroup]="pageForm">
   <div nz-row>
     <div nz-col [nzSpan]="11" [nzXl]="8">
       <h1>Success page</h1>
@@ -6,27 +6,27 @@
         <nz-form-item *nzSpaceItem>
           <nz-form-label [nzSpan]="24">Title</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
-            <input nz-input name="title" type="text" id="title">
+            <input nz-input name="title" type="text" id="title" formControlName="successTitle">
           </nz-form-control>
         </nz-form-item>
         <nz-form-item *nzSpaceItem>
           <nz-form-label [nzSpan]="24" nzFor="description">Description</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
             <nz-textarea-count [nzMaxCharacterCount]="100">
-              <textarea rows="3" id="description" name="description" nz-input></textarea>
+              <textarea rows="3" id="description" name="description" nz-input formControlName="successDescription"></textarea>
             </nz-textarea-count>
           </nz-form-control>
         </nz-form-item>
         <nz-form-item *nzSpaceItem>
           <nz-form-label [nzSpan]="24" nzFor="button-text">Button text</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
-            <input nz-input name="button-text" type="text" id="button-text">
+            <input nz-input name="button-text" type="text" id="button-text" formControlName="successButtonText">
           </nz-form-control>
         </nz-form-item>
         <nz-form-item *nzSpaceItem>
           <nz-form-label [nzSpan]="24" nzFor="button-text">Download link</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
-            <input nz-input name="download-link" type="text" id="download-link">
+            <input nz-input name="download-link" type="text" id="download-link" formControlName="downloadLink">
           </nz-form-control>
         </nz-form-item>
       </nz-space>
@@ -42,14 +42,14 @@
         <nz-form-item *nzSpaceItem>
           <nz-form-label [nzSpan]="24" nzFor="stock-title">Title</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
-            <input nz-input name="stock-title" type="text" id="stock-title">
+            <input nz-input name="stock-title" type="text" id="stock-title" formControlName="outOfStockTitle">
           </nz-form-control>
         </nz-form-item>
         <nz-form-item *nzSpaceItem>
           <nz-form-label [nzSpan]="24" nzFor="stock-description">Description</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
             <nz-textarea-count [nzMaxCharacterCount]="100">
-              <textarea rows="3" id="stock-description" name="stock-description" nz-input></textarea>
+              <textarea rows="3" id="stock-description" name="stock-description" nz-input formControlName="outOfStockDescription"></textarea>
             </nz-textarea-count>
           </nz-form-control>
         </nz-form-item>

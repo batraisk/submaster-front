@@ -18,7 +18,12 @@ import { NewPageComponent } from './new-page/new-page.component';
 import { PageDetailsComponent } from './new-page/components/page-details/page-details.component';
 import { WelcomePageComponent } from './new-page/components/welcome-page/welcome-page.component';
 import { AdditionalPagesComponent } from './new-page/components/additional-pages/additional-pages.component';
-import {FormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {PagesService} from './services/pages.service';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+// @ts-ignore
+import {InterceptService} from '@core-services';
 
 
 
@@ -46,6 +51,16 @@ import {FormsModule} from '@angular/forms';
     NzSwitchModule,
     NzRadioModule,
     FormsModule,
+    RouterModule,
+    ReactiveFormsModule,
+  ],
+  providers: [
+    PagesService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptService,
+      multi: true
+    },
   ]
 })
 export class SubscribesModule { }

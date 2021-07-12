@@ -1,1 +1,5 @@
 <button nz-button nzType="primary" (click)="goToNewPage()"><i nz-icon nzType="plus"></i>New page</button>
+<div *ngFor="let page of pages; index as i" class="mt-5">
+  <app-page-card [page]="page"></app-page-card>
+</div>
+

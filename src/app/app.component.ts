@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  isCollapsed = false;
+  constructor(public router: Router) {
+  }
+
+  goToHome(): void {
+    this.router.navigate(['/']);
+  }
+  goToLogin(): void {
+    this.router.navigate(['/auth/login']);
+  }
 }

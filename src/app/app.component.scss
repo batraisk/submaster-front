@@ -74,7 +74,12 @@ $sider-width: 256px;
   }
 }
 
+nz-layout {
+  background: white;
+}
+
 .sidebar-logo {
+  cursor: pointer;
   position: relative;
   height: $header-h;
   padding-left: 24px;

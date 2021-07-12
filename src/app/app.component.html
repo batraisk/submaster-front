@@ -1,6 +1,6 @@
-<nz-layout class="app-layout">
+<nz-layout class="app-layout" *ngIf="router.url.indexOf('/auth/') == -1">
   <nz-sider [nzWidth]="256">
-    <div class="sidebar-logo">
+    <div class="sidebar-logo" (click)="goToHome()">
       <img src="assets/images/icons/logo.svg" alt="">
       <h1>SubMaster</h1>
     </div>
@@ -29,7 +29,7 @@
         <i nz-icon nzType="thunderbolt" nzTheme="fill"></i>
         <span>Take an online course</span>
       </li>
-      <li nz-menu-item>
+      <li nz-menu-item (click)="goToLogin()">
         <i nz-icon nzType="logout" nzTheme="outline"></i>
         <span>Log out</span>
       </li>
@@ -46,4 +46,10 @@
       </div>
     </nz-content>
   </nz-layout>
+</nz-layout>
+
+<nz-layout *ngIf="router.url.indexOf('/auth/') != -1" style="height:100vh">
+  <nz-content class="d-flex align-items-center justify-content-center" style="height:100%">
+      <router-outlet></router-outlet>
+  </nz-content>
 </nz-layout>

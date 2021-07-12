@@ -3,7 +3,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
+    "outDir": "../submaster_api/public",
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
@@ -15,7 +15,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@core-services" : ["src/app/core/services/index.ts"],
+      "@subscribes-services" : ["src/app/subscribes/services/index.ts"],
+      "@models" : ["src/app/models/index.ts"],
+      "@helpers" : ["src/app/helpers/index.ts"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false
