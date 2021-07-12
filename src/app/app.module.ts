@@ -20,10 +20,18 @@ import {SubscribesModule} from './subscribes/subscribes.module';
 import {CoreModule} from './core/core.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SubscribesRoutingModule } from './subscribes/subsribes-routing.module';
+import {HttpClient} from '@angular/common/http';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 // import { CoreRoutingModule } from './core/core.routing.module';
 import {RouterModule} from '@angular/router';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 registerLocaleData(en);
 registerLocaleData(ru);
+
+// tslint:disable-next-line:typedef
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 
 @NgModule({
@@ -45,7 +53,15 @@ registerLocaleData(ru);
     CoreModule,
     SubscribesRoutingModule,
     // CoreRoutingModule,
-    RouterModule
+    RouterModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     {

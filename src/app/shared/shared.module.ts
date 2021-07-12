@@ -10,6 +10,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { MobileViewComponent } from './components/mobile-view/mobile-view.component';
 import { PageCardComponent } from './components/page-card/page-card.component';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
+import { LocalizerComponent } from './components/localizer/localizer.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { NzStatisticModule } from 'ng-zorro-antd/statistic';
     HeaderComponent,
     MobileViewComponent,
     PageCardComponent,
+    LocalizerComponent,
   ],
   imports: [
     CommonModule,

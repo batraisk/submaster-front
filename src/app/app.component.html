@@ -5,21 +5,21 @@
       <h1>SubMaster</h1>
     </div>
     <ul nz-menu nzMode="inline" class="menu">
-      <li nz-menu-item>
+      <li nz-menu-item [nzSelected]="true">
         <i nz-icon nzType="copy" nzTheme="fill"></i>
-        <span>My Pages (2)</span>
+        <span>{{ 'MENU.PAGES' | translate }} (2)</span>
       </li>
       <li nz-menu-item>
         <i nz-icon nzType="wallet" nzTheme="fill"></i>
-        <span>Balance</span>
+        <span>{{ 'MENU.BALANCE' | translate }}</span>
       </li>
       <li nz-menu-item>
         <i nz-icon nzType="setting" nzTheme="fill"></i>
-        <span>Account settings</span>
+        <span>{{ 'MENU.ACCOUNT SETTINGS' | translate }}</span>
       </li>
       <li nz-menu-item>
         <i nz-icon nzType="api" nzTheme="fill"></i>
-        <span>Domain binding</span>
+        <span>{{ 'MENU.DOMAIN BINDING' | translate }}</span>
       </li>
       <li nz-menu-item>
         <i nz-icon nzType="question-circle" nzTheme="fill"></i>
@@ -27,14 +27,14 @@
       </li>
       <li nz-menu-item>
         <i nz-icon nzType="thunderbolt" nzTheme="fill"></i>
-        <span>Take an online course</span>
+        <span>{{ 'MENU.ONLINE COURSE' | translate }}</span>
       </li>
       <li nz-menu-item (click)="goToLogin()">
         <i nz-icon nzType="logout" nzTheme="outline"></i>
-        <span>Log out</span>
+        <span>{{ 'MENU.LOGOUT' | translate }}</span>
       </li>
       <li nz-menu-item class="support-container">
-        <button nz-button [nzBlock]="true" class="support" nzType="primary" nzSize="default">Support</button>
+        <button nz-button [nzBlock]="true" class="support" nzType="primary" nzSize="default">{{ 'MENU.SUPPORT' | translate }}</button>
       </li>
     </ul>
   </nz-sider>
@@ -53,3 +53,12 @@
       <router-outlet></router-outlet>
   </nz-content>
 </nz-layout>
+<!--<div>-->
+<!--  <h2>{{ 'HOME.TITLE' | translate }}</h2>-->
+<!--  <label>-->
+<!--    {{ 'HOME.SELECT' | translate }}-->
+<!--    <select #langSelect (change)="translate.use(langSelect.value)">-->
+<!--      <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>-->
+<!--    </select>-->
+<!--  </label>-->
+<!--</div>-->
