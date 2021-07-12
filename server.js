@@ -1,9 +1,10 @@
 //Install express server
 const express = require('express');
 const path = require('path');
-
+var proxy = require('express-http-proxy');
 const app = express();
 
+app.use('/api', proxy('https://submaster-api.herokuapp.com/'));
 // Serve only the static files form the dist directory
 app.use(express.static('./dist/'));
 
