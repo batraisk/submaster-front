@@ -21,9 +21,11 @@ import { AdditionalPagesComponent } from './new-page/components/additional-pages
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PagesService} from './services/pages.service';
+import { NzFormModule } from 'ng-zorro-antd/form';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 // @ts-ignore
 import {InterceptService} from '@core-services';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 
@@ -53,6 +55,8 @@ import {InterceptService} from '@core-services';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
+    TranslateModule,
+    NzFormModule
   ],
   providers: [
     PagesService,

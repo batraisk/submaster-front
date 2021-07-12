@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {environment} from '@environment';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-page-card',
@@ -7,7 +9,8 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class PageCardComponent implements OnInit {
   @Input() page: any;
-  constructor() { }
+  baseUrl = environment.apiUrl;
+  constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
   }

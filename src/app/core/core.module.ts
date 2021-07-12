@@ -21,6 +21,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {AuthenticationGuard} from './services/authentication.guard';
+import {TranslateModule} from '@ngx-translate/core';
 // import {DashboardComponent} from "../subscribes/dashboard/dashboard.component";
 // import {NewPageComponent} from "../subscribes/new-page/new-page.component";
 // import {PageDetailsComponent} from "../subscribes/new-page/components/page-details/page-details.component";
@@ -57,6 +58,7 @@ import {AuthenticationGuard} from './services/authentication.guard';
     FormsModule,
     ReactiveFormsModule,
     NzFormModule,
+    TranslateModule,
   ],
   providers: [
     AuthenticationService,

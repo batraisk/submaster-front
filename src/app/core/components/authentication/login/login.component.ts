@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
     const queryParams = this.activatedRoute.snapshot.queryParams;
     if (queryParams?.confirmation_token) {
       this.authService.confirmEmail(queryParams?.confirmation_token).subscribe((res) => {
-        console.log('res.body', res)
         this.message.success('Your verification successfully done');
         // localStorage.setItem('currentUser', JSON.stringify(res.body));
         // localStorage.setItem('token', res.headers.get('Authorization'));
@@ -67,7 +66,11 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res.headers.get('Authorization'));
         this.router.navigate(['/']);
       }}, err => {
-
+      console.log('err.error', )
+      if (!!err.error.error) {
+        this.message.error(err.error.error);
+        return;
+      }
       this.errors = err.error.errors;
       const errorsValues: string[] = Object.keys(err.error.errors);
       errorsValues.forEach(key => {this.loginForm.get(key).setErrors({incorrect: true}); });

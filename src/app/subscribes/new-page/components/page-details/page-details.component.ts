@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-page-details',
@@ -10,6 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class PageDetailsComponent implements OnInit {
   @Input() page: any;
   @Output() updatePageEmitter = new EventEmitter<any>();
+  @Output() nextEmitter = new EventEmitter<any>();
   domain = 'https://submaster.com/';
   pageForm: FormGroup;
   errors: any = {};
@@ -25,17 +26,17 @@ export class PageDetailsComponent implements OnInit {
       pageName: [this.page.pageName, [Validators.required]],
       url: [this.page.url, Validators.compose([Validators.required])],
       facebookServerSideToken: [this.page.facebookServerSideToken],
-      instagramLogin: [this.page.instagramLogin],
+      instagramLogin: [this.page.instagramLogin, Validators.compose([Validators.required])],
       facebookPixelId: [this.page.facebookPixelId],
       yandexMetrika: [this.page.yandexMetrika],
     });
-
+    this.updatePageEmitter.emit({page: this.pageForm.value, form: this.pageForm});
     this.onChanges();
   }
 
   onChanges(): void {
     this.pageForm.valueChanges.subscribe(val => {
-      this.updatePageEmitter.emit(this.pageForm.value);
+      this.updatePageEmitter.emit({page: this.pageForm.value, form: this.pageForm});
     });
   }
 }

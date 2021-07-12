@@ -39,7 +39,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../submaster_api/public",
+            "outputPath": "./dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -106,7 +106,8 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "submaster-front:build:production"
+              "browserTarget": "submaster-front:build:production",
+              "proxyConfig": "src/proxy-prod.config.json"
             }
           }
         },

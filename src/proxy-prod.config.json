@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://submaster-api.herokuapp.com/",
+    "changeOrigin": true,
+    "secure": false
+  }
+}

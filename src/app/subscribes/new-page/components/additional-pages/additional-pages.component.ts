@@ -23,12 +23,12 @@ export class AdditionalPagesComponent implements OnInit {
       outOfStockTitle: [this.page.outOfStockTitle, [Validators.required]],
       outOfStockDescription: [this.page.outOfStockDescription, [Validators.required]],
     });
-
+    this.updatePageEmitter.emit({page: this.pageForm.value, form: this.pageForm});
     this.onChanges();
   }
   onChanges(): void {
     this.pageForm.valueChanges.subscribe(val => {
-      this.updatePageEmitter.emit(this.pageForm.value);
+      this.updatePageEmitter.emit({page: this.pageForm.value, form: this.pageForm});
     });
   }
 }

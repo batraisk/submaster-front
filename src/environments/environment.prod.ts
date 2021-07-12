@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://submaster.herokuapp.com/'
+  apiUrl: 'https://submaster-api.herokuapp.com/'
 };

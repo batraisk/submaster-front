@@ -1,13 +1,35 @@
 .card-container {
   max-width: 560px;
   box-shadow: 0px 2px 8px 0px #00000026;
-  
+  height: 250px;
+
+  .preview-details {
+    padding: 16px;
+    h2 {
+      font-size: 14px;
+    }
+
+    p {
+      font-size: 11px;
+    }
+  }
+
+  .picture {
+    background: #eee;
+    height: 100px;
+    width: 100%;
+    background-position-y: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+  }
+
   .description {
     box-shadow: 1px 0px 0px 0px #F0F0F0 inset;
   }
 }
 .header {
   box-shadow: 0px -1px 0px 0px #F0F0F0 inset;
+  padding: 9px 16px;
 
   height: 48px;
   display: flex;
@@ -22,6 +44,45 @@
 }
 
 .body {
+  height: 138px;
+
+  h1 {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .summary {
+    margin-top: 22px;
+  }
+
+  padding: 8px 16px;
   box-shadow: 0px -1px 0px 0px #F0F0F0 inset;
 
+}
+
+.footer {
+  padding: 16px;
+
+  button {
+    color: #597EF7;
+    border-color: #597EF7;
+    display: inline-flex;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    //overflow-x: hidden;
+    //text-overflow: ellipsis;
+    //display: block;
+
+    span {
+      width: calc(100% - 20px);
+      margin-left: 8px;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      display: block;
+    }
+  }
 }

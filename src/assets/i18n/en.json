@@ -7,5 +7,22 @@
     "ONLINE COURSE": "Take an online course",
     "LOGOUT": "Log out",
     "SUPPORT": "Support"
+  },
+  "ACTIONS": {
+    "EDIT": "Edit",
+    "ADD PAGE": "New page"
+  },
+  "STATISTICS": {
+    "SUBSCRIBERS": "Subscribers",
+    "VIEWS": "Views"
+  },
+  "AUTH": {
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "LOGIN": "Log in",
+    "LOGIN TITLE": "Log in",
+    "FORGOT": "Forgot your password?",
+    "HAVE ACCOUNT": "Don’t have an account?",
+    "REGISTER": "Register"
   }
 }

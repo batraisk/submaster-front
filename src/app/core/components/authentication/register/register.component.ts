@@ -46,7 +46,6 @@ export class RegisterComponent implements OnInit {
       this.registerForm.controls[i].markAsDirty();
       this.registerForm.controls[i].updateValueAndValidity();
     }
-    console.log('this.registerForm', this.registerForm)
     if (this.registerForm.invalid) {
       return;
     }

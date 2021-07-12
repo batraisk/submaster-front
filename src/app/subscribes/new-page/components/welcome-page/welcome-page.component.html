@@ -11,7 +11,8 @@
             </div>
             <div nz-col [nzSpan]="2" [nzXl]="4" style="text-align:center; line-height:30px">or</div>
             <div nz-col [nzSpan]="11" [nzXl]="10">
-              <button nz-button [nzBlock]="true" nzType="primary" nzSize="small" [nzGhost]="true">Upload image</button>
+              <button (click)="fileInput.click()" nz-button [nzBlock]="true" nzType="primary" nzSize="small" [nzGhost]="true">Upload image</button>
+              <input #fileInput (change)="onSelectFile($event)" hidden type="file" formControlName="background">
             </div>
           </div>
         </nz-form-item>
@@ -68,7 +69,7 @@
             <div nz-col [nzSpan]="11">
               <nz-form-label [nzSpan]="24" nzFor="timer-text">Layout</nz-form-label>
               <nz-form-control [nzSpan]="24" class="mt-2 w-100">
-                <nz-select ngModel="Image on half screen" class="w-100" [ngModelOptions]="{standalone: true}">
+                <nz-select formControlName="layout" class="w-100">
                   <nz-option nzLabel="Image on half screen" nzValue="Image on half screen"></nz-option>
                 </nz-select>
               </nz-form-control>

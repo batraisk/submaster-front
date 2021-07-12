@@ -11,6 +11,7 @@ import { MobileViewComponent } from './components/mobile-view/mobile-view.compon
 import { PageCardComponent } from './components/page-card/page-card.component';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import { LocalizerComponent } from './components/localizer/localizer.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { LocalizerComponent } from './components/localizer/localizer.component';
     NzButtonModule,
     NzSpaceModule,
     NzGridModule,
-    NzStatisticModule
+    NzStatisticModule,
+    TranslateModule,
   ],
   exports: [
     HeaderComponent,

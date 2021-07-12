@@ -7,5 +7,22 @@
     "ONLINE COURSE": "Получить онлайн курс",
     "LOGOUT": "Выйти",
     "SUPPORT": "Поддержка"
+  },
+  "ACTIONS": {
+    "EDIT": "Редактировать",
+    "ADD PAGE": "Добавить страницу"
+  },
+  "STATISTICS": {
+    "SUBSCRIBERS": "Подписок",
+    "VIEWS": "Показов"
+  },
+  "AUTH": {
+    "EMAIL": "Почта",
+    "PASSWORD": "Пароль",
+    "LOGIN": "Войти",
+    "LOGIN TITLE": "Вход",
+    "FORGOT": "Забыли пароль?",
+    "HAVE ACCOUNT": "Нет аккаунта?",
+    "REGISTER": "Создать аккаунт"
   }
 }

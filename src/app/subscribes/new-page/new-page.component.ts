@@ -13,33 +13,61 @@ import {toSnakeCaseObject} from '@helpers';
 export class NewPageComponent implements OnInit, OnDestroy {
   current = 0;
   page: any;
+  currentFrom: any;
 
   constructor(private router: Router, private pagesService: PagesService) {}
 
   ngOnInit(): void {
-    console.log('init new');
     this.page = {};
   }
 
-  setPage(page): void {
-    this.page = {...this.page, ...page};
+  setPage(event): void {
+    const {page, form} = event
+    this.page = {...this.page, ...page.value};
+    this.currentFrom = form;
+    console.log(page.invalid);
   }
 
   ngOnDestroy(): void {
     console.log('destroy new');
   }
 
-
   pre(): void {
     this.current -= 1;
   }
 
   next(): void {
+    // tslint:disable-next-line:forin
+    for (const i in this.currentFrom.controls) {
+      this.currentFrom.controls[i].markAsDirty();
+      this.currentFrom.controls[i].updateValueAndValidity();
+    }
+    if (this.currentFrom.invalid) {
+      return;
+    }
     this.current += 1;
   }
 
   done(): void {
-    this.pagesService.createPage(toSnakeCaseObject(this.page)).subscribe(res => {
+    // tslint:disable-next-line:forin
+    for (const i in this.currentFrom.controls) {
+      this.currentFrom.controls[i].markAsDirty();
+      this.currentFrom.controls[i].updateValueAndValidity();
+    }
+    if (this.currentFrom.invalid) {
+      return;
+    }
+    const formData: any = new FormData();
+    const property = toSnakeCaseObject(this.page);
+    for (const key in property) {
+      if (key) {
+        formData.append(key, property[key]);
+      }
+    }
+    if (this.page.background) {
+      formData.append('background', this.page.background);
+    }
+    this.pagesService.createPage(formData).subscribe(res => {
       this.router.navigate(['/']);
     });
   }
@@ -47,25 +75,4 @@ export class NewPageComponent implements OnInit, OnDestroy {
   cancel(): void {
     this.router.navigate(['/']);
   }
-
-  // changeContent(): void {
-  //   switch (this.current) {
-  //     case 0: {
-  //       this.index = 'First-content';
-  //       break;
-  //     }
-  //     case 1: {
-  //       this.index = 'Second-content';
-  //       break;
-  //     }
-  //     case 2: {
-  //       this.index = 'third-content';
-  //       break;
-  //     }
-  //     default: {
-  //       this.index = 'error';
-  //     }
-  //   }
-  // }
-
 }

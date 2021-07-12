@@ -37,7 +37,6 @@ export class LocalizerComponent implements OnInit {
     this.activeLocale = this.langs.filter(lang => lang.code === code)[0];
 
     this.renderer.listen('window', 'click', (e: Event) => {
-      console.log(e.target, this.toggleButton.nativeElement);
       if (this.open && !this.toggleButton.elementRef.nativeElement.contains(e.target) && e.target !== this.menu.nativeElement){
         console.log('close')
         this.open = false;
