@@ -10,7 +10,11 @@
   },
   "ACTIONS": {
     "EDIT": "Edit",
-    "ADD PAGE": "New page"
+    "ADD PAGE": "New page",
+    "NEXT": "Next",
+    "PREVIOUS": "Previous",
+    "FINISH": "Finish",
+    "CANCEL": "Cancel"
   },
   "STATISTICS": {
     "SUBSCRIBERS": "Subscribers",
@@ -23,6 +27,11 @@
     "LOGIN TITLE": "Log in",
     "FORGOT": "Forgot your password?",
     "HAVE ACCOUNT": "Don’t have an account?",
-    "REGISTER": "Register"
+    "REGISTER": "Register",
+    "NEW ACCOUNT": "Create new account",
+    "USERNAME": "Username",
+    "ACCEPT": "I accept the public offer and the privacy policy of the service",
+    "HAVE": "Already have an account?",
+    "CREATE ACCOUNT": "Create account"
   }
 }

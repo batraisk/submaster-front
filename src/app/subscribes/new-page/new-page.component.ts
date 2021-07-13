@@ -22,14 +22,15 @@ export class NewPageComponent implements OnInit, OnDestroy {
   }
 
   setPage(event): void {
-    const {page, form} = event
-    this.page = {...this.page, ...page.value};
+    console.log(event)
+    const {page, form} = event;
+    console.log('page', page)
+    // console.log(page.value)
+    this.page = {...this.page, ...page};
     this.currentFrom = form;
-    console.log(page.invalid);
   }
 
   ngOnDestroy(): void {
-    console.log('destroy new');
   }
 
   pre(): void {

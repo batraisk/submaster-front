@@ -16,3 +16,18 @@
     }
   }
 }
+
+.switch-group {
+  ::ng-deep {
+    .ant-form-item-control-input {
+      width: 100%;
+    }
+
+    .ant-form-item-control-input-content {
+      display: flex;
+      width: 100%;
+      align-items: center;
+    }
+
+  }
+}
