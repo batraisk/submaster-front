@@ -33,5 +33,30 @@
     "ACCEPT": "Я принимаю публичную оферту и политику конфиденциальности сервиса",
     "HAVE": "Уже есть аккаунта?",
     "CREATE ACCOUNT": "Создать аккаунт"
+  },
+  "PAGE": {
+    "EDIT PAGE DETAILS": "Основная информация",
+    "EDIT WELCOME PAGE": "Страница приветствия",
+    "EDIT ADDITIONAL PAGES": "Дополнительные страницы",
+    "PAGE NAME": "Имя страницы",
+    "DOMAIN AND URL": "Домен и URL",
+    "INSTAGRAM USERNAME": "Имя пользователя в Instagram",
+    "METRICS": "Метрики",
+    "MAIN INFO": "Основная информация",
+
+    "WELCOME PAGE INFO": "Информация о странице",
+    "BACKGROUND": "Фон",
+    "YOUTUBE LINK": "Ссылка на Youtube",
+    "UPLOAD IMAGE": "Загрузить картинку",
+    "OR": "или",
+    "TITLE": "Заголовок",
+    "DESCRIPTION": "Описание",
+    "BUTTON TEXT": "Текст кнопки",
+    "TIMER TIME": "Время в секундах",
+    "TIMER TEXT": "Текст таймера",
+    "DESIGN": "Дизайн",
+    "LAYOUT": "Шаблон",
+    "COLOR THEME": "Цветовая схема",
+    "PREVIEW": "Превью"
   }
 }

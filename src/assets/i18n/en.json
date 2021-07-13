@@ -33,5 +33,30 @@
     "ACCEPT": "I accept the public offer and the privacy policy of the service",
     "HAVE": "Already have an account?",
     "CREATE ACCOUNT": "Create account"
+  },
+  "PAGE": {
+    "EDIT PAGE DETAILS": "Edit page details",
+    "EDIT WELCOME PAGE": "Edit welcome page",
+    "EDIT ADDITIONAL PAGES": "Edit additional pages",
+    "PAGE NAME": "Page name",
+    "DOMAIN AND URL": "Page domain and URL",
+    "INSTAGRAM USERNAME": "Instagram username",
+    "METRICS": "Metrics",
+    "MAIN INFO": "Main info",
+
+    "WELCOME PAGE INFO": "Welcome page info",
+    "BACKGROUND": "Background",
+    "YOUTUBE LINK": "Youtube link",
+    "UPLOAD IMAGE": "Upload image",
+    "OR": "or",
+    "TITLE": "Title",
+    "DESCRIPTION": "Description",
+    "BUTTON TEXT": "Button text",
+    "TIMER TIME": "Timer time in seconds",
+    "TIMER TEXT": "Timer text",
+    "DESIGN": "Design",
+    "LAYOUT": "Layout",
+    "COLOR THEME": "Color theme",
+    "PREVIEW": "Preview"
   }
 }

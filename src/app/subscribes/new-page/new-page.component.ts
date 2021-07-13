@@ -22,10 +22,7 @@ export class NewPageComponent implements OnInit, OnDestroy {
   }
 
   setPage(event): void {
-    console.log(event)
     const {page, form} = event;
-    console.log('page', page)
-    // console.log(page.value)
     this.page = {...this.page, ...page};
     this.currentFrom = form;
   }
