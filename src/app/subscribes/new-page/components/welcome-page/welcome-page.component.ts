@@ -48,6 +48,7 @@ export class WelcomePageComponent implements OnInit {
 
   onSelectFile(event): void {
     selectFile(event, this);
+    this.updatePageEmitter.emit({page: {...this.pageForm.value, background: this.file}, form: this.pageForm});
   }
 
 }
