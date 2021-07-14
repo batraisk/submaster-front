@@ -8,7 +8,7 @@
   </div>
   <div nz-col [nzSpan]="18" [nzXl]="18" class="description">
     <div class="header d-flex align-items-center">
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center header-link" (click)="goToInfo(page.id)">
         <div class="avatar"></div>
         <span class="ml-3">{{page.instagram_login}}</span>
       </div>
@@ -37,7 +37,8 @@
         </div>
         <div nz-col [nzSpan]="12" class="d-flex align-items-center">
           <a href="https://submaster-api.herokuapp.com/pages/{{page.url}}" target="_blank">
-            <i nz-icon nzType="export"></i> <span>https://submaster/pages/{{page.url}}</span></a>
+            <i nz-icon nzType="export"></i> <span>https://submaster/pages/{{page.url}}</span>
+          </a>
         </div>
 
       </div>

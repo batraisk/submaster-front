@@ -1,0 +1,38 @@
+<div class="logins-container mt-3">
+  <h1>{{ 'PAGE.LOGINS' | translate }} ({{logins.length}})</h1>
+  <div class="actions-row d-flex justify-space-between">
+    <nz-range-picker
+      nzFormat="yyyy-MM-dd"
+      (ngModelChange)="onChange($event)"
+      ngModel
+    ></nz-range-picker>
+    <button class="download-link-btn" nzSize="small" (click)="onUpload()" nz-button nzType="primary">{{ 'PAGE.DOWNLOAD EXCEL' | translate }}</button>
+
+    <a #xlsxLink *ngIf="page" hidden href="http://localhost:3000/api/v1/subscribe_pages/{{page.id}}/logins/report.xlsx" target="_blank">Download excel file</a>
+  </div>
+  <nz-table [nzTotal]="total" [nzPageSize]="20" class="mt-4" #sortTable [nzData]="logins" [nzFrontPagination]="false" (nzQueryParams)="onQueryParamsChange($event)">
+    <thead>
+    <tr>
+      <th  [nzSortFn]="true" nzColumnKey="name" nzWidth="328px" [nzSortPriority]="1">
+        {{ 'PAGE.LOGIN' | translate }}
+      </th>
+      <th  [nzSortFn]="true" nzColumnKey="created_at" [nzSortPriority]="2">
+        {{ 'PAGE.DATE' | translate }}
+      </th>
+      <th  [nzSortFn]="true" nzColumnKey="status" nzWidth="137px" [nzSortPriority]="3">
+        {{ 'PAGE.STATUS' | translate }}
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of sortTable.data">
+      <td>{{ data.name }}</td>
+      <td>{{ data.date }}</td>
+      <td>
+        <nz-tag *ngIf="data.status == 'subscribed'" nzColor="success">{{ 'PAGE.SUBSCRIBED' | translate }}</nz-tag>
+        <nz-tag *ngIf="data.status == 'not_subscribed'" nzColor="blue">{{ 'PAGE.NOT SUBSCRIBED' | translate }}</nz-tag>
+      </td>
+    </tr>
+    </tbody>
+  </nz-table>
+</div>

@@ -13,7 +13,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private pagesService: PagesService) { }
 
   ngOnInit(): void {
-    console.log('init d');
     this.pagesService.getPages().subscribe(res => {
       this.pages = res;
     });

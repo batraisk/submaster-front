@@ -57,6 +57,21 @@
     "DESIGN": "Дизайн",
     "LAYOUT": "Шаблон",
     "COLOR THEME": "Цветовая схема",
-    "PREVIEW": "Превью"
+    "PREVIEW": "Превью",
+
+    "LOGIN LIST": "Список логинов",
+    "STATISTICS": "Статистика",
+    "UTM TAGS": "UTM метки",
+    "PAGE SETTINGS": "Настройки",
+
+    "LOGINS": "Логины",
+    "LOGIN": "Логин",
+    "DATE": "Дата",
+    "STATUS": "Статус",
+    "SUBSCRIBED": "ПОДПИСАЛСЯ",
+    "NOT SUBSCRIBED": "НЕ ПОДПИСАЛСЯ",
+
+    "DOWNLOAD EXCEL": "Скачать файл",
+    "PAGE LINK": "Ссылка на страницу"
   }
 }

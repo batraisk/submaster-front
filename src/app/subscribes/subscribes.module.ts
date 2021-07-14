@@ -21,11 +21,18 @@ import { AdditionalPagesComponent } from './new-page/components/additional-pages
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PagesService} from './services/pages.service';
+import {LoginsService} from './services/logins.service';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 // @ts-ignore
 import {InterceptService} from '@core-services';
 import {TranslateModule} from '@ngx-translate/core';
+import { PageInfoComponent } from './page-info/page-info.component';
+import { LoginsComponent } from './page-info/logins/logins.component';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzTagModule } from 'ng-zorro-antd/tag';
 
 
 
@@ -36,6 +43,8 @@ import {TranslateModule} from '@ngx-translate/core';
     PageDetailsComponent,
     WelcomePageComponent,
     AdditionalPagesComponent,
+    PageInfoComponent,
+    LoginsComponent,
   ],
   imports: [
     NzIconModule,
@@ -56,10 +65,15 @@ import {TranslateModule} from '@ngx-translate/core';
     RouterModule,
     ReactiveFormsModule,
     TranslateModule,
-    NzFormModule
+    NzFormModule,
+    NzTabsModule,
+    NzTableModule,
+    NzTagModule,
+    NzDatePickerModule
   ],
   providers: [
     PagesService,
+    LoginsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptService,

@@ -57,6 +57,20 @@
     "DESIGN": "Design",
     "LAYOUT": "Layout",
     "COLOR THEME": "Color theme",
-    "PREVIEW": "Preview"
+    "PREVIEW": "Preview",
+
+    "LOGIN LIST": "Login list",
+    "STATISTICS": "Statistics",
+    "UTM TAGS": "UTM tags",
+    "PAGE SETTINGS": "Page settings",
+
+    "LOGINS": "Logins",
+    "LOGIN": "Login",
+    "DATE": "Date",
+    "STATUS": "Status",
+    "SUBSCRIBED": "SUBSCRIBED",
+    "NOT SUBSCRIBED": "NOT SUBSCRIBED",
+    "DOWNLOAD EXCEL": "Download excel file",
+    "PAGE LINK": "Page link"
   }
 }
