@@ -1,0 +1,233 @@
+<form nz-form [formGroup]="pageForm">
+  <div nz-row>
+    <div nz-col [nzSpan]="11" [nzXl]="8">
+      <h1>{{ 'PAGE.MAIN INFO' | translate }}</h1>
+      <nz-space nzDirection="vertical" [nzSize]="'large'" class="mt-4" style="width:100%">
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="name">{{ 'PAGE.PAGE NAME' | translate }}</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="name" type="text" id="name" placeholder="My page" formControlName="pageName">
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="domain">{{ 'PAGE.DOMAIN AND URL' | translate }}</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+              <input type="text" nz-input id="domain" formControlName="url" />
+            </nz-input-group>
+            <ng-template #addOnBeforeTemplate>
+              <nz-select [(ngModel)]="domain" [ngModelOptions]="{standalone: true}">
+                <nz-option nzLabel="https://submaster.com/" nzValue="https://submaster.com/"></nz-option>
+              </nz-select>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="username">{{ 'PAGE.INSTAGRAM USERNAME' | translate }}</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="name" type="text" id="username" placeholder="my_instagram_username" formControlName="instagramLogin">
+          </nz-form-control>
+        </nz-form-item>
+      </nz-space>
+    </div>
+    <div nz-col nzSpan="1" style="text-align:center; padding: 10px 0;">
+      <nz-divider [nzOrientation]="'center'" [nzType]="'vertical'" style="height: 100%;"></nz-divider>
+    </div>
+    <div nz-col [nzSpan]="11" [nzXl]="8">
+      <h1>{{ 'PAGE.METRICS' | translate }}</h1>
+      <nz-space nzDirection="vertical" [nzSize]="'large'" class="mt-4" style="width:100%">
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="pixel">Facebook pixel</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="pixel" type="text" id="pixel" formControlName="facebookPixelId">
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="token">Facebook Server Side token</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="token" type="text" id="token" formControlName="facebookServerSideToken">
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="metrika">Yandex.Metrica</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="metrika" type="text" id="metrika" formControlName="yandexMetrika">
+          </nz-form-control>
+        </nz-form-item>
+      </nz-space>
+    </div>
+  </div>
+
+
+
+
+  <div nz-row class="mt-5">
+    <div nz-col [nzSpan]="11" [nzXl]="8">
+      <h1>{{ 'PAGE.WELCOME PAGE INFO' | translate }}</h1>
+      <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24">{{ 'PAGE.BACKGROUND' | translate }}</nz-form-label>
+          <div nz-row style="width:100%" class="mt-2">
+            <div nz-col [nzSpan]="11" [nzXl]="10">
+              <button nz-button [nzBlock]="true" nzType="primary" nzSize="small" [nzGhost]="true">{{ 'PAGE.YOUTUBE LINK' | translate }}</button>
+            </div>
+            <div nz-col [nzSpan]="2" [nzXl]="4" style="text-align:center; line-height:30px">{{ 'PAGE.OR' | translate }}</div>
+            <div nz-col [nzSpan]="11" [nzXl]="10">
+              <button (click)="fileInput.click()" nz-button [nzBlock]="true" nzType="primary" nzSize="small" [nzGhost]="true">{{ 'PAGE.UPLOAD IMAGE' | translate }}</button>
+              <input #fileInput (change)="onSelectFile($event)" hidden type="file" formControlName="background">
+            </div>
+          </div>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="title">{{ 'PAGE.TITLE' | translate }}</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="title" type="text" id="title" formControlName="welcomeTitle">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="description">{{ 'PAGE.DESCRIPTION' | translate }}</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <nz-textarea-count [nzMaxCharacterCount]="100">
+              <textarea rows="3" id="description" name="description" nz-input formControlName="welcomeDescription"></textarea>
+            </nz-textarea-count>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="button-text">{{ 'PAGE.BUTTON TEXT' | translate }}</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="button-text" type="text" id="button-text" formControlName="welcomeButtonText">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="timer-time">{{ 'PAGE.TIMER TIME' | translate }}</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2 d-flex align-items-center switch-group">
+            <input nz-input name="timer-time" type="text" id="timer-time" formControlName="timerTime">
+            <nz-switch
+              class="ml-4"
+              formControlName="timerEnable"
+              nzCheckedChildren="ON"
+              nzUnCheckedChildren="OFF"
+            ></nz-switch>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="timer-text">{{ 'PAGE.TIMER TEXT' | translate }}</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="timer-text" type="text" id="timer-text" formControlName="timerEnable">
+          </nz-form-control>
+        </nz-form-item>
+      </nz-space>
+    </div>
+
+    <div nz-col nzSpan="1" style="text-align:center; padding: 10px 0;">
+      <nz-divider [nzOrientation]="'center'" [nzType]="'vertical'" style="height: 100%;"></nz-divider>
+    </div>
+
+    <div nz-col [nzSpan]="11" [nzXl]="15">
+      <h1>{{ 'PAGE.DESIGN' | translate }}</h1>
+      <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
+        <nz-form-item *nzSpaceItem>
+          <div nz-row style="width:100%">
+            <div nz-col [nzSpan]="11">
+              <nz-form-label [nzSpan]="24" nzFor="timer-text">{{ 'PAGE.LAYOUT' | translate }}</nz-form-label>
+              <nz-form-control [nzSpan]="24" class="mt-2 w-100">
+                <nz-select formControlName="layout" class="w-100">
+                  <nz-option nzLabel="Image on half screen" nzValue="Image on half screen"></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </div>
+            <div nz-col [nzSpan]="1"></div>
+            <div nz-col [nzSpan]="12">
+              <nz-form-label [nzSpan]="24" nzFor="theme">{{ 'PAGE.COLOR THEME' | translate }}</nz-form-label>
+              <nz-form-control [nzSpan]="24" class="mt-2 w-100">
+                <nz-radio-group [nzSize]="'large'" formControlName="theme" nzName="theme">
+                  <label *ngFor="let theme of themes" nz-radio [nzValue]="theme" [class]="theme"></label>
+                </nz-radio-group>
+              </nz-form-control>
+            </div>
+          </div>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24">{{ 'PAGE.PREVIEW' | translate }}</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2 w-100">
+            <nz-radio-group class="radio-devices" [(ngModel)]="view" nzName="theme" [ngModelOptions]="{standalone: true}">
+              <label nz-radio-button nzValue="mobile">
+                <i nz-icon nzType="mobile" nzTheme="outline"></i>
+              </label>
+              <label nz-radio-button nzValue="desktop">
+                <i nz-icon nzType="desktop" nzTheme="outline"></i>
+              </label>
+            </nz-radio-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem [nzJustify]="'center'">
+          <app-mobile-view [device]="view"></app-mobile-view>
+        </nz-form-item>
+      </nz-space>
+    </div>
+  </div>
+
+
+
+  <div nz-row class="mt-5">
+    <div nz-col [nzSpan]="11" [nzXl]="8">
+      <h1>Success page</h1>
+      <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24">Title</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="title" type="text" id="additional-title" formControlName="successTitle">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="description">Description</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <nz-textarea-count [nzMaxCharacterCount]="100">
+              <textarea rows="3" id="additional-description" name="description" nz-input formControlName="successDescription"></textarea>
+            </nz-textarea-count>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="button-text">Button text</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="button-text" type="text" id="additional-button-text" formControlName="successButtonText">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="button-text">Download link</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="download-link" type="text" id="download-link" formControlName="downloadLink">
+          </nz-form-control>
+        </nz-form-item>
+      </nz-space>
+    </div>
+
+    <div nz-col nzSpan="1" style="text-align:center; padding: 10px 0;">
+      <nz-divider [nzOrientation]="'center'" [nzType]="'vertical'" style="height: 100%;"></nz-divider>
+    </div>
+
+    <div nz-col [nzSpan]="11" [nzXl]="8">
+      <h1>Out of stock page</h1>
+      <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="stock-title">Title</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="stock-title" type="text" id="stock-title" formControlName="outOfStockTitle">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="stock-description">Description</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <nz-textarea-count [nzMaxCharacterCount]="100">
+              <textarea rows="3" id="stock-description" name="stock-description" nz-input formControlName="outOfStockDescription"></textarea>
+            </nz-textarea-count>
+          </nz-form-control>
+        </nz-form-item>
+      </nz-space>
+    </div>
+  </div>
+</form>

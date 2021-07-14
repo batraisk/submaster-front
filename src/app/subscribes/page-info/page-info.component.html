@@ -4,7 +4,9 @@
   </nz-tab>
   <nz-tab  nzTitle="{{ 'PAGE.STATISTICS' | translate }}"></nz-tab>
   <nz-tab  nzTitle="{{ 'PAGE.UTM TAGS' | translate }}"></nz-tab>
-  <nz-tab  nzTitle="{{ 'PAGE.PAGE SETTINGS' | translate }}"></nz-tab>
+  <nz-tab  nzTitle="{{ 'PAGE.PAGE SETTINGS' | translate }}">
+    <app-page-settings *ngIf="page" [page]="page"></app-page-settings>
+  </nz-tab>
 </nz-tabset>
 <ng-template #extraTemplate>
   <div class="d-flex align-items-center" *ngIf="page">

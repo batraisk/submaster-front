@@ -1,0 +1,33 @@
+.radio-devices {
+  label {
+    height: 32px;
+    width: 32px;
+    padding: unset;
+    text-align: center;
+    border-radius: 2px;
+    border-left-width: 1px;
+
+    &:before {
+      content: none;
+    }
+
+    &:last-child {
+      margin-left: 12px;
+    }
+  }
+}
+
+.switch-group {
+  ::ng-deep {
+    .ant-form-item-control-input {
+      width: 100%;
+    }
+
+    .ant-form-item-control-input-content {
+      display: flex;
+      width: 100%;
+      align-items: center;
+    }
+
+  }
+}

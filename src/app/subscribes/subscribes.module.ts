@@ -33,6 +33,7 @@ import { PageInfoComponent } from './page-info/page-info.component';
 import { LoginsComponent } from './page-info/logins/logins.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzTagModule } from 'ng-zorro-antd/tag';
+import { PageSettingsComponent } from './page-info/page-settings/page-settings.component';
 
 
 
@@ -45,6 +46,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
     AdditionalPagesComponent,
     PageInfoComponent,
     LoginsComponent,
+    PageSettingsComponent,
   ],
   imports: [
     NzIconModule,
