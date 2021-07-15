@@ -2,20 +2,20 @@
   <div nz-col [nzSpan]="6" [nzXl]="6">
     <div class="picture" [ngStyle]="{'background-image': 'url(' + baseUrl + page.background + ')'}"></div>
     <div class="preview-details">
-      <h2>{{page.welcome_title}}</h2>
-      <p>{{page.welcome_description}}</p>
+      <h2>{{page.welcomeTitle}}</h2>
+      <p>{{page.welcomeDescription}}</p>
     </div>
   </div>
   <div nz-col [nzSpan]="18" [nzXl]="18" class="description">
     <div class="header d-flex align-items-center">
       <div class="d-flex align-items-center">
         <div class="avatar"></div>
-        <span class="ml-3">{{page.instagram_login}}</span>
+        <span class="ml-3">{{page.instagramLogin}}</span>
       </div>
       <botton nz-button nzType="text"><i nz-icon nzType="more" nzTheme="outline"></i></botton>
     </div>
     <div class="body">
-      <h1>{{page.page_name}}</h1>
+      <h1>{{page.pageName}}</h1>
       <nz-row [nzGutter]="16" class="summary">
         <nz-col [nzSpan]="8" class="text-center">
           <nz-statistic [nzValue]="(73 / 100 | percent)!" [nzTitle]="'CTR'"></nz-statistic>
@@ -40,12 +40,7 @@
             <i nz-icon nzType="export"></i> <span>https://submaster/pages/{{page.url}}</span>
           </a>
         </div>
-
       </div>
-<!--      <button nz-button>Edit</button>-->
-<!--      <button nz-button nzType="primary" [nzSize]="'small'" nzGhost>Primary</button>-->
-<!--&lt;!&ndash;      <button nz-button (click)="openPage">https://submaster/pages/{{page.url}}</button>&ndash;&gt;-->
-<!--      <a href="http://localhost:3000/pages/{{page.url}}" target="_blank">https://submaster/pages/{{page.url}}</a>-->
     </div>
   </div>
 </div>

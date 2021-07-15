@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {selectFile} from "@helpers";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {selectFile, toSnakeCaseObject} from '@helpers';
+import {Router} from '@angular/router';
+import {PagesService} from '@subscribes-services';
 
 @Component({
   selector: 'app-page-settings',
@@ -17,6 +19,7 @@ export class PageSettingsComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router, private pagesService: PagesService
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +52,31 @@ export class PageSettingsComponent implements OnInit {
 
   onSelectFile(event): void {
     selectFile(event, this);
+  }
+
+  onSubmit(): void {
+// tslint:disable-next-line:forin
+    for (const i in this.pageForm.controls) {
+      this.pageForm.controls[i].markAsDirty();
+      this.pageForm.controls[i].updateValueAndValidity();
+    }
+    if (this.pageForm.invalid) {
+      return;
+    }
+    const formData: any = new FormData();
+    const property = toSnakeCaseObject(this.pageForm.value);
+    // const property = toSnakeCaseObject(this.page);
+    for (const key in property) {
+      if (key && key !== 'background') {
+        formData.append(key, property[key] || '');
+      }
+    }
+    if (this.page.background) {
+      formData.append('background', this.page.background);
+    }
+    this.pagesService.updatePage(this.page.id, formData).subscribe(res => {
+      this.router.navigate(['/']);
+    });
   }
 
 }

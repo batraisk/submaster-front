@@ -1,16 +1,16 @@
 <form nz-form [formGroup]="pageForm">
   <div nz-row>
     <div nz-col [nzSpan]="11" [nzXl]="8">
-      <h1>Success page</h1>
+      <h1>{{ 'PAGE.SUCCESS PAGE' | translate }}</h1>
       <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
         <nz-form-item *nzSpaceItem>
-          <nz-form-label [nzSpan]="24">Title</nz-form-label>
+          <nz-form-label [nzSpan]="24">{{ 'PAGE.TITLE' | translate }}</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
             <input nz-input name="title" type="text" id="title" formControlName="successTitle">
           </nz-form-control>
         </nz-form-item>
         <nz-form-item *nzSpaceItem>
-          <nz-form-label [nzSpan]="24" nzFor="description">Description</nz-form-label>
+          <nz-form-label [nzSpan]="24" nzFor="description">{{ 'PAGE.DESCRIPTION' | translate }}</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
             <nz-textarea-count [nzMaxCharacterCount]="100">
               <textarea rows="3" id="description" name="description" nz-input formControlName="successDescription"></textarea>
@@ -18,13 +18,13 @@
           </nz-form-control>
         </nz-form-item>
         <nz-form-item *nzSpaceItem>
-          <nz-form-label [nzSpan]="24" nzFor="button-text">Button text</nz-form-label>
+          <nz-form-label [nzSpan]="24" nzFor="button-text">{{ 'PAGE.BUTTON TEXT' | translate }}</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
             <input nz-input name="button-text" type="text" id="button-text" formControlName="successButtonText">
           </nz-form-control>
         </nz-form-item>
         <nz-form-item *nzSpaceItem>
-          <nz-form-label [nzSpan]="24" nzFor="button-text">Download link</nz-form-label>
+          <nz-form-label [nzSpan]="24" nzFor="button-text">{{ 'PAGE.DOWNLOAD LINK' | translate }}</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
             <input nz-input name="download-link" type="text" id="download-link" formControlName="downloadLink">
           </nz-form-control>
@@ -37,16 +37,16 @@
     </div>
 
     <div nz-col [nzSpan]="11" [nzXl]="8">
-      <h1>Out of stock page</h1>
+      <h1>{{ 'PAGE.OUT OF STOCK PAGE' | translate }}</h1>
       <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
         <nz-form-item *nzSpaceItem>
-          <nz-form-label [nzSpan]="24" nzFor="stock-title">Title</nz-form-label>
+          <nz-form-label [nzSpan]="24" nzFor="stock-title">{{ 'PAGE.TITLE' | translate }}</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
             <input nz-input name="stock-title" type="text" id="stock-title" formControlName="outOfStockTitle">
           </nz-form-control>
         </nz-form-item>
         <nz-form-item *nzSpaceItem>
-          <nz-form-label [nzSpan]="24" nzFor="stock-description">Description</nz-form-label>
+          <nz-form-label [nzSpan]="24" nzFor="stock-description">{{ 'PAGE.DESCRIPTION' | translate }}</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
             <nz-textarea-count [nzMaxCharacterCount]="100">
               <textarea rows="3" id="stock-description" name="stock-description" nz-input formControlName="outOfStockDescription"></textarea>

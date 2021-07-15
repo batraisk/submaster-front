@@ -33,7 +33,6 @@ export class LoginsService {
     sort.forEach(obj => {
       if (!!obj.value) { params = params.append(`sort[${obj.key}]`, this.setDirection(obj.value)); }
     });
-    console.log('pageSize', pageSize)
     params = params
       .append('page', `${pageIndex}`)
       .append('page_size', `${pageSize}`);

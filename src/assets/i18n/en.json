@@ -14,7 +14,8 @@
     "NEXT": "Next",
     "PREVIOUS": "Previous",
     "FINISH": "Finish",
-    "CANCEL": "Cancel"
+    "CANCEL": "Cancel",
+    "SAVE": "Save"
   },
   "STATISTICS": {
     "SUBSCRIBERS": "Subscribers",
@@ -71,6 +72,9 @@
     "SUBSCRIBED": "SUBSCRIBED",
     "NOT SUBSCRIBED": "NOT SUBSCRIBED",
     "DOWNLOAD EXCEL": "Download excel file",
-    "PAGE LINK": "Page link"
+    "PAGE LINK": "Page link",
+    "DOWNLOAD LINK": "Download link",
+    "SUCCESS PAGE": "Success page",
+    "OUT OF STOCK PAGE": "Out of stock page"
   }
 }

@@ -14,7 +14,8 @@
     "NEXT": "Далее",
     "PREVIOUS": "Назад",
     "FINISH": "Готово",
-    "CANCEL": "Отмена"
+    "CANCEL": "Отмена",
+    "SAVE": "Сохранить"
   },
   "STATISTICS": {
     "SUBSCRIBERS": "Подписок",
@@ -72,6 +73,10 @@
     "NOT SUBSCRIBED": "НЕ ПОДПИСАЛСЯ",
 
     "DOWNLOAD EXCEL": "Скачать файл",
-    "PAGE LINK": "Ссылка на страницу"
+    "PAGE LINK": "Ссылка на страницу",
+    "DOWNLOAD LINK": "Ссылка для скачивания",
+
+    "SUCCESS PAGE": "Страница успеха",
+    "OUT OF STOCK PAGE": "Страница для не подписавшегося"
   }
 }

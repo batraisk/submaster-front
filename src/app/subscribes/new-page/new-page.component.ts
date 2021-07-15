@@ -58,7 +58,7 @@ export class NewPageComponent implements OnInit, OnDestroy {
     const formData: any = new FormData();
     const property = toSnakeCaseObject(this.page);
     for (const key in property) {
-      if (key) {
+      if (key && property[key]) {
         formData.append(key, property[key]);
       }
     }

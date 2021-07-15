@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import { map } from 'rxjs/operators';
 import {ILogin} from '@models';
+import {toCamelCaseObject} from '@helpers';
 
 const pageUrl = '/api/v1/subscribe_pages';
 
@@ -16,12 +18,18 @@ export class PagesService {
     return this.http.post<any>(pageUrl, page);
   }
 
+  updatePage(pageId: number, page: any): Observable<any> {
+    return this.http.patch<any>(`${pageUrl}/${pageId}`, page);
+  }
+
   getPages(): Observable<any> {
-    return this.http.get<any>(pageUrl);
+    return this.http.get<any>(pageUrl)
+      .pipe(map((res: any[]) => res.map(page => (toCamelCaseObject(page)))));
   }
 
   getPage(pageId: number): Observable<any> {
-    return this.http.get<ILogin[]>(`/api/v1/subscribe_pages/${pageId}`);
+    return this.http.get<ILogin[]>(`/api/v1/subscribe_pages/${pageId}`)
+      .pipe(map((res: any) => toCamelCaseObject(res)));
   }
 }
 

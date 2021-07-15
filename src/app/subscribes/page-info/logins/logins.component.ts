@@ -37,7 +37,6 @@ export class LoginsComponent implements OnInit {
 
   onChange(result: Date[]): void {
     const { pageSize, pageIndex } = this.pagintation;
-    console.log('Selected Time: ', result);
     if (result[0]) {
       this.filter = {
         from: format(result[0], 'Y-M-d'),

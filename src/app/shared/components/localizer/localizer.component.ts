@@ -38,7 +38,6 @@ export class LocalizerComponent implements OnInit {
 
     this.renderer.listen('window', 'click', (e: Event) => {
       if (this.open && !this.toggleButton.elementRef.nativeElement.contains(e.target) && e.target !== this.menu.nativeElement){
-        console.log('close')
         this.open = false;
       }
     });

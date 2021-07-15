@@ -19,7 +19,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('destroy d');
   }
 
   goToNewPage(): void {
