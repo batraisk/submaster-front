@@ -15,7 +15,13 @@
     "PREVIOUS": "Previous",
     "FINISH": "Finish",
     "CANCEL": "Cancel",
-    "SAVE": "Save"
+    "SAVE": "Save",
+    "SAVE CHANGES": "Save changes",
+    "DELETE": "Delete page",
+    "YES": "Yes",
+    "NO": "No",
+    "SEND": "Send",
+    "CONNECT": "Connect"
   },
   "STATISTICS": {
     "SUBSCRIBERS": "Subscribers",
@@ -33,7 +39,9 @@
     "USERNAME": "Username",
     "ACCEPT": "I accept the public offer and the privacy policy of the service",
     "HAVE": "Already have an account?",
-    "CREATE ACCOUNT": "Create account"
+    "CREATE ACCOUNT": "Create account",
+    "NEW PASSWORD": "New password",
+    "CONFIRM PASSWORD": "Confirm password"
   },
   "PAGE": {
     "EDIT PAGE DETAILS": "Edit page details",
@@ -75,6 +83,45 @@
     "PAGE LINK": "Page link",
     "DOWNLOAD LINK": "Download link",
     "SUCCESS PAGE": "Success page",
-    "OUT OF STOCK PAGE": "Out of stock page"
+    "OUT OF STOCK PAGE": "Out of stock page",
+    "CONFIRM DELETE": "Are you sure delete this page?"
+  },
+  "PROFILE": {
+    "PROFILE": "Profile",
+    "EMAIL": "Email",
+    "USERNAME": "Username",
+    "CHANGE PASSWORD": "Change password",
+    "OLD PASSWORD": "Old password",
+    "NEW PASSWORD": "New password",
+    "CONFIRM NEW PASSWORD": "Confirm new password"
+  },
+  "HEADERS": {
+    "ACCOUNT": "Account settings",
+    "MY PAGES": "MY PAGES",
+    "DOMAIN BINDING": "Domain binding",
+    "CUSTOM": {}
+  },
+  "STATUSES": {
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive"
+  },
+  "DOMAIN": {
+    "DOMAIN NAME": "Domain name",
+    "HOW ADD": "How to add a domain?",
+    "HOW ADD CONTENT": "<p>1. Buy a domain</p><p>2. Add a new record for the data domain:<br>\"Subdomain\" - leave blank or specify the @ symbol<br>\"Type\" - select type \"A\"<br>\"Data\" - specify IP 81.91.178.197<br></p><p>3. Enter your domain in the field and click \"Connect Domain\". If the domain has been added and the status is \"Not attached, then you did everything right.\"</p><p>4. Go to \"Edit Page\" and select the added domain. You can link any number of subscription pages to one domain.</p>",
+    "HOW ADD WARNING": "Domain records should contain only A-record with our IP, others should be deleted.",
+    "HOW VERIFY": "How to verify a domain on the facebook side?",
+    "HOW VERIFY CONTENT": "<p> 1. Log into your Facebook business account and go to Brand Security → Domains </p> <p> 2. On the page that opens, click \"Add\" </p> <p> 3. In the “Domain name” field, enter your domain linked to InstaSub (without the http: // or https: // protocol) and click “Add domain” </p> <p> 4. Select the added domain and the “DNS Confirmation” method, copy the resulting record of the “facebook-domain-verification = **** ...” format </p> <p> 5. Add a new record for the data domain: \"Subdomain\" - leave blank or specify the @ symbol \"Type\" - select the \"TXT\" type. \"Data\" - Enter the entry provided by Facebook. </p>",
+
+    "DOMAINS": "Domains",
+    "DOMAIN": "Domain",
+    "PAGES": "Pages",
+    "STATUS": "Status",
+    "ACTION": "Action",
+    "CONNECTED": "CONNECTED",
+    "NOT CONNECTED": "NOT CONNECTED",
+    "DELETE": "DELETE"
+
+
   }
 }

@@ -1,12 +1,12 @@
 <div class="auth-container d-flex align-items-center" *ngIf="!sent;else:afterSend">
   <img src="assets/images/icons/Logotype.svg" alt="">
   <p class="mt-4 title">Password recovery</p>
-  <form nz-form class="w-100">
+  <form nz-form class="w-100" [formGroup]="forgotForm">
     <nz-space nzDirection="vertical" [nzSize]="16" style="width:100%">
       <nz-form-item *nzSpaceItem>
-        <nz-form-label [nzSpan]="24" nzFor="email">Email or username</nz-form-label>
+        <nz-form-label [nzSpan]="24" nzFor="email">Email</nz-form-label>
         <nz-form-control [nzSpan]="24" class="mt-2">
-          <input nz-input name="email" type="text" id="email">
+          <input nz-input name="email" type="text" id="email" formControlName="email">
         </nz-form-control>
       </nz-form-item>
 

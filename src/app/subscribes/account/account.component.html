@@ -1,0 +1,57 @@
+<form nz-form [formGroup]="pageForm">
+  <div class="steps-content">
+  <div nz-row>
+    <div nz-col [nzSpan]="11" [nzXl]="8">
+      <h1>{{ 'PROFILE.PROFILE' | translate }}</h1>
+      <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24">{{ 'PROFILE.EMAIL' | translate }}</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="email" type="text" id="email" formControlName="email">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24">{{ 'PROFILE.USERNAME' | translate }}</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="username" type="text" id="username" formControlName="username">
+          </nz-form-control>
+        </nz-form-item>
+      </nz-space>
+
+      <h1 class="second-title">{{ 'PROFILE.CHANGE PASSWORD' | translate }}</h1>
+      <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24">{{ 'PROFILE.OLD PASSWORD' | translate }}</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="password" type="text" id="password" formControlName="password">
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24">{{ 'PROFILE.NEW PASSWORD' | translate }}</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="new-password" type="text" id="new-password" formControlName="newPassword">
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24">{{ 'PROFILE.CONFIRM NEW PASSWORD' | translate }}</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="comfirm-password" type="text" id="comfirm-password" formControlName="confirmPassword">
+          </nz-form-control>
+        </nz-form-item>
+      </nz-space>
+    </div>
+  </div>
+  </div>
+  <div style="height: 112px"></div>
+  <nz-divider class="divider-bottom"></nz-divider>
+
+
+  <div class="steps-action d-flex">
+    <button nz-button nzType="primary" (click)="submit()">
+      <span>{{ 'ACTIONS.SAVE CHANGES' | translate }}</span>
+    </button>
+
+  </div>
+</form>

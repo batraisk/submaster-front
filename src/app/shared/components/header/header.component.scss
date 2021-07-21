@@ -2,16 +2,21 @@
 
 .app-header {
   background: white;
-  display: flex;
+  display: block;
+  //display: flex;
   height: $header-h;
   margin: 0;
-  padding: 0 24px;
-  align-items: center;
-  justify-content: space-between;
+  padding: 9px 24px;
+  position: relative;
+
+  //align-items: center;
+  //justify-content: space-between;
   font-size: 16px;
+  margin-left: 256px;
 
   .summary {
     display: flex;
+    float: right
   }
 
   .locale, .wallet {
@@ -35,6 +40,8 @@
   }
 
   .title {
+    float: left;
     font-size: 24px;
+    line-height: 40px;
   }
 }

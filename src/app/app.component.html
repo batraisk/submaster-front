@@ -5,21 +5,27 @@
       <h1>SubMaster</h1>
     </div>
     <ul nz-menu nzMode="inline" class="menu">
-      <li nz-menu-item [nzSelected]="true">
+      <li nz-menu-item [nzSelected]="true" nzMatchRouter>
         <i nz-icon nzType="copy" nzTheme="fill"></i>
-        <span>{{ 'MENU.PAGES' | translate }} (2)</span>
+
+        <a [routerLink]="['/', 'subscribes-pages']">{{ 'MENU.PAGES' | translate }}</a>
+
+<!--        <span>{{ 'MENU.PAGES' | translate }} (2)</span>-->
       </li>
       <li nz-menu-item>
         <i nz-icon nzType="wallet" nzTheme="fill"></i>
         <span>{{ 'MENU.BALANCE' | translate }}</span>
       </li>
-      <li nz-menu-item>
+<!--      <li nz-menu-item (click)="goToAccount()">-->
+      <li nz-menu-item nzMatchRouter>
         <i nz-icon nzType="setting" nzTheme="fill"></i>
-        <span>{{ 'MENU.ACCOUNT SETTINGS' | translate }}</span>
+        <a [routerLink]="['/', 'account']">{{ 'MENU.ACCOUNT SETTINGS' | translate }}</a>
+<!--        <span>{{ 'MENU.ACCOUNT SETTINGS' | translate }}</span>-->
       </li>
-      <li nz-menu-item>
+      <li nz-menu-item nzMatchRouter>
         <i nz-icon nzType="api" nzTheme="fill"></i>
-        <span>{{ 'MENU.DOMAIN BINDING' | translate }}</span>
+        <a [routerLink]="['/', 'domains']">{{ 'MENU.DOMAIN BINDING' | translate }}</a>
+<!--        <span>{{ 'MENU.DOMAIN BINDING' | translate }}</span>-->
       </li>
       <li nz-menu-item>
         <i nz-icon nzType="question-circle" nzTheme="fill"></i>
@@ -39,7 +45,7 @@
     </ul>
   </nz-sider>
   <nz-layout>
-    <app-header></app-header>
+    <app-header *ngIf="userService.currentUserInfo"></app-header>
     <nz-content>
       <div class="inner-content">
         <router-outlet></router-outlet>

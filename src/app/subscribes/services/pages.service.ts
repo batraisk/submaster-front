@@ -31,5 +31,9 @@ export class PagesService {
     return this.http.get<ILogin[]>(`/api/v1/subscribe_pages/${pageId}`)
       .pipe(map((res: any) => toCamelCaseObject(res)));
   }
+
+  removePage(pageId: number): Observable<any> {
+    return this.http.delete(`/api/v1/subscribe_pages/${pageId}`);
+  }
 }
 

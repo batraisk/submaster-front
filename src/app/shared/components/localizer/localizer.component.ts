@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {TranslateService} from "@ngx-translate/core";
+import {TranslateService} from '@ngx-translate/core';
+import {UserService} from '@core-services';
 
 @Component({
   selector: 'app-localizer',
@@ -20,20 +21,15 @@ export class LocalizerComponent implements OnInit {
     code: 'ru',
   }];
   activeLocale: any = this.langs[0];
-  constructor(private renderer: Renderer2, public translate: TranslateService) {
+  constructor(private renderer: Renderer2, public translate: TranslateService, private userService: UserService) {
     translate.addLangs(['en', 'ru']);
-    translate.setDefaultLang('en');
-
-    const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|ru/) ? browserLang : 'en');
-    translate.setDefaultLang('en');
-
-    // the lang to use, if the lang isn't available, it will use the current loader to get them
-    translate.use('en');
   }
 
   ngOnInit(): void {
-    const code = this.translate.currentLang;
+    const browserLang = this.translate.getBrowserLang();
+    const locale = this.userService.currentUserInfo.locale;
+    const code = locale || (browserLang.match(/en|ru/) ? browserLang : 'en');
+    this.translate.use(code);
     this.activeLocale = this.langs.filter(lang => lang.code === code)[0];
 
     this.renderer.listen('window', 'click', (e: Event) => {
@@ -44,12 +40,15 @@ export class LocalizerComponent implements OnInit {
   }
 
   toggleOpen(): void {
-    // this.open = !this.open;
     this.open = true;
   }
 
   setLang(locale: any): void {
-    this.activeLocale = locale;
-    this.translate.use(locale.code);
+
+    this.userService.setLocale(locale.code).subscribe(res => {
+      this.userService.currentUserInfo = res;
+      this.activeLocale = locale;
+      this.translate.use(locale.code);
+    })
   }
 }

@@ -66,7 +66,6 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res.headers.get('Authorization'));
         this.router.navigate(['/']);
       }}, err => {
-      console.log('err.error', )
       if (!!err.error.error) {
         this.message.error(err.error.error);
         return;

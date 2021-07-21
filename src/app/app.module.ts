@@ -22,6 +22,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SubscribesRoutingModule } from './subscribes/subsribes-routing.module';
 import {HttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {NavigationService} from './shared/services/navigation.service';
 // import { CoreRoutingModule } from './core/core.routing.module';
 import {RouterModule} from '@angular/router';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
@@ -64,6 +65,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   providers: [
+    NavigationService,
     {
       provide: NZ_I18N,
       useValue: en_US ,

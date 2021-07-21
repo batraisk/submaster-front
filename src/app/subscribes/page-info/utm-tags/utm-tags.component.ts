@@ -1,16 +1,17 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {LoginsService} from '@subscribes-services';
-import { NzTableQueryParams } from 'ng-zorro-antd/table';
-import { format } from 'date-fns';
-import {ILogin} from '@models';
+import {IUTMTag} from '@models';
+import {UTMTagsService} from '@subscribes-services';
+import {format} from 'date-fns';
+import {NzTableQueryParams} from 'ng-zorro-antd/table';
 
 @Component({
-  selector: 'app-logins',
-  templateUrl: './logins.component.html',
-  styleUrls: ['./logins.component.scss']
+  selector: 'app-utm-tags',
+  templateUrl: './utm-tags.component.html',
+  styleUrls: ['./utm-tags.component.scss']
 })
-export class LoginsComponent implements OnInit {
+export class UtmTagsComponent implements OnInit {
   @Input() page;
+
   @ViewChild('xlsxLink') xlsxLink: ElementRef;
   pagintation: any = {
     pageIndex: 0,
@@ -20,17 +21,17 @@ export class LoginsComponent implements OnInit {
   sort: any = {};
   filter: any = null;
 
-  logins: ILogin[] = [];
-  constructor(private loginsService: LoginsService) { }
+  utmTags: IUTMTag[] = [];
+  constructor(private utmTagsService: UTMTagsService) { }
 
   ngOnInit(): void {
-    this.getLogins();
+    this.getUTMTags();
   }
 
-  getLogins(): void {
+  getUTMTags(): void {
     // this.loginsService.getLogins(this.page.id).subscribe(res => {
-    this.loginsService.getLogins(this.page.id, 0, 1).subscribe(res => {
-      this.logins = res.data;
+    this.utmTagsService.getUTMTags(this.page.id, 0, 1).subscribe(res => {
+      this.utmTags = res.data;
       this.total = res.total_count;
     });
   }
@@ -45,13 +46,11 @@ export class LoginsComponent implements OnInit {
     } else {
       this.filter = null;
     }
-    this.loginsService.getLogins(this.page.id, pageIndex, pageSize, this.sort, this.filter).subscribe(res => {
-      this.logins = res.data;
+    this.utmTagsService.getUTMTags(this.page.id, pageIndex, pageSize, this.sort, this.filter).subscribe(res => {
+      this.utmTags = res.data;
       this.total = res.total_count;
     });
   }
-
-
 
   onQueryParamsChange(params: NzTableQueryParams): void {
     const { pageSize, pageIndex, sort } = params;
@@ -59,8 +58,8 @@ export class LoginsComponent implements OnInit {
     this.pagintation = {
       pageIndex, pageSize
     };
-    this.loginsService.getLogins(this.page.id, pageIndex, pageSize, sort, this.filter).subscribe(res => {
-      this.logins = res.data;
+    this.utmTagsService.getUTMTags(this.page.id, pageIndex, pageSize, sort, this.filter).subscribe(res => {
+      this.utmTags = res.data;
       this.total = res.total_count;
     });
   }
@@ -68,4 +67,5 @@ export class LoginsComponent implements OnInit {
   onUpload(): void {
     this.xlsxLink.nativeElement.click();
   }
+
 }

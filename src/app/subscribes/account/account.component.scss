@@ -1,0 +1,34 @@
+h1 {
+  padding-bottom: 0;
+}
+
+.second-title {
+  margin-top: 48px;
+}
+
+@import "variables";
+
+.divider {
+  width: auto;
+
+  &-top {
+    margin: 0 -24px 12px -24px;
+  }
+  &-bottom {
+    margin: 12px -24px 0 -24px;
+  }
+}
+
+.steps-action {
+  box-shadow: inset 0px 1px 0px #F0F0F0;
+  background: white;
+  bottom: 0;
+  position: fixed;
+  padding: 24px;
+  width: calc(100% - #{$side-nav-width});
+  margin-left: -24px;
+
+  button {
+    height: 40px;
+  }
+}

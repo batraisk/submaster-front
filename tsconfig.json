@@ -18,6 +18,7 @@
     ],
     "paths": {
       "@core-services" : ["src/app/core/services/index.ts"],
+      "@navigation-services" : ["src/app/shared/services/index.ts"],
       "@subscribes-services" : ["src/app/subscribes/services/index.ts"],
       "@models" : ["src/app/models/index.ts"],
       "@helpers" : ["src/app/helpers/index.ts"],

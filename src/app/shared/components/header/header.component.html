@@ -1,5 +1,5 @@
 <nz-header class="app-header">
-  <div class="title">Title</div>
+  <div *ngIf="navigationService.header" class="title">{{ "HEADERS." + navigationService.header | translate: navigationService.headerParams }}</div>
   <div class="summary">
     <button nz-button class="wallet" nzType="text" nzSize="default"><i nz-icon nzType="dollar"></i>2989,00</button>
     <app-localizer></app-localizer>

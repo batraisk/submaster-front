@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+// @ts-ignore
+import {NavigationService} from '@navigation-services';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +9,13 @@ import {Router} from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(public router: Router) {
+  title = '';
+  params = {};
+  constructor(public router: Router, public navigationService: NavigationService) {
   }
 
   ngOnInit(): void {
+
   }
 
 }

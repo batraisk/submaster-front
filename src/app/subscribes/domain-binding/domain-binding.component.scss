@@ -1,0 +1,21 @@
+@import "variables";
+
+.connect-btn {
+  width: 104px;
+  min-width: 104px;
+  max-width: 104px;
+}
+.section {
+  margin-top: 48px;
+}
+
+.domains-table {
+  .ant-table-cell {
+    padding: 8px;
+  }
+
+  .action-btn {
+    width: auto;
+  }
+
+}

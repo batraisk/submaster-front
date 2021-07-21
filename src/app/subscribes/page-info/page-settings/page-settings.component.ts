@@ -2,7 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {selectFile, toSnakeCaseObject} from '@helpers';
 import {Router} from '@angular/router';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import {PagesService} from '@subscribes-services';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-page-settings',
@@ -16,11 +18,16 @@ export class PageSettingsComponent implements OnInit {
   themes = ['natural', 'gold', 'lime', 'blue', 'magenta', 'yellow', 'purple'];
   view = 'mobile';
   file: File;
+  translates: any = {};
 
   constructor(
     private fb: FormBuilder,
-    private router: Router, private pagesService: PagesService
-  ) { }
+    private modal: NzModalService,
+    private router: Router, private pagesService: PagesService,
+    private translate: TranslateService
+  ) {
+    const foo: string = this.translate.instant('PAGE.CONFIRM DELETE');
+  }
 
   ngOnInit(): void {
     this.pageForm = this.fb.group({
@@ -39,6 +46,7 @@ export class PageSettingsComponent implements OnInit {
       timerEnable: [this.page.timerEnable],
       layout: ['Image on half screen'],
       theme: [this.page.theme , [Validators.required]],
+      status: [this.page.status === 'active' , [Validators.required]],
       background: [null],
 
       successTitle: [this.page.successTitle, [Validators.required]],
@@ -65,16 +73,33 @@ export class PageSettingsComponent implements OnInit {
     }
     const formData: any = new FormData();
     const property = toSnakeCaseObject(this.pageForm.value);
-    // const property = toSnakeCaseObject(this.page);
     for (const key in property) {
-      if (key && key !== 'background') {
+      if (key && key !== 'background' && key !== 'status') {
         formData.append(key, property[key] || '');
       }
     }
-    if (this.page.background) {
-      formData.append('background', this.page.background);
+    formData.append('status', property.status ? 'active' : 'inactive');
+    if (this.file) {
+      formData.append('background', this.file);
     }
     this.pagesService.updatePage(this.page.id, formData).subscribe(res => {
+      this.router.navigate(['/']);
+    });
+  }
+
+  showDeleteConfirm(): void {
+    this.modal.confirm({
+      nzTitle: this.translate.instant('PAGE.CONFIRM DELETE'),
+      nzOkText: this.translate.instant('ACTIONS.YES'),
+      nzOkType: 'primary',
+      nzOkDanger: true,
+      nzOnOk: () => this.removePage(),
+      nzCancelText: this.translate.instant('ACTIONS.CANCEL'),
+    });
+  }
+
+  removePage(): void {
+    this.pagesService.removePage(this.page.id).subscribe(res => {
       this.router.navigate(['/']);
     });
   }

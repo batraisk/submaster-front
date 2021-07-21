@@ -32,7 +32,7 @@ const routes: Routes = [
         ]
       },
     ]
-  },
+  }
 ];
 
 export const subscribesRouting: Routes = [

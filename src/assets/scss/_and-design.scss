@@ -95,3 +95,12 @@
 .ant-form-item-control-input {
   min-height: inherit;
 }
+
+// modals
+.ant-modal-body {
+  .ant-modal-confirm-btns {
+    button {
+      display: inline-flex;
+    }
+  }
+}

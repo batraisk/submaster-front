@@ -14,18 +14,21 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NewPageComponent } from './new-page/new-page.component';
 import { PageDetailsComponent } from './new-page/components/page-details/page-details.component';
 import { WelcomePageComponent } from './new-page/components/welcome-page/welcome-page.component';
 import { AdditionalPagesComponent } from './new-page/components/additional-pages/additional-pages.component';
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {PagesService} from './services/pages.service';
-import {LoginsService} from './services/logins.service';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {DomainBindingComponent} from './domain-binding/domain-binding.component';
+import {DomainsService, PagesService, LoginsService} from './services';
 // @ts-ignore
 import {InterceptService} from '@core-services';
 import {TranslateModule} from '@ngx-translate/core';
@@ -34,6 +37,8 @@ import { LoginsComponent } from './page-info/logins/logins.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { PageSettingsComponent } from './page-info/page-settings/page-settings.component';
+import { AccountComponent } from './account/account.component';
+import { UtmTagsComponent } from './page-info/utm-tags/utm-tags.component';
 
 
 
@@ -47,6 +52,9 @@ import { PageSettingsComponent } from './page-info/page-settings/page-settings.c
     PageInfoComponent,
     LoginsComponent,
     PageSettingsComponent,
+    AccountComponent,
+    UtmTagsComponent,
+    DomainBindingComponent,
   ],
   imports: [
     NzIconModule,
@@ -71,11 +79,15 @@ import { PageSettingsComponent } from './page-info/page-settings/page-settings.c
     NzTabsModule,
     NzTableModule,
     NzTagModule,
-    NzDatePickerModule
+    NzModalModule,
+    NzDatePickerModule,
+    NzCollapseModule,
+    NzAlertModule
   ],
   providers: [
     PagesService,
     LoginsService,
+    DomainsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptService,

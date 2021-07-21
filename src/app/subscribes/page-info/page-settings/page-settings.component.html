@@ -30,6 +30,21 @@
             <input nz-input name="name" type="text" id="username" placeholder="my_instagram_username" formControlName="instagramLogin">
           </nz-form-control>
         </nz-form-item>
+
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label >{{ 'PAGE.STATUS' | translate }}</nz-form-label>
+          <nz-form-control class="mt-2">
+            <nz-switch
+              id="status"
+              formControlName="status"
+              nzCheckedChildren="{{ 'STATUSES.ACTIVE' | translate }}"
+              nzUnCheckedChildren="{{ 'STATUSES.INACTIVE' | translate }}"
+            ></nz-switch>
+          </nz-form-control>
+          <nz-form-control style="align-items: flex-end;">
+            <button (click)="showDeleteConfirm()" [nzDanger]="true" nz-button nzType="text" nzSize="small">{{ 'ACTIONS.DELETE' | translate }}</button>
+          </nz-form-control>
+        </nz-form-item>
       </nz-space>
     </div>
     <div nz-col nzSpan="1" style="text-align:center; padding: 10px 0;">

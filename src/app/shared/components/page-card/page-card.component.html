@@ -15,7 +15,7 @@
       <botton nz-button nzType="text"><i nz-icon nzType="more" nzTheme="outline"></i></botton>
     </div>
     <div class="body">
-      <h1>{{page.pageName}}</h1>
+      <h1 class="title" [ngClass]="{'active': page.status == 'active'}">{{page.pageName}}</h1>
       <nz-row [nzGutter]="16" class="summary">
         <nz-col [nzSpan]="8" class="text-center">
           <nz-statistic [nzValue]="(73 / 100 | percent)!" [nzTitle]="'CTR'"></nz-statistic>

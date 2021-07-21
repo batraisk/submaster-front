@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { PagesService } from '@subscribes-services';
+// @ts-ignore
+import {NavigationService} from '@navigation-services';
 
 @Component({
   selector: 'app-page-info',
@@ -11,7 +13,11 @@ export class PageInfoComponent implements OnInit {
   pageId: number;
   page: any;
 
-  constructor(private pagesService: PagesService, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private pagesService: PagesService,
+    private activatedRoute: ActivatedRoute,
+    private navigationService: NavigationService,
+  ) {
     this.activatedRoute
       .params
       .subscribe(params => (this.pageId = params.id)
@@ -21,6 +27,7 @@ export class PageInfoComponent implements OnInit {
   ngOnInit(): void {
     this.pagesService.getPage(this.pageId).subscribe(page => {
       this.page = page;
+      this.navigationService.header = `CUSTOM {{${page.pageName}}}`;
     });
   }
 

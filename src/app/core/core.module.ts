@@ -17,22 +17,20 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { ForgotComponent } from './components/authentication/forgot/forgot.component';
 import { AuthenticationService } from './services/authentication.service';
+import { UserService } from './services/user.service';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {AuthenticationGuard} from './services/authentication.guard';
 import {TranslateModule} from '@ngx-translate/core';
-// import {DashboardComponent} from "../subscribes/dashboard/dashboard.component";
-// import {NewPageComponent} from "../subscribes/new-page/new-page.component";
-// import {PageDetailsComponent} from "../subscribes/new-page/components/page-details/page-details.component";
-// import {WelcomePageComponent} from "../subscribes/new-page/components/welcome-page/welcome-page.component";
-// import {AdditionalPagesComponent} from "../subscribes/new-page/components/additional-pages/additional-pages.component";
+import {EditPasswordComponent} from './components/authentication/edit-password/edit-password.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
     ForgotComponent,
+    EditPasswordComponent,
     // DashboardComponent,
     // NewPageComponent,
     // PageDetailsComponent,
