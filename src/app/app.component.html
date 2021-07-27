@@ -12,9 +12,10 @@
 
 <!--        <span>{{ 'MENU.PAGES' | translate }} (2)</span>-->
       </li>
-      <li nz-menu-item>
+      <li nz-menu-item nzMatchRouter>
         <i nz-icon nzType="wallet" nzTheme="fill"></i>
-        <span>{{ 'MENU.BALANCE' | translate }}</span>
+        <a [routerLink]="['/', 'balance']">{{ 'MENU.BALANCE' | translate }}</a>
+<!--        <span>{{ 'MENU.BALANCE' | translate }}</span>-->
       </li>
 <!--      <li nz-menu-item (click)="goToAccount()">-->
       <li nz-menu-item nzMatchRouter>

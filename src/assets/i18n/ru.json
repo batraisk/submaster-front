@@ -41,7 +41,9 @@
     "HAVE": "Уже есть аккаунта?",
     "CREATE ACCOUNT": "Создать аккаунт",
     "NEW PASSWORD": "Новый пароль",
-    "CONFIRM PASSWORD": "Подтвердите пароль"
+    "CONFIRM PASSWORD": "Подтвердите пароль",
+    "PASSWORD CHANGED": "Пароль успешно изменен",
+    "EMAIL CHANGED": "Почта успешно изменена"
   },
   "PAGE": {
     "EDIT PAGE DETAILS": "Основная информация",
@@ -101,7 +103,8 @@
     "ACCOUNT": "Настройки аккаунта",
     "MY PAGES": "Мои страницы",
     "DOMAIN BINDING": "Привязка домена",
-    "CUSTOM": "{{value}}"
+    "CUSTOM": "{{value}}",
+    "BALANCE": "Баланс"
   },
   "STATUSES": {
     "ACTIVE": "Активная",

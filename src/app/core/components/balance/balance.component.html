@@ -1,0 +1,65 @@
+<div class="balance-container">
+  <h1>$ 2989,00</h1>
+  <nz-alert
+    class="alert"
+    nzType="info"
+    [nzMessage]="alert"
+  ></nz-alert>
+
+  <div class="mt-5">
+    <h2>Top-up balance</h2>
+    <div class="row">
+      <nz-input-group nzAddOnBeforeIcon="dollar">
+        <input type="text" nz-input [(ngModel)]="value1" />
+
+      </nz-input-group>
+      <nz-slider class="mr-5 ml-5" [(ngModel)]="value1" [nzMin]="0" [nzMax]="200"></nz-slider>
+      <button nz-button nzType="primary" nzSize="small">Pay</button>
+    </div>
+  </div>
+
+  <section class="promo-content">
+    <h2>Promo code activation</h2>
+    <div>
+      <nz-form-label [nzSpan]="24">Promo code</nz-form-label>
+      <nz-form-control [nzSpan]="24" class="mt-2">
+        <input [(ngModel)]="promo" [ngModelOptions]="{standalone: true}" nz-input name="promo" type="promo" id="promo">
+      </nz-form-control>
+    </div>
+  </section>
+
+  <section>
+    <h2>Payment history</h2>
+    <nz-table [nzTotal]="3" [nzPageSize]="20" class="mt-4" #sortTable [nzData]="billings" [nzFrontPagination]="false">
+      <thead>
+      <tr>
+        <th  [nzSortFn]="true" nzColumnKey="date" nzWidth="95px" [nzSortPriority]="1">
+          Date
+        </th>
+        <th  [nzSortFn]="true" nzColumnKey="amount" nzWidth="190px" [nzSortPriority]="2">
+          Amount
+        </th>
+        <th  [nzSortFn]="true" nzColumnKey="status" nzWidth="115px" [nzSortPriority]="3">
+          Status
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of sortTable.data">
+          <td>{{ data.date }}</td>
+          <td>{{ data.amount }}</td>
+          <td>
+            <nz-tag *ngIf="data.status == 'completed'" nzColor="success">COMPLETED</nz-tag>
+            <nz-tag *ngIf="data.status == 'in_progress'" nzColor="blue">IN PROGRESS</nz-tag>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </section>
+</div>
+
+<ng-template #alert>
+  Service cost is $1 for a successful check.
+  <br>
+  The balance will not be deducted if a person has launched a check and has not subscribed to you.
+</ng-template>

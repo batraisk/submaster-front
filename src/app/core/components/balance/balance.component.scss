@@ -1,0 +1,44 @@
+.balance-container {
+  nz-table {
+    width: 400px;
+  }
+
+  .alert {
+    width: fit-content;
+  }
+
+  h1 {
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 46px;
+  }
+
+  tr, td {
+    padding: 8px;
+  }
+
+  .row {
+    display: flex;
+    width: 498px;
+
+    nz-input-group {
+      width: 110px;
+
+    }
+    nz-slider {
+      flex-grow: 1;
+    }
+
+    button {
+      padding: 5px 40px;
+    }
+  }
+
+  section {
+    margin-top: 48px;
+  }
+
+  .promo-content {
+    width: 240px;
+  }
+}

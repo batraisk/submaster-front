@@ -63,7 +63,7 @@ export class PageSettingsComponent implements OnInit {
   }
 
   onSubmit(): void {
-// tslint:disable-next-line:forin
+    // tslint:disable-next-line:forin
     for (const i in this.pageForm.controls) {
       this.pageForm.controls[i].markAsDirty();
       this.pageForm.controls[i].updateValueAndValidity();

@@ -12,6 +12,7 @@ import { PageCardComponent } from './components/page-card/page-card.component';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import { LocalizerComponent } from './components/localizer/localizer.component';
 import {TranslateModule} from '@ngx-translate/core';
+import {CustomValidationService} from './validations/custom-validation.service';
 
 
 @NgModule({
@@ -36,6 +37,9 @@ import {TranslateModule} from '@ngx-translate/core';
     HeaderComponent,
     MobileViewComponent,
     PageCardComponent,
+  ],
+  providers: [
+    CustomValidationService
   ]
 })
 export class SharedModule { }

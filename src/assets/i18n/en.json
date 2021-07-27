@@ -41,7 +41,9 @@
     "HAVE": "Already have an account?",
     "CREATE ACCOUNT": "Create account",
     "NEW PASSWORD": "New password",
-    "CONFIRM PASSWORD": "Confirm password"
+    "CONFIRM PASSWORD": "Confirm password",
+    "PASSWORD CHANGED": "Password changed",
+    "EMAIL CHANGED": "Email changed"
   },
   "PAGE": {
     "EDIT PAGE DETAILS": "Edit page details",
@@ -99,7 +101,8 @@
     "ACCOUNT": "Account settings",
     "MY PAGES": "MY PAGES",
     "DOMAIN BINDING": "Domain binding",
-    "CUSTOM": {}
+    "CUSTOM": {},
+    "BALANCE": "Balance"
   },
   "STATUSES": {
     "ACTIVE": "Active",

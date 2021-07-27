@@ -23,21 +23,21 @@
         <nz-form-item *nzSpaceItem>
           <nz-form-label [nzSpan]="24">{{ 'PROFILE.OLD PASSWORD' | translate }}</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
-            <input nz-input name="password" type="text" id="password" formControlName="password">
+            <input nz-input name="password" type="password" id="password" formControlName="password">
           </nz-form-control>
         </nz-form-item>
 
         <nz-form-item *nzSpaceItem>
           <nz-form-label [nzSpan]="24">{{ 'PROFILE.NEW PASSWORD' | translate }}</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
-            <input nz-input name="new-password" type="text" id="new-password" formControlName="newPassword">
+            <input nz-input name="new-password" type="password" id="new-password" formControlName="newPassword">
           </nz-form-control>
         </nz-form-item>
 
         <nz-form-item *nzSpaceItem>
           <nz-form-label [nzSpan]="24">{{ 'PROFILE.CONFIRM NEW PASSWORD' | translate }}</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
-            <input nz-input name="comfirm-password" type="text" id="comfirm-password" formControlName="confirmPassword">
+            <input nz-input name="confirm-password" type="password" id="confirm-password" formControlName="confirmPassword">
           </nz-form-control>
         </nz-form-item>
       </nz-space>
@@ -49,7 +49,7 @@
 
 
   <div class="steps-action d-flex">
-    <button nz-button nzType="primary" (click)="submit()">
+    <button nz-button nzType="primary" (click)="submit()" [disabled]="!canSend || !pageForm.valid">
       <span>{{ 'ACTIONS.SAVE CHANGES' | translate }}</span>
     </button>
 

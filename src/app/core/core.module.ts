@@ -18,12 +18,17 @@ import { RegisterComponent } from './components/authentication/register/register
 import { ForgotComponent } from './components/authentication/forgot/forgot.component';
 import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
+import { AccountService } from './services/account.service';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {AuthenticationGuard} from './services/authentication.guard';
 import {TranslateModule} from '@ngx-translate/core';
 import {EditPasswordComponent} from './components/authentication/edit-password/edit-password.component';
+import {BalanceComponent} from './components/balance/balance.component';
+import { NzSliderModule } from 'ng-zorro-antd/slider';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzTagModule } from 'ng-zorro-antd/tag';
 
 @NgModule({
   declarations: [
@@ -31,6 +36,7 @@ import {EditPasswordComponent} from './components/authentication/edit-password/e
     RegisterComponent,
     ForgotComponent,
     EditPasswordComponent,
+    BalanceComponent,
     // DashboardComponent,
     // NewPageComponent,
     // PageDetailsComponent,
@@ -57,10 +63,14 @@ import {EditPasswordComponent} from './components/authentication/edit-password/e
     ReactiveFormsModule,
     NzFormModule,
     TranslateModule,
+    NzSliderModule,
+    NzTableModule,
+    NzTagModule,
   ],
   providers: [
     AuthenticationService,
     AuthenticationGuard,
+    AccountService,
   ]
 })
 export class CoreModule { }
