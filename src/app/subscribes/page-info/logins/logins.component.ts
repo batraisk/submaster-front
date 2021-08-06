@@ -3,6 +3,8 @@ import {LoginsService} from '@subscribes-services';
 import { NzTableQueryParams } from 'ng-zorro-antd/table';
 import { format } from 'date-fns';
 import {ILogin} from '@models';
+import {environment} from '@environment';
+
 
 @Component({
   selector: 'app-logins',
@@ -19,12 +21,15 @@ export class LoginsComponent implements OnInit {
   total = 0;
   sort: any = {};
   filter: any = null;
+  baseUrl = environment.apiUrl;
+  dowloadLink = '';
 
   logins: ILogin[] = [];
   constructor(private loginsService: LoginsService) { }
 
   ngOnInit(): void {
     this.getLogins();
+    this.dowloadLink = `${this.baseUrl}/api/v1/subscribe_pages/{{page.id}}/logins/report.xlsx`;
   }
 
   getLogins(): void {
