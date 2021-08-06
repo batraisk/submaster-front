@@ -1,8 +1,21 @@
-<div nz-row>
+<div class="empty-state-container" *ngIf="pages.length === 0">
+  <nz-space nzDirection="vertical" [nzSize]="24">
+    <img src="assets/images/empty-state.svg" alt="" *nzSpaceItem>
+    <span *nzSpaceItem>{{ 'PAGE.NOTHING HERE' | translate }}</span>
+    <button nz-button nzType="primary" *nzSpaceItem (click)="goToNewPage()"><i nz-icon nzType="plus"></i>
+      {{ 'ACTIONS.ADD PAGE' | translate }}
+    </button>
+  </nz-space>
+</div>
+
+<div nz-row *ngIf="pages.length > 0">
   <div nz-col [nzSpan]="14" [nzXl]="14">
     <button nz-button nzType="primary" (click)="goToNewPage()"><i nz-icon nzType="plus"></i>
       {{ 'ACTIONS.ADD PAGE' | translate }}
     </button>
+
+
+
     <div *ngFor="let page of pages; index as i" class="mt-5">
       <app-page-card [page]="page"></app-page-card>
     </div>

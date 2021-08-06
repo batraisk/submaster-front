@@ -69,8 +69,7 @@ export class PageSettingsComponent implements OnInit {
       outOfStockTitle: [this.page.outOfStockTitle, [Validators.required]],
       outOfStockDescription: [this.page.outOfStockDescription, [Validators.required]],
     });
-    this.backgroundUrl = this.baseUrl + this.page.background;
-    console.log('this.backgroundUrl', this.backgroundUrl)
+    if (this.page.background) { this.backgroundUrl = this.baseUrl + this.page.background; }
     this.youtube = this.page.youtube;
   }
 

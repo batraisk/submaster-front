@@ -2,3 +2,15 @@
   width: 200px;
   height: 77px;
 }
+
+.empty-state-container {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+  text-align: center;
+
+  button {
+    margin: auto;
+  }
+}
