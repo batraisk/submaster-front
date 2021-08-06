@@ -67,35 +67,6 @@ export class CustomValidationService {
     };
   }
 
-  // accauntChanges(): ValidatorFn {
-  //   return (control: AbstractControl): ValidationErrors | null => {
-  //     const email = control.get('email');
-  //     const password = control.get('password');
-  //     const newPassword = control.get('newPassword');
-  //
-  //     if (!email && !(password || newPassword)) {
-  //       confirmPasswordControl.setErrors({passwordMismatch: true});
-  //     }
-  //
-  //     const passwordControl = control.get(password);
-  //     const confirmPasswordControl = control.get(confirmPassword);
-  //
-  //     if (!passwordControl || !confirmPasswordControl) {
-  //       return null;
-  //     }
-  //
-  //     if (confirmPasswordControl.errors && !confirmPasswordControl.errors.passwordMismatch) {
-  //       return null;
-  //     }
-  //
-  //     if (passwordControl.value !== confirmPasswordControl.value) {
-  //       confirmPasswordControl.setErrors({passwordMismatch: true});
-  //     } else {
-  //       confirmPasswordControl.setErrors(null);
-  //     }
-  //   };
-  // }
-
   validateEmail(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } => {
       if (!control.value) {

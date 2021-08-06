@@ -19,6 +19,7 @@
   padding: 24px;
   width: calc(100% - #{$side-nav-width});
   margin-left: -24px;
+  z-index: 999;
 
   button {
     height: 40px;

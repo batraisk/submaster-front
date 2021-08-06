@@ -6,7 +6,17 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./mobile-view.component.scss']
 })
 export class MobileViewComponent implements OnInit {
-  @Input() device: 'mobile' | 'desktop' = 'mobile';
+  @Input() device: 'mobile' | 'desktop' = 'desktop';
+  @Input() color: 'natural' | 'gold' | 'lime' | 'blue' | 'magenta' | 'yellow' | 'purple' = 'natural';
+  @Input() template: 'template_1' | 'template_2' | 'template_3' | 'template_4' | 'template_5';
+  @Input() title: '';
+  @Input() description: '';
+  @Input() timerText: '';
+  @Input() time: '';
+  @Input() buttonText: '';
+  @Input() timerEnable: false;
+  @Input() youtube: string | null;
+  @Input() backgroundUrl: string | null;
 
   constructor() { }
 

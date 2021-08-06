@@ -25,7 +25,8 @@
   },
   "STATISTICS": {
     "SUBSCRIBERS": "Подписок",
-    "VIEWS": "Показов"
+    "VIEWS": "Показов",
+    "TOTAL STATS": "Статистика"
   },
   "AUTH": {
     "EMAIL": "Почта",
@@ -126,5 +127,11 @@
     "CONNECTED": "ПОДКЛЮЧЕН",
     "NOT CONNECTED": "НЕ ПОДКЛЮЧЕН",
     "DELETE": "УДАЛИТЬ"
+  },
+  "DATE TIME": {
+    "DATE": "Дата",
+    "WEEK": "Неделя",
+    "MONTH": "Месяц",
+    "YEAR": "Год"
   }
 }

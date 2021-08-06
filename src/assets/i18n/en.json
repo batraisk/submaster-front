@@ -25,7 +25,8 @@
   },
   "STATISTICS": {
     "SUBSCRIBERS": "Subscribers",
-    "VIEWS": "Views"
+    "VIEWS": "Views",
+    "TOTAL STATS": "Total stats"
   },
   "AUTH": {
     "EMAIL": "Email",
@@ -124,7 +125,13 @@
     "CONNECTED": "CONNECTED",
     "NOT CONNECTED": "NOT CONNECTED",
     "DELETE": "DELETE"
-
-
+  },
+  "DATE TIME": {
+    "DATE": "Date",
+    "WEEK": "Week",
+    "MONTH": "Month",
+    "YEAR": "Year"
   }
+
+
 }

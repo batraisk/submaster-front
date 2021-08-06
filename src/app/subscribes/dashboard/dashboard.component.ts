@@ -11,7 +11,9 @@ import {NavigationService} from '@navigation-services';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  pages: any[] = []
+  pages: any[] = [];
+  mode = 'date';
+
   constructor(
     private router: Router,
     private pagesService: PagesService,

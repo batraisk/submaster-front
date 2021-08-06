@@ -36,3 +36,29 @@ export const selectFile = (event: any, obj: any) => {
     obj.fileInput.nativeElement.value = '';
   }
 };
+
+export const makeYoutubeEmbed = (videoUrl) => {
+  if (typeof videoUrl !== 'string') {
+    return undefined;
+  }
+  const getId = (url) => {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+
+    if (match && match[2].length === 11) {
+      return match[2];
+    }
+  };
+  const id = getId(videoUrl);
+  if (id) {
+    return 'https://www.youtube.com/embed/' + id;
+  }
+};
+
+export const matchYoutubeUrl = (url) => {
+  const p = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+  if (url.match(p)) {
+    return url.match(p)[1];
+  }
+  return false;
+};

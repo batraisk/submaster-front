@@ -1,7 +1,64 @@
-<button nz-button nzType="primary" (click)="goToNewPage()"><i nz-icon nzType="plus"></i>
-  {{ 'ACTIONS.ADD PAGE' | translate }}
-</button>
-<div *ngFor="let page of pages; index as i" class="mt-5">
-  <app-page-card [page]="page"></app-page-card>
+<div nz-row>
+  <div nz-col [nzSpan]="14" [nzXl]="14">
+    <button nz-button nzType="primary" (click)="goToNewPage()"><i nz-icon nzType="plus"></i>
+      {{ 'ACTIONS.ADD PAGE' | translate }}
+    </button>
+    <div *ngFor="let page of pages; index as i" class="mt-5">
+      <app-page-card [page]="page"></app-page-card>
+    </div>
+  </div>
+  <div nz-col [nzSpan]="10" [nzXl]="10">
+    <nz-card [nzBorderless]="true" class="ml-5" [nzBodyStyle]="{padding: '0'}">
+
+
+
+      <nz-collapse nzGhost>
+        <nz-collapse-panel
+          [nzActive]="true"
+          nzHeader="{{ 'STATISTICS.TOTAL STATS' | translate }}"
+        >
+          <nz-space>
+            <nz-select *nzSpaceItem [(ngModel)]="mode">
+              <nz-option nzValue="date" nzLabel="{{ 'DATE TIME.DATE' | translate }}"></nz-option>
+              <nz-option nzValue="week" nzLabel="{{ 'DATE TIME.WEEK' | translate }}"></nz-option>
+              <nz-option nzValue="month" nzLabel="{{ 'DATE TIME.MONTH' | translate }}"></nz-option>
+              <nz-option nzValue="year" nzLabel="{{ 'DATE TIME.YEAR' | translate }}"></nz-option>
+            </nz-select>
+
+
+            <nz-date-picker *nzSpaceItem [nzMode]="mode"></nz-date-picker>
+          </nz-space>
+
+          <div class="mt-5">
+            <h1>Clicks</h1>
+            <nz-space>
+              <div *nzSpaceItem class="graph-container">
+                <app-my-component [height]="77" width="200"></app-my-component>
+              </div>
+              <div *nzSpaceItem>
+                <div>
+                  <span>250K</span>
+                  <div>
+                    <i nz-icon nzType="caret-up" nzTheme="outline"></i>
+                  </div>
+
+                </div>
+              </div>
+            </nz-space>
+          </div>
+
+        </nz-collapse-panel>
+      </nz-collapse>
+
+
+
+
+
+    </nz-card>
+  </div>
 </div>
+
+
+
+
 

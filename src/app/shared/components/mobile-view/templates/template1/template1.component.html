@@ -1,0 +1,82 @@
+<div *ngIf="device == 'mobile'" class="device-container mobile">
+  <div style="height: 4px"></div>
+  <div class="content" [ngStyle]="{'background': backgroundUrl ? 'right / cover url(' + backgroundUrl + ')' : '#eee'}">
+    <div *ngIf="youtube" class="youtube-control">
+      <iframe
+        width="149"
+        height="270"
+        [src] = "youtube | safe: 'resourceUrl'"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <div class="inner-content">
+      <div class="space"></div>
+      <h1>{{title}}</h1>
+      <p>
+        {{description}}
+      </p>
+      <div class="timer" *ngIf="timerEnable">
+        <h2>
+          {{timerText}}
+        </h2>
+        <div class="bar-container">
+          <div
+            class="progress-bar"
+            [ngStyle]="{'background': this.colors[this.color].gradient}"
+          ></div>
+          <span class="time">{{preparedTime}}</span>
+        </div>
+      </div>
+      <button
+        [ngStyle]="{
+        'background': this.colors[this.color].primary,
+        'borderColor': this.colors[this.color].primary }"
+      >{{buttonText}}</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="device == 'desktop'" class="device-container desktop">
+  <div class="space"></div>
+  <div class="content" [ngStyle]="{'background': backgroundUrl ? 'center / cover url(' + backgroundUrl + ')' : '#eee'}">
+    <div *ngIf="youtube" class="youtube-control">
+      <iframe
+        width="487"
+        height="270"
+        [src] = "youtube | safe: 'resourceUrl'"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <div class="inner-content">
+      <h1>{{title}}</h1>
+      <p>
+        {{description}}
+      </p>
+      <div class="timer" *ngIf="timerEnable">
+        <h2>
+          {{timerText}}
+        </h2>
+        <div class="bar-container">
+          <div
+            class="progress-bar"
+            [ngStyle]="{'background': this.colors[this.color].gradient}"
+          ></div>
+          <span class="time">{{preparedTime}}</span>
+        </div>
+      </div>
+      <button
+        [ngStyle]="{'background': this.colors[this.color].primary, 'borderColor': this.colors[this.color].primary}"
+      >{{buttonText}}</button>
+
+      <div class="created-by">Created by <a href="">Submaster</a></div>
+      <div class="privacy-policy-container"><a href="" class="privacy-policy">Privacy policy</a></div>
+    </div>
+  </div>
+
+</div>

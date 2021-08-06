@@ -13,7 +13,13 @@ import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import { LocalizerComponent } from './components/localizer/localizer.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {CustomValidationService} from './validations/custom-validation.service';
-
+import {SafePipe} from './pipes/safe.pipe';
+// @ts-ignore
+import {GraphWrapperComponent} from './graph/graph-wrapper.component';
+import { Template1Component } from './components/mobile-view/templates/template1/template1.component';
+import { Template2Component } from './components/mobile-view/templates/template2/template2.component';
+import { Template3Component } from './components/mobile-view/templates/template3/template3.component';
+import { Template4Component } from './components/mobile-view/templates/template4/template4.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +27,12 @@ import {CustomValidationService} from './validations/custom-validation.service';
     MobileViewComponent,
     PageCardComponent,
     LocalizerComponent,
+    GraphWrapperComponent,
+    Template1Component,
+    Template2Component,
+    Template3Component,
+    Template4Component,
+    SafePipe
   ],
   imports: [
     CommonModule,
@@ -34,9 +46,11 @@ import {CustomValidationService} from './validations/custom-validation.service';
     TranslateModule,
   ],
   exports: [
+    GraphWrapperComponent,
     HeaderComponent,
     MobileViewComponent,
     PageCardComponent,
+    SafePipe
   ],
   providers: [
     CustomValidationService

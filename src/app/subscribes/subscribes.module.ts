@@ -27,6 +27,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import { NzCardModule } from 'ng-zorro-antd/card';
 import {DomainBindingComponent} from './domain-binding/domain-binding.component';
 import {DomainsService, PagesService, LoginsService} from './services';
 // @ts-ignore
@@ -82,7 +83,8 @@ import { UtmTagsComponent } from './page-info/utm-tags/utm-tags.component';
     NzModalModule,
     NzDatePickerModule,
     NzCollapseModule,
-    NzAlertModule
+    NzAlertModule,
+    NzCardModule
   ],
   providers: [
     PagesService,

@@ -2,6 +2,7 @@
   <div nz-row>
     <div nz-col [nzSpan]="11" [nzXl]="8">
       <h1>{{ 'PAGE.MAIN INFO' | translate }}</h1>
+
       <nz-space nzDirection="vertical" [nzSize]="'large'" class="mt-4" style="width:100%">
         <nz-form-item *nzSpaceItem>
           <nz-form-label [nzSpan]="24" nzFor="name">{{ 'PAGE.PAGE NAME' | translate }}</nz-form-label>
@@ -9,7 +10,6 @@
             <input nz-input name="name" type="text" id="name" placeholder="My page" formControlName="pageName">
           </nz-form-control>
         </nz-form-item>
-
         <nz-form-item *nzSpaceItem>
           <nz-form-label [nzSpan]="24" nzFor="domain">{{ 'PAGE.DOMAIN AND URL' | translate }}</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">

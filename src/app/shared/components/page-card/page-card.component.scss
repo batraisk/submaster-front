@@ -32,7 +32,7 @@
   h1 {
     &.title {
       position: relative;
-      width: min-content;
+      width: fit-content;
 
       &:after {
         border-radius: 50%;

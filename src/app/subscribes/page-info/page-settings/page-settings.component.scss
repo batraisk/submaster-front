@@ -31,3 +31,23 @@
 
   }
 }
+
+.background-preview {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  margin: 10px 0;
+  border: 1px solid #eee;
+
+  .link {
+    width: 256px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.youtube-frame-container {
+  margin: 24px 0 0;
+}

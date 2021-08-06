@@ -7,15 +7,18 @@
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
+    "skipLibCheck": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
+    "allowSyntheticDefaultImports": true,
     "lib": [
       "es2018",
       "dom"
     ],
+    "jsx": "react",
     "paths": {
       "@core-services" : ["src/app/core/services/index.ts"],
       "@navigation-services" : ["src/app/shared/services/index.ts"],

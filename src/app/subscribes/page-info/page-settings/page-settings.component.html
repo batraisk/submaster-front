@@ -1,4 +1,4 @@
-<form nz-form [formGroup]="pageForm">
+<form nz-form [formGroup]="pageForm" *ngIf="page">
   <div nz-row>
     <div nz-col [nzSpan]="11" [nzXl]="8">
       <h1>{{ 'PAGE.MAIN INFO' | translate }}</h1>
@@ -77,9 +77,6 @@
     </div>
   </div>
 
-
-
-
   <div nz-row class="mt-5">
     <div nz-col [nzSpan]="11" [nzXl]="8">
       <h1>{{ 'PAGE.WELCOME PAGE INFO' | translate }}</h1>
@@ -88,7 +85,7 @@
           <nz-form-label [nzSpan]="24">{{ 'PAGE.BACKGROUND' | translate }}</nz-form-label>
           <div nz-row style="width:100%" class="mt-2">
             <div nz-col [nzSpan]="11" [nzXl]="10">
-              <button nz-button [nzBlock]="true" nzType="primary" nzSize="small" [nzGhost]="true">{{ 'PAGE.YOUTUBE LINK' | translate }}</button>
+              <button (click)="showModalYoutube()" nz-button [nzBlock]="true" nzType="primary" nzSize="small" [nzGhost]="true">{{ 'PAGE.YOUTUBE LINK' | translate }}</button>
             </div>
             <div nz-col [nzSpan]="2" [nzXl]="4" style="text-align:center; line-height:30px">{{ 'PAGE.OR' | translate }}</div>
             <div nz-col [nzSpan]="11" [nzXl]="10">
@@ -96,6 +93,35 @@
               <input #fileInput (change)="onSelectFile($event)" hidden type="file" formControlName="background">
             </div>
           </div>
+
+
+          <div class="background-preview" *ngIf="backgroundName || backgroundUrl">
+            <div>{{backgroundName || 'image'}}</div>
+            <button
+              nz-button
+              nzType="primary"
+              [nzSize]="'small'"
+              nzDanger
+              nzShape="circle"
+              (click)="removeImage()"
+            ><i nz-icon nzType="delete"></i>
+            </button>
+          </div>
+
+          <div class="background-preview" *ngIf="youtube">
+            <div class="link">{{youtube}}</div>
+            <button
+              nz-button
+              nzType="primary"
+              [nzSize]="'small'"
+              nzDanger
+              nzShape="circle"
+              (click)="removeYoutube()"
+            ><i nz-icon nzType="delete"></i>
+            </button>
+          </div>
+
+
         </nz-form-item>
         <nz-form-item *nzSpaceItem>
           <nz-form-label [nzSpan]="24" nzFor="title">{{ 'PAGE.TITLE' | translate }}</nz-form-label>
@@ -132,7 +158,7 @@
         <nz-form-item *nzSpaceItem>
           <nz-form-label [nzSpan]="24" nzFor="timer-text">{{ 'PAGE.TIMER TEXT' | translate }}</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
-            <input nz-input name="timer-text" type="text" id="timer-text" formControlName="timerEnable">
+            <input nz-input name="timer-text" type="text" id="timer-text" formControlName="timerText">
           </nz-form-control>
         </nz-form-item>
       </nz-space>
@@ -151,7 +177,12 @@
               <nz-form-label [nzSpan]="24" nzFor="timer-text">{{ 'PAGE.LAYOUT' | translate }}</nz-form-label>
               <nz-form-control [nzSpan]="24" class="mt-2 w-100">
                 <nz-select formControlName="layout" class="w-100">
-                  <nz-option nzLabel="Image on half screen" nzValue="Image on half screen"></nz-option>
+
+                  <nz-option nzLabel="template-1" nzValue="template_1"></nz-option>
+                  <nz-option nzLabel="template-2" nzValue="template_2"></nz-option>
+                  <nz-option nzLabel="template-3" nzValue="template_3"></nz-option>
+                  <nz-option nzLabel="template-4" nzValue="template_4"></nz-option>
+
                 </nz-select>
               </nz-form-control>
             </div>
@@ -180,7 +211,21 @@
           </nz-form-control>
         </nz-form-item>
         <nz-form-item *nzSpaceItem [nzJustify]="'center'">
-          <app-mobile-view [device]="view"></app-mobile-view>
+
+          <app-mobile-view
+            [color]="pageForm.controls['theme'].value"
+            [title]="pageForm.controls['welcomeTitle'].value"
+            [description]="pageForm.controls['welcomeDescription'].value"
+            [buttonText]="pageForm.controls['welcomeButtonText'].value"
+            [timerText]="pageForm.controls['timerText'].value"
+            [time]="pageForm.controls['timerTime'].value"
+            [timerEnable]="pageForm.controls['timerEnable'].value"
+            [template]="pageForm.controls['layout'].value"
+            [device]="view"
+            [backgroundUrl]="backgroundUrl"
+            [youtube]="youtube"
+          ></app-mobile-view>
+
         </nz-form-item>
       </nz-space>
     </div>
@@ -247,3 +292,29 @@
   </div>
   <button class="mt-5 mb-5" nz-button nzType="primary" (click)="onSubmit()">{{ 'ACTIONS.SAVE' | translate }}</button>
 </form>
+
+<nz-modal [(nzVisible)]="isVisibleYoutubeModal" nzTitle="{{ 'PAGE.YOUTUBE LINK' | translate }}" (nzOnCancel)="handleCancelModal()">
+  <ng-container *nzModalContent>
+    <input
+      nz-input
+      name="title"
+      type="text"
+      (change)="somethingChanged($event)"
+    >
+    <div class="youtube-frame-container" *ngIf="youtubeLink">
+      <iframe
+        width="472"
+        height="280"
+        [src] = "youtubeLink | safe: 'resourceUrl'"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </ng-container>
+  <div *nzModalFooter class="d-flex">
+    <button nz-button nzType="default" nzSize="small" (click)="handleCancelModal()">{{ 'ACTIONS.CANCEL' | translate }}</button>
+    <button [disabled]="!youtubeLink" nz-button nzType="primary" nzSize="small" (click)="handleOkModal()">{{ 'ACTIONS.SAVE' | translate }}</button>
+  </div>
+</nz-modal>

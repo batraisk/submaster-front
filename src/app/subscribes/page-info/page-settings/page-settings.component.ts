@@ -1,10 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {selectFile, toSnakeCaseObject} from '@helpers';
+import {makeYoutubeEmbed, matchYoutubeUrl, selectFile, toSnakeCaseObject} from '@helpers';
 import {Router} from '@angular/router';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import {PagesService} from '@subscribes-services';
 import {TranslateService} from '@ngx-translate/core';
+import {environment} from '@environment';
 
 @Component({
   selector: 'app-page-settings',
@@ -13,12 +14,24 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class PageSettingsComponent implements OnInit {
   @Input() page;
+  @ViewChild('fileInput') fileInput: any;
+  baseUrl = environment.apiUrl;
   domain = 'https://submaster.com/';
   pageForm: FormGroup;
   themes = ['natural', 'gold', 'lime', 'blue', 'magenta', 'yellow', 'purple'];
   view = 'mobile';
   file: File;
   translates: any = {};
+  backgroundUrl: string | null = null;
+  backgroundName: string | null = null;
+  isVisibleYoutubeModal = false;
+  youtubeLink = '';
+  youtube: string | null = null;
+  fileTypes: string[] = [
+    'image/jpeg',
+    'image/pjpeg',
+    'image/png'
+  ];
 
   constructor(
     private fb: FormBuilder,
@@ -44,7 +57,7 @@ export class PageSettingsComponent implements OnInit {
       timerTime: [this.page.timerTime],
       timerText: [this.page.timerText],
       timerEnable: [this.page.timerEnable],
-      layout: ['Image on half screen'],
+      layout: [this.page.layout],
       theme: [this.page.theme , [Validators.required]],
       status: [this.page.status === 'active' , [Validators.required]],
       background: [null],
@@ -56,10 +69,15 @@ export class PageSettingsComponent implements OnInit {
       outOfStockTitle: [this.page.outOfStockTitle, [Validators.required]],
       outOfStockDescription: [this.page.outOfStockDescription, [Validators.required]],
     });
+    this.backgroundUrl = this.baseUrl + this.page.background;
+    console.log('this.backgroundUrl', this.backgroundUrl)
+    this.youtube = this.page.youtube;
   }
 
   onSelectFile(event): void {
+    this.removeYoutube();
     selectFile(event, this);
+    this.updateImageDisplay();
   }
 
   onSubmit(): void {
@@ -82,6 +100,7 @@ export class PageSettingsComponent implements OnInit {
     if (this.file) {
       formData.append('background', this.file);
     }
+    formData.append('youtube', this.youtube);
     this.pagesService.updatePage(this.page.id, formData).subscribe(res => {
       this.router.navigate(['/']);
     });
@@ -102,6 +121,66 @@ export class PageSettingsComponent implements OnInit {
     this.pagesService.removePage(this.page.id).subscribe(res => {
       this.router.navigate(['/']);
     });
+  }
+
+  showModalYoutube(): void {
+    this.isVisibleYoutubeModal = true;
+  }
+
+  handleOkModal(): void {
+    this.youtube = this.youtubeLink;
+    this.isVisibleYoutubeModal = false;
+    this.removeImage();
+  }
+
+  handleCancelModal(): void {
+    this.isVisibleYoutubeModal = false;
+  }
+
+  somethingChanged(event): void {
+    if (matchYoutubeUrl(event.target.value)) {
+      this.youtubeLink = makeYoutubeEmbed(event.target.value);
+    }
+  }
+
+  removeYoutube(): void {
+    this.youtubeLink = '';
+    this.youtube = null;
+  }
+
+  updateImageDisplay(): void {
+    if (!this.validFileType(this.file)) {
+      return;
+    }
+    this.backgroundUrl = window.URL.createObjectURL(this.file);
+    this.backgroundName = this.file.name;
+  }
+
+  removeImage(): void {
+    this.backgroundUrl = null;
+    this.backgroundName = null;
+    this.file = undefined;
+  }
+
+  returnFileSize(n): string {
+    if (n < 1024) {
+      return n + 'bytes';
+    } else if (n > 1024 && n < 1048576) {
+      return (n / 1024).toFixed(1) + 'KB';
+    } else if (n > 1048576) {
+      return (n / 1048576).toFixed(1) + 'MB';
+    }
+  }
+
+  validFileType(file): boolean {
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.fileTypes.length; i++) {
+      if (file.type === this.fileTypes[i]) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
 }
