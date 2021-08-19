@@ -20,8 +20,8 @@ const containerElementName = 'graphContainer';
 import { render } from 'react-dom';
 window.React = React;
 @Component({
-  selector: 'app-my-component',
-  template: `<div #graphContainer id="qwerty"></div>`,
+  selector: 'app-stats-graph',
+  template: `<div #graphContainer [id]="dataName"></div>`,
   styleUrls: ['./GraphComponent.scss'],
   encapsulation: ViewEncapsulation.None,
 })
@@ -29,7 +29,9 @@ export class GraphWrapperComponent implements OnChanges, OnDestroy, AfterViewIni
   @ViewChild('graphContainer', {static: false}) containerRef: ElementRef;
 
   @Input() height = 400;
+  @Input() dataName = '';
   @Input() width = 400;
+  @Input() data: any = null;
   @Input() public counter = 10;
   @Output() public componentClick = new EventEmitter<void>();
 
@@ -58,9 +60,12 @@ export class GraphWrapperComponent implements OnChanges, OnDestroy, AfterViewIni
 
   private render(): void {
     const {counter} = this;
+    const el = document.getElementById(this.dataName);
 
-    ReactDOM.render(<div className={'i-am-classy'}>
-      <GraphComponent height={this.height} width={this.width}/>
-    </div>, document.getElementById('qwerty'));
+    if (el && this.data) {
+      ReactDOM.render(<div className={'i-am-classy'}>
+        <GraphComponent data={this.data} height={this.height} width={this.width}/>
+      </div>, document.getElementById(this.dataName));
+    }
   }
 }

@@ -1,0 +1,15 @@
+<div class="empty-state-container" *ngIf="faqs.length === 0">
+  <nz-space nzDirection="vertical" [nzSize]="24">
+    <img src="assets/images/empty-state.svg" alt="" *nzSpaceItem>
+    <span *nzSpaceItem>{{ 'PAGE.NOTHING HERE' | translate }}</span>
+  </nz-space>
+</div>
+
+
+<nz-collapse class="guide" *ngFor="let faq of faqs">
+  <nz-collapse-panel
+    nzHeader="{{ faq.question }}"
+  >
+    <div style="margin:0;" class="answer" [innerHtml]="faq.answer | safe: 'html'"></div>
+  </nz-collapse-panel>
+</nz-collapse>

@@ -19,6 +19,7 @@ import { ForgotComponent } from './components/authentication/forgot/forgot.compo
 import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { AccountService } from './services/account.service';
+import { FaqService } from './services/faq.service';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
@@ -26,9 +27,12 @@ import {AuthenticationGuard} from './services/authentication.guard';
 import {TranslateModule} from '@ngx-translate/core';
 import {EditPasswordComponent} from './components/authentication/edit-password/edit-password.component';
 import {BalanceComponent} from './components/balance/balance.component';
+import {FaqComponent} from './components/faq/faq.component';
 import { NzSliderModule } from 'ng-zorro-antd/slider';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +41,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
     ForgotComponent,
     EditPasswordComponent,
     BalanceComponent,
+    FaqComponent,
     // DashboardComponent,
     // NewPageComponent,
     // PageDetailsComponent,
@@ -66,11 +71,14 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
     NzSliderModule,
     NzTableModule,
     NzTagModule,
+    NzCollapseModule,
+    SharedModule,
   ],
   providers: [
     AuthenticationService,
     AuthenticationGuard,
     AccountService,
+    FaqService,
   ]
 })
 export class CoreModule { }

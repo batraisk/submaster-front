@@ -19,13 +19,13 @@
       <h1 class="title" [ngClass]="{'active': page.status == 'active'}">{{page.pageName}}</h1>
       <nz-row [nzGutter]="16" class="summary">
         <nz-col [nzSpan]="8" class="text-center">
-          <nz-statistic [nzValue]="(73 / 100 | percent)!" [nzTitle]="'CTR'"></nz-statistic>
+          <nz-statistic [nzValue]="(page.statistics.ctr | percent)!" [nzTitle]="'CTR'"></nz-statistic>
         </nz-col>
         <nz-col [nzSpan]="8" class="text-center">
-          <nz-statistic [nzValue]="(17 | number)" nzTitle="{{ 'STATISTICS.SUBSCRIBERS' | translate }}"></nz-statistic>
+          <nz-statistic [nzValue]="(page.statistics.subscribers | number)" nzTitle="{{ 'STATISTICS.SUBSCRIBERS' | translate }}"></nz-statistic>
         </nz-col>
         <nz-col [nzSpan]="8" class="text-center">
-          <nz-statistic [nzValue]="(500 | number)" nzTitle="{{ 'STATISTICS.VIEWS' | translate }}"></nz-statistic>
+          <nz-statistic [nzValue]="(page.statistics.clicks | number)" nzTitle="{{ 'STATISTICS.VIEWS' | translate }}"></nz-statistic>
         </nz-col>
       </nz-row>
     </div>

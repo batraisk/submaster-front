@@ -8,42 +8,46 @@ import './GraphComponent.scss';
 export interface IProps {
   height: number;
   width: number;
+  data: any;
 }
 
 
 export const GraphComponent: React.FC<IProps> = (props: IProps) => {
-  const [data, setData] = useState([]);
-  const {height, width} = props;
-  useEffect(() => {
-    asyncFetch();
-  }, []);
-  const asyncFetch = () => {
-    fetch('https://gw.alipayobjects.com/os/bmw-prod/1d565782-dde4-4bb6-8946-ea6a38ccf184.json')
-      .then((response) => response.json())
-      .then((json) => {
-        console.log('json', json)
-        return setData(json);
-      })
-      .catch((error) => {
-        console.log('fetch data failed', error);
-      });
-  };
+  // const [data, setData] = useState([]);
+  const {height, width, data} = props;
+  // useEffect(() => {
+  //   asyncFetch();
+  // }, []);
+  // const asyncFetch = () => {
+  //   // fetch('https://gw.alipayobjects.com/os/bmw-prod/1d565782-dde4-4bb6-8946-ea6a38ccf184.json')
+  //   fetch('/api/v1/statistics')
+  //     .then((response) => response.json())
+  //     .then((json) => {
+  //       console.log('json', json.data.subscribers.data)
+  //       return setData(json.data.subscribers.data);
+  //       // return setData(json);
+  //     })
+  //     .catch((error) => {
+  //       console.log('fetch data failed', error);
+  //     });
+  // };
   const config = {
     data,
-    xField: 'Date',
-    yField: 'scales',
+    xField: 'date',
+    yField: 'count',
     height, width,
     xAxis: {
-      tickCount: 0,
+      // tickCount: 0,
     },
     yAxis: {
     },
     legend: false,
     meta: {
-      Date: {
-      },
-      scales: {
+      date: {
         tickCount: 0,
+      },
+      count: {
+        tickCount: 3,
       }
     },
     autoFit: true,

@@ -5,3 +5,4 @@ export * from './utm-tag.interface';
 export * from './user-info.interface';
 export * from './domain.interface';
 export * from './profile.interface';
+export * from './faq.interface';

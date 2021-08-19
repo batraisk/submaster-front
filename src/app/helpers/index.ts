@@ -62,3 +62,11 @@ export const matchYoutubeUrl = (url) => {
   }
   return false;
 };
+
+export const kFormatter = (num) => {
+  if (Math.abs(num) > 999) {
+    return Math.sign(num) * Number(((Math.abs(num) / 1000).toFixed(1))) + 'K';
+  } else {
+    return Math.sign(num) * Number(Math.abs(num));
+  }
+}

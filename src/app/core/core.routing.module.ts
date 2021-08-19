@@ -5,6 +5,7 @@ import {RegisterComponent} from './components/authentication/register/register.c
 import {ForgotComponent} from './components/authentication/forgot/forgot.component';
 import {EditPasswordComponent} from './components/authentication/edit-password/edit-password.component';
 import {BalanceComponent} from './components/balance/balance.component';
+import {FaqComponent} from './components/faq/faq.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'auth/forgot', component: ForgotComponent },
   { path: 'auth/edit', component: EditPasswordComponent },
   { path: 'balance', component: BalanceComponent },
+  { path: 'faq', component: FaqComponent },
 ];
 
 @NgModule({

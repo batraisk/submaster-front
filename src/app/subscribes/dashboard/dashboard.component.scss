@@ -13,4 +13,33 @@
   button {
     margin: auto;
   }
+
+}
+
+
+
+.total-count {
+  color: #8C8C8C;
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 46px;
+}
+
+.trend-value {
+  font-size: 12px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  i {
+    margin-right: 5px;
+  }
+  &.up {
+    color: #52C41A;
+  }
+  &.down {
+    color: #FF7A45;
+    i {
+      transform: rotate(180deg);
+    }
+  }
 }

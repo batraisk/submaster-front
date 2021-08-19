@@ -29,7 +29,7 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import {DomainBindingComponent} from './domain-binding/domain-binding.component';
-import {DomainsService, PagesService, LoginsService} from './services';
+import {DomainsService, PagesService, LoginsService, StatisticsService} from './services';
 // @ts-ignore
 import {InterceptService} from '@core-services';
 import {TranslateModule} from '@ngx-translate/core';
@@ -90,6 +90,7 @@ import { UtmTagsComponent } from './page-info/utm-tags/utm-tags.component';
     PagesService,
     LoginsService,
     DomainsService,
+    StatisticsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptService,

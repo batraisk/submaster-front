@@ -14,17 +14,12 @@
       {{ 'ACTIONS.ADD PAGE' | translate }}
     </button>
 
-
-
     <div *ngFor="let page of pages; index as i" class="mt-5">
       <app-page-card [page]="page"></app-page-card>
     </div>
   </div>
   <div nz-col [nzSpan]="10" [nzXl]="10">
     <nz-card [nzBorderless]="true" class="ml-5" [nzBodyStyle]="{padding: '0'}">
-
-
-
       <nz-collapse nzGhost>
         <nz-collapse-panel
           [nzActive]="true"
@@ -38,40 +33,61 @@
               <nz-option nzValue="year" nzLabel="{{ 'DATE TIME.YEAR' | translate }}"></nz-option>
             </nz-select>
 
-
-            <nz-date-picker *nzSpaceItem [nzMode]="mode"></nz-date-picker>
+            <nz-date-picker (ngModelChange)="changeStateRange($event)" [(ngModel)]="date" *nzSpaceItem [nzMode]="mode"></nz-date-picker>
           </nz-space>
 
           <div class="mt-5">
-            <h1>Clicks</h1>
-            <nz-space>
-              <div *nzSpaceItem class="graph-container">
-                <app-my-component [height]="77" width="200"></app-my-component>
+            <h1>{{ 'STATISTICS.CLICKS' | translate }}</h1>
+            <div class="w-100 d-flex">
+              <div class="graph-container" style="width: 200px">
+                <app-stats-graph [data]="stats.clicks.data" dataName="clicks" [height]="77" width="200"></app-stats-graph>
               </div>
-              <div *nzSpaceItem>
-                <div>
-                  <span>250K</span>
-                  <div>
-                    <i nz-icon nzType="caret-up" nzTheme="outline"></i>
+              <div style="text-align:center; flex-grow: 2; display: flex; justify-content: center; align-items: center">
+                <div style="position: relative; min-width: 89px; text-align: right;">
+                  <span class="total-count">{{stats.clicks.total_count}}</span>
+                  <div style="position: absolute; right: 0" class="trend-value {{stats.clicks.trendDirection}}">
+                    <i nz-icon nzType="caret-up" nzTheme="outline"></i>{{stats.clicks.trend}}%
                   </div>
-
                 </div>
               </div>
-            </nz-space>
+            </div>
           </div>
 
+          <div class="mt-5">
+            <h1>{{ 'STATISTICS.SUBSCRIBERS' | translate }}</h1>
+            <div class="w-100 d-flex">
+              <div class="graph-container" style="width: 200px">
+                <app-stats-graph [data]="stats.subscribers.data" dataName="subscribers" [height]="77" width="200"></app-stats-graph>
+              </div>
+              <div style="text-align:center; flex-grow: 2; display: flex; justify-content: center; align-items: center">
+                <div style="position: relative; min-width: 89px; text-align: right;">
+                  <span class="total-count">{{stats.subscribers.total_count}}</span>
+                  <div style="position: absolute; right: 0" class="trend-value {{stats.subscribers.trendDirection}}">
+                    <i nz-icon nzType="caret-up" nzTheme="outline"></i>{{stats.subscribers.trend}}%
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5">
+            <h1>{{ 'STATISTICS.CTR' | translate }}</h1>
+            <div class="w-100 d-flex">
+              <div class="graph-container" style="width: 200px">
+                <app-stats-graph [data]="stats.ctr.data" dataName="ctr" [height]="77" width="200"></app-stats-graph>
+              </div>
+              <div style="text-align:center; flex-grow: 2; display: flex; justify-content: center; align-items: center">
+                <div style="position: relative; min-width: 89px; text-align: right;">
+                  <span class="total-count">{{stats.ctr.total_count}}%</span>
+                  <div style="position: absolute; right: 0" class="trend-value {{stats.ctr.trendDirection}}">
+                    <i nz-icon nzType="caret-up" nzTheme="outline"></i>{{stats.ctr.trend}}%
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </nz-collapse-panel>
       </nz-collapse>
-
-
-
-
-
     </nz-card>
   </div>
 </div>
-
-
-
-
-
