@@ -18,7 +18,7 @@ module.exports = {
       // GIT remote/branch
       ref: "origin/master",
       // GIT remote
-      repo: "ssh://git@github.com:batraisk/submaster-front.git",
+      repo: "git@github.com:batraisk/submaster-front.git",
       // path in the server
       path: "/home/deploy/submaster-front",
       // Pre-setup command or path to a script on your local machine
