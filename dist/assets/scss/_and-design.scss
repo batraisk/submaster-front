@@ -1,0 +1,111 @@
+@import "variables";
+
+// ant-radio
+.ant-radio-group {
+  &-large {
+    span.ant-radio {
+      top: 0;
+    }
+    .ant-radio-checked {
+      .ant-radio-inner {
+        border-width: 2px;
+        &:after {
+          top: 6px;
+          left: 6px;
+        }
+      }
+    }
+    .ant-radio-inner {
+      height: 32px;
+      width: 32px;
+      &:after {
+        height: 16px;
+        width: 16px;
+        top: 7px;
+        left: 7px;
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+
+  .gold {
+    .ant-radio-inner {
+      background: $calendula-gold-2;
+      &:after {
+        background: $volcano-6;
+      }
+    }
+  }
+  .lime {
+    .ant-radio-inner {
+      background: $lime-2;
+      &:after {
+        background: $sunrise-yellow-6;
+      }
+    }
+  }
+  .blue {
+    .ant-radio-inner {
+      background: $geek-blue-1;
+      &:after {
+        background: $daybreak-blue-6;
+      }
+    }
+  }
+  .magenta {
+    .ant-radio-inner {
+      background: $magenta-1;
+      &:after {
+        background: $magenta-6;
+      }
+    }
+  }
+  .yellow {
+    .ant-radio-inner {
+      background: $sunrise-yellow-6;
+      &:after {
+        background: $neutral-8;
+      }
+    }
+  }
+  .purple {
+    .ant-radio-inner {
+      background: $golden-purple-9;
+      &:after {
+        background: $golden-purple-6;
+      }
+    }
+  }
+}
+
+// forms
+.ant-form-item {
+  margin-bottom: 0;
+}
+
+.ant-form-vertical .ant-form-item-label, .ant-col-24.ant-form-item-label, .ant-col-xl-24.ant-form-item-label {
+  padding: 0;
+
+  & > label {
+    height: inherit;
+  }
+}
+
+.ant-form-item-control-input {
+  min-height: inherit;
+}
+
+// modals
+.ant-modal-body {
+  .ant-modal-confirm-btns {
+    button {
+      display: inline-flex;
+    }
+  }
+}
+
+// cards
+.ant-card {
+  box-shadow: 0px 2px 8px 0px #00000026;
+}
