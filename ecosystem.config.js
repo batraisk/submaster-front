@@ -11,12 +11,12 @@ module.exports = {
       // SSH user
       user: "deploy",
       // SSH host
-      host: ["3.138.156.115"],
+      host: ["18.190.83.26"],
       // SSH options with no command-line flag, see 'man ssh'
       // can be either a single string or an array of strings
       ssh_options: "StrictHostKeyChecking=no",
       // GIT remote/branch
-      ref: "origin/master",
+      ref: "origin/prod",
       // GIT remote
       repo: "git@github.com:batraisk/submaster-front.git",
       // path in the server
@@ -29,7 +29,7 @@ module.exports = {
       // pre-deploy action
       // 'pre-deploy-local': "echo 'This is a local executed command'",
       // post-deploy action
-      'post-deploy': "npm i; ng build --prod",
+      // 'post-deploy': "npm i; ng build --prod",
     },
   }
 }
