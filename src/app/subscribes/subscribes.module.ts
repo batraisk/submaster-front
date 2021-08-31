@@ -40,6 +40,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { PageSettingsComponent } from './page-info/page-settings/page-settings.component';
 import { AccountComponent } from './account/account.component';
 import { UtmTagsComponent } from './page-info/utm-tags/utm-tags.component';
+import { StatisticsComponent } from './page-info/statistics/statistics.component';
 
 
 
@@ -56,6 +57,7 @@ import { UtmTagsComponent } from './page-info/utm-tags/utm-tags.component';
     AccountComponent,
     UtmTagsComponent,
     DomainBindingComponent,
+    StatisticsComponent,
   ],
   imports: [
     NzIconModule,

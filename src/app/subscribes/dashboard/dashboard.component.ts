@@ -68,8 +68,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       date: format(e, 'Y-M-d'),
       mode: this.mode
     };
-
-    console.log(format(e, 'Y-M-d'));
     this.getStats(params);
   }
 

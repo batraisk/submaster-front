@@ -1,0 +1,75 @@
+<!--<div nz-col [nzSpan]="10" [nzXl]="10" *ngIf="stats">-->
+<!--  <nz-card [nzBorderless]="true" class="ml-5" [nzBodyStyle]="{padding: '0'}">-->
+<!--    <nz-collapse nzGhost>-->
+<!--      <nz-collapse-panel-->
+<!--        [nzActive]="true"-->
+<!--        nzHeader="{{ 'STATISTICS.TOTAL STATS' | translate }}"-->
+<!--      >-->
+<div >
+  <h1>{{ 'PAGE.STATISTICS' | translate }}</h1>
+  <nz-space>
+    <nz-select *nzSpaceItem [(ngModel)]="mode">
+      <nz-option nzValue="date" nzLabel="{{ 'DATE TIME.DATE' | translate }}"></nz-option>
+      <nz-option nzValue="week" nzLabel="{{ 'DATE TIME.WEEK' | translate }}"></nz-option>
+      <nz-option nzValue="month" nzLabel="{{ 'DATE TIME.MONTH' | translate }}"></nz-option>
+      <nz-option nzValue="year" nzLabel="{{ 'DATE TIME.YEAR' | translate }}"></nz-option>
+    </nz-select>
+
+    <nz-date-picker (ngModelChange)="changeStateRange($event)" [(ngModel)]="date" *nzSpaceItem [nzMode]="mode"></nz-date-picker>
+  </nz-space>
+
+  <div class="mt-5">
+    <h1>{{ 'STATISTICS.CLICKS' | translate }}</h1>
+    <div class="w-100 d-flex">
+      <div class="graph-container" style="width: 580px; min-height: 250px">
+        <app-stats-graph [data]="stats.clicks.data" dataName="clicks" [height]="230" width="580"></app-stats-graph>
+      </div>
+      <div style="text-align:center; flex-grow: 2; display: flex; justify-content: center; align-items: center">
+        <div style="position: relative; min-width: 89px; text-align: right;">
+          <span class="total-count">{{stats.clicks.total_count}}</span>
+          <div style="position: absolute; right: 0" class="trend-value {{stats.clicks.trendDirection}}">
+            <i nz-icon nzType="caret-up" nzTheme="outline"></i>{{stats.clicks.trend}}%
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h1>{{ 'STATISTICS.SUBSCRIBERS' | translate }}</h1>
+    <div class="w-100 d-flex">
+      <div class="graph-container" style="width: 580px; height: 230px">
+        <app-stats-graph [data]="stats.subscribers.data" dataName="subscribers" [height]="230" width="580"></app-stats-graph>
+      </div>
+      <div style="text-align:center; flex-grow: 2; display: flex; justify-content: center; align-items: center">
+        <div style="position: relative; min-width: 89px; text-align: right;">
+          <span class="total-count">{{stats.subscribers.total_count}}</span>
+          <div style="position: absolute; right: 0" class="trend-value {{stats.subscribers.trendDirection}}">
+            <i nz-icon nzType="caret-up" nzTheme="outline"></i>{{stats.subscribers.trend}}%
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h1>{{ 'STATISTICS.CTR' | translate }}</h1>
+    <div class="w-100 d-flex">
+      <div class="graph-container" style="width: 580px; height: 230px">
+        <app-stats-graph [data]="stats.ctr.data" dataName="ctr" [height]="230" width="580"></app-stats-graph>
+      </div>
+      <div style="text-align:center; flex-grow: 2; display: flex; justify-content: center; align-items: center">
+        <div style="position: relative; min-width: 89px; text-align: right;">
+          <span class="total-count">{{stats.ctr.total_count}}%</span>
+          <div style="position: absolute; right: 0" class="trend-value {{stats.ctr.trendDirection}}">
+            <i nz-icon nzType="caret-up" nzTheme="outline"></i>{{stats.ctr.trend}}%
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--      </nz-collapse-panel>-->
+<!--    </nz-collapse>-->
+<!--  </nz-card>-->
+<!--</div>-->

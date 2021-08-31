@@ -2,7 +2,9 @@
   <nz-tab  nzTitle="{{ 'PAGE.LOGIN LIST' | translate }}">
     <app-logins *ngIf="page" [page]="page"></app-logins>
   </nz-tab>
-  <nz-tab  nzTitle="{{ 'PAGE.STATISTICS' | translate }}"></nz-tab>
+  <nz-tab  nzTitle="{{ 'PAGE.STATISTICS' | translate }}">
+    <app-statistics *ngIf="page" [page]="page"></app-statistics>
+  </nz-tab>
   <nz-tab  nzTitle="{{ 'PAGE.UTM TAGS' | translate }}">
     <app-utm-tags *ngIf="page" [page]="page"></app-utm-tags>
   </nz-tab>
@@ -13,8 +15,8 @@
 <ng-template #extraTemplate>
   <div class="d-flex align-items-center" *ngIf="page">
     <span>{{ 'PAGE.PAGE LINK' | translate }}:</span>
-    <a class="ml-3" href="https://submaster-api.herokuapp.com/pages/{{page.url}}" target="_blank">
-      <i class="mr-2"nz-icon nzType="export"></i> <span>https://submaster/pages/{{page.url}}</span>
+    <a class="ml-3" href="http://18.190.83.26/pages/{{page.url}}" target="_blank">
+      <i class="mr-2"nz-icon nzType="export"></i> <span>http://18.190.83.26/pages/{{page.url}}</span>
     </a>
   </div>
 </ng-template>

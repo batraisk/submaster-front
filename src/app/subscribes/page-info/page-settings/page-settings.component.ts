@@ -18,7 +18,8 @@ export class PageSettingsComponent implements OnInit {
   baseUrl = environment.apiUrl;
   domain = 'https://submaster.com/';
   pageForm: FormGroup;
-  themes = ['natural', 'gold', 'lime', 'blue', 'magenta', 'yellow', 'purple'];
+  // themes = ['natural', 'gold', 'lime', 'blue', 'magenta', 'yellow', 'purple'];
+  themes = ['default', 'blue', 'pink', 'mustard', 'dark'];
   view = 'mobile';
   file: File;
   translates: any = {};
@@ -58,7 +59,8 @@ export class PageSettingsComponent implements OnInit {
       timerText: [this.page.timerText],
       timerEnable: [this.page.timerEnable],
       layout: [this.page.layout],
-      theme: [this.page.theme , [Validators.required]],
+      // theme: [this.page.theme , [Validators.required]],
+      theme: ['default' , [Validators.required]],
       status: [this.page.status === 'active' , [Validators.required]],
       background: [null],
 
@@ -99,7 +101,9 @@ export class PageSettingsComponent implements OnInit {
     if (this.file) {
       formData.append('background', this.file);
     }
-    formData.append('youtube', this.youtube);
+    if (this.youtube) {
+      formData.append('youtube', this.youtube);
+    }
     this.pagesService.updatePage(this.page.id, formData).subscribe(res => {
       this.router.navigate(['/']);
     });

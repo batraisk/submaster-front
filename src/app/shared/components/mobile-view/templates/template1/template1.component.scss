@@ -4,6 +4,8 @@
     font-weight: 500;
     font-size: 15px;
     line-height: 15px;
+    font-family: Nunito;
+    margin-bottom: 7px;
   }
   h2 {
     font-style: normal;
@@ -14,30 +16,87 @@
   p {
     font-style: normal;
     font-weight: normal;
-    font-size: 8px;
-    line-height: 12px;
+    font-size: 7px;
+    line-height: 10px;
+    font-family: Nunito;
   }
   .space {
     height: 123px;
   }
-  .content {
-    height: 270px;
-    overflow-y: scroll;
-    background: #eee;
-    width: 149px;
-    margin-left: 4px;
-    background-size: cover;
-    background-position: left;
-    border-radius: 12px;
-    position: relative;
 
-    .inner-content {
-      padding: 0px 14px 14px;
+  .picture-container {
+    width: 149px;
+    height: 139px;
+    background-color: #D6E4FF;
+    position: relative;
+    margin-left: 4px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+
+    .bg-loyaut {
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
       position: absolute;
-      z-index: 11;
+      height: 100%;
       width: 100%;
+      align-items: center;
+      justify-content: center;
+      background: right / cover url("/assets/images/templates/template1/picture-bg.svg");
+
+      display: flex;
+    }
+
+    .image {
+      height: 117px;
+      width: 117px;
     }
   }
+
+  .content-container {
+    position: relative;
+    margin-left: 4px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    width: 149px;
+    height: 131px;
+    overflow-y: scroll;
+
+    //background: top / cover url("/assets/images/templates/template1/content-default-top-bg.svg");
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: left;
+
+    .top-bg {
+      display: none;
+      position: absolute;
+      height: 131px;
+      width: 100%
+    }
+
+    .bottom-bg {
+      display: none;
+      position: absolute;
+      width: 149px;
+      bottom: 0;
+      right: 12px;
+    }
+
+    .content {
+      position: relative;
+      width: 149px;
+      height: fit-content;
+      min-height: 131px;
+      background-position: bottom;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position-x: -10px;
+      > div {
+        paddin: 10px;
+      }
+    }
+  }
+
   button {
     display: flex;
     flex-direction: column;
@@ -55,16 +114,20 @@
     color: white;
     font-size: 8px;
     line-height: 12px;
-    margin-top: 12px;
+    margin-top: 8px;
   }
 
   p {
     margin: 0;
-    white-space:pre-wrap
+    white-space:pre-line;
   }
 
   .timer {
-    margin-top: 12px;
+    margin-top: 8px;
+
+    h2 {
+      margin-bottom: 0;
+    }
 
     .bar-container {
       display: flex;
@@ -98,70 +161,92 @@
 }
 
 .desktop {
-  .content {
+  .desktop-screen {
+    display: flex;
+    height: 278px;
+    width: 495px;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 4px;
+  }
+  .column {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    &:first-child {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+    &:last-child {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+  .content-container {
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: left;
     height: 270px;
-    padding: 45px 50px;
     overflow-y: scroll;
-    margin-left: 4px;
-    margin-right: 4px;
-    border-radius: 4px;
-    background-size: cover;
-    background-position: center;
-    background: #eee;
-
-    h1 {
-      font-style: normal;
-      font-weight: 500;
-      font-size: 19px;
-      line-height: 23px;
+  }
+  .content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    min-height: 270px;
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: -20px;
+    > div {
+      padding: 30px;
+      width: 100%;
     }
 
-    h2 {
-      font-style: normal;
+    h1 {
+      font-family: Nunito;
       font-weight: 500;
-      font-size: 7px;
-      line-height: 11px;
+      font-size: 17px;
+      line-height: 21px;
     }
 
     p {
-      font-style: normal;
-      font-weight: normal;
-      font-size: 8px;
-      line-height: 12px;
-      white-space:pre-wrap
-    }
-
-    .inner-content {
-      position: absolute;
-      z-index: 1;
-      width: 50%;
-      //padding: 4px 14px 14px;
-    }
-
-    .created-by {
-      font-style: normal;
+      font-family: Nunito;
+      white-space:pre-line;
       font-weight: normal;
       font-size: 7px;
-      line-height: 11px;
-      margin-top: 20px;
-    }
-    .privacy-policy-container {
-      line-height: 6px;
-
-      .privacy-policy {
-        font-style: normal;
-        font-weight: normal;
-        font-size: 6px;
-        line-height: 10px;
-        color: rgba(0, 0, 0, 0.85);
-
-      }
+      line-height: 11px
     }
   }
-  .space {
-    height: 4px;
+
+  .picture-container {
+    .bg-loyaut {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      //background: right / cover url("/assets/images/templates/template1/picture-bg.svg");
+      display: flex;
+      background-position: center;
+      background-size: cover;
+      height: 270px;
+      width: 243px;
+      background-repeat: no-repeat;
+    }
+    .image {
+      height: 200px;
+      width: 200px;
+    }
   }
   .timer {
+    h2 {
+      font-weight: 500;
+      font-size: 7px;
+      line-height: 10px;
+    }
     margin-top: 12px;
 
     .bar-container {
@@ -171,19 +256,38 @@
 
       .progress-bar {
         border-radius: 50px;
-        height: 5px;
+        height: 3px;
         width: 100%;
-        //background: linear-gradient(90deg, #2F54EB 55.12%, #ADC6FF 100%);
         margin-top: 5px;
       }
 
       .time {
+        line-height: 13px;
+        font-size: 7px;
         margin-left: 5px;
       }
     }
   }
+  .created-by {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 7px;
+    line-height: 11px;
+    margin-top: 13px;
+  }
+  .privacy-policy-container {
+    line-height: 6px;
+
+    .privacy-policy {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 6px;
+      line-height: 10px;
+
+    }
+  }
   button {
-    margin-top: 18px;
+    margin-top: 10px;
     background: #2F54EB;
     padding: 3px 7px;
     border: .75px solid #2F54EB;
