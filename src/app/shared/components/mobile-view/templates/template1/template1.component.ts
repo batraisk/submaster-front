@@ -86,6 +86,7 @@ export class Template1Component implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('this.color', this.color)
   }
 
   get preparedTime(): string {
