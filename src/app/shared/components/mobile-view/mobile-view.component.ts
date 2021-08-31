@@ -7,7 +7,8 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class MobileViewComponent implements OnInit {
   @Input() device: 'mobile' | 'desktop' = 'desktop';
-  @Input() color: 'natural' | 'gold' | 'lime' | 'blue' | 'magenta' | 'yellow' | 'purple' = 'natural';
+  // @Input() color: 'natural' | 'gold' | 'lime' | 'blue' | 'magenta' | 'yellow' | 'purple' = 'natural';
+  @Input() color: 'default' | 'pink' | 'mustard' | 'dark' = 'default';
   @Input() template: 'template_1' | 'template_2' | 'template_3' | 'template_4' | 'template_5';
   @Input() title: '';
   @Input() description: '';

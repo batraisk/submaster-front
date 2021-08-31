@@ -23,5 +23,16 @@ export class StatisticsService {
       // .pipe(map((res: any[]) => res.map(page => (toCamelCaseObject(page)))));
   }
 
+  getPageStats(pageId, params): Observable<any> {
+    let getParams = new HttpParams();
+    if (params) {
+      getParams = getParams
+        .append('mode', `${params.mode}`)
+        .append('date', `${params.date}`);
+    }
+    return this.http.get<any>(`/api/v1/subscribe_pages/${pageId}/statistics`, {params: getParams});
+      // .pipe(map((res: any[]) => res.map(page => (toCamelCaseObject(page)))));
+  }
+
   constructor(private http: HttpClient) { }
 }
