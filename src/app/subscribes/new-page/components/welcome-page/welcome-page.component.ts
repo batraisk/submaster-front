@@ -13,8 +13,8 @@ export class WelcomePageComponent implements OnInit {
   @Output() updatePageEmitter = new EventEmitter<any>();
   @ViewChild('fileInput') fileInput: any;
   switchValue = false;
-  radioValue = 'natural';
-  themes = ['natural', 'gold', 'lime', 'blue', 'magenta', 'yellow', 'purple'];
+  radioValue = 'default';
+  themes = ['default', 'blue', 'pink', 'mustard', 'dark'];
   view = 'mobile';
   views = ['mobile', 'desktop'];
   pageForm: FormGroup;
@@ -42,7 +42,7 @@ export class WelcomePageComponent implements OnInit {
       timerText: [this.page.timerText],
       timerEnable: [this.page.timerEnable],
       layout: ['template_1'],
-      theme: ['natural' , [Validators.required]],
+      theme: ['default' , [Validators.required]],
       background: [null],
     });
     this.updatePageEmitter.emit({page: this.pageForm.value, form: this.pageForm});
