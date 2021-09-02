@@ -60,7 +60,7 @@ export class PageSettingsComponent implements OnInit {
       timerEnable: [this.page.timerEnable],
       layout: [this.page.layout],
       // theme: [this.page.theme , [Validators.required]],
-      theme: ['default' , [Validators.required]],
+      theme: [this.page.theme , [Validators.required]],
       status: [this.page.status === 'active' , [Validators.required]],
       background: [null],
 
@@ -100,9 +100,13 @@ export class PageSettingsComponent implements OnInit {
     formData.append('status', property.status ? 'active' : 'inactive');
     if (this.file) {
       formData.append('background', this.file);
+    } else if (this.page.background && !this.backgroundUrl) {
+      formData.append('background', '_destroy');
     }
     if (this.youtube) {
       formData.append('youtube', this.youtube);
+    } else {
+      formData.append('youtube', '');
     }
     this.pagesService.updatePage(this.page.id, formData).subscribe(res => {
       this.router.navigate(['/']);

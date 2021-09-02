@@ -2,9 +2,9 @@
   h1 {
     font-style: normal;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 15px;
-    font-family: Jost;
+    font-family: Lora;
     margin-bottom: 7px;
   }
   h2 {
@@ -18,7 +18,7 @@
     font-weight: normal;
     font-size: 7px;
     line-height: 10px;
-    font-family: Jost;
+    font-family: Lora;
   }
   .space {
     height: 123px;
@@ -32,6 +32,7 @@
     margin-left: 4px;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
+    display: flex;
 
     .image-container {
       align-items: center;
@@ -39,12 +40,15 @@
       justify-content: center;
       height: 100%;
       width: 100%;
-      position: absolute;
+      flex: 1;
+      //position: absolute;
     }
 
     .image {
-      height: 117px;
-      width: 82px;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      height: 100%;
+      width: 100%;
     }
   }
 
@@ -148,7 +152,29 @@
   .youtube-control {
     position: absolute;
     z-index: 0;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    top: 0;
     overflow: hidden;
+  }
+
+  .created-by {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 6px;
+    line-height: 7px;
+    margin-top: 6px;
+  }
+  .privacy-policy-container {
+    line-height: 6px;
+
+    .privacy-policy {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 5px;
+      line-height: 6px;
+
+    }
   }
 }
 
@@ -186,6 +212,13 @@
     height: 270px;
     overflow-y: scroll;
   }
+  h1 {
+    font-family: Lora;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 21px;
+
+  }
   .content {
     position: relative;
     display: flex;
@@ -201,15 +234,10 @@
       width: 100%;
     }
 
-    h1 {
-      font-family: Jost;
-      font-weight: 500;
-      font-size: 17px;
-      line-height: 21px;
-    }
+
 
     p {
-      font-family: Jost;
+      font-family: Lora;
       white-space:pre-line;
       font-weight: normal;
       font-size: 7px;
@@ -219,21 +247,19 @@
 
   .picture-container {
     position: relative;
-
-
+    display: flex;
 
     .image-container {
       align-items: center;
       display: flex;
       justify-content: flex-end;
       height: 100%;
-      padding: 20px;
       width: 100%;
-      position: absolute;
+      flex: 1;
 
       .image {
-        height: 210px;
-        width: 140px;
+        height: 100%;
+        width: 100%;
       }
     }
   }
@@ -303,8 +329,10 @@
   .youtube-control {
     position: absolute;
     z-index: 0;
-    left: 75px;
-    bottom: 25px;
+    left: 0;
+    top: 0;
+    border-top-right-radius: 4px;
+    border-bottm-right-radius: 4px;
     overflow: hidden;
   }
 }

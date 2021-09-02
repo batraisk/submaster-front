@@ -1,56 +1,44 @@
-<div *ngIf="device == 'mobile'" class="device-container mobile">
+<div *ngIf="device == 'mobile'" class="device-container mobile" [ngStyle]="{color: this.colors[this.color].textColor}">
   <div style="height: 4px"></div>
-  <div class="content">
-    <div class="background" [ngStyle]="{'background': backgroundUrl ? 'center / cover url(' + backgroundUrl + ')' : '#eee'}">
-      <iframe
-        *ngIf="youtube"
-        width="149"
-        height="135"
-        [src] = "youtube | safe: 'resourceUrl'"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
-    </div>
-    <div class="inner-content">
-<!--      <div class="space"></div>-->
-      <h1>{{title}}</h1>
-      <p>
-        {{description}}
-      </p>
-      <div class="timer" *ngIf="timerEnable">
-        <h2>
-          {{timerText}}
-        </h2>
-        <div class="bar-container">
-          <div
-            class="progress-bar"
-            [ngStyle]="{'background': this.colors[this.color].gradient}"
-          ></div>
-          <span class="time">{{preparedTime}}</span>
-        </div>
-      </div>
-      <button
-        [ngStyle]="{
-        'background': this.colors[this.color].primary,
-        'borderColor': this.colors[this.color].primary }"
-      >{{buttonText}}</button>
-    </div>
-  </div>
-</div>
+  <div class="picture-container" [ngStyle]="{backgroundColor: this.colors[this.color].layoutColor}">
+    <div class="bg-loyaut" [ngStyle]="{
+      background: this.colors[this.color].bgColor
+    }">
+      <div
+        class="tracery"
+        [ngStyle]="{backgroundImage: 'url(/assets/images/templates/template2/image-bg-'+ this.color +'.svg)'}"
 
-<div *ngIf="device == 'desktop'" class="device-container desktop">
-  <div class="space"></div>
-  <div style="display: flex">
+      ></div>
+
+    </div>
+    <div class="image-container">
+      <div class="image" *ngIf="!youtube" [ngStyle]="{'background': backgroundUrl ? 'right / cover url(' + backgroundUrl + ')' : '#eee'}"></div>
+      <div class="image" *ngIf="youtube" class="youtube-control">
+        <iframe
+          width="117"
+          height="82"
+          [src] = "youtube | safe: 'resourceUrl'"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+<!--    </div>-->
+  </div>
+  <div class="content-container" [ngStyle]="{
+    backgroundImage: 'url(/assets/images/templates/template2/content-bg-' + color + '.svg)',
+    backgroundColor: this.colors[this.color].layoutColor
+  }">
     <div class="content">
-      <div class="inner-content">
-        <h1>{{title}}</h1>
+      <div>
+        <h1 [ngStyle]="{color: this.colors[this.color].textColor}">{{title}}</h1>
         <p>
           {{description}}
         </p>
         <div class="timer" *ngIf="timerEnable">
-          <h2>
+          <h2 [ngStyle]="{color: this.colors[this.color].textColor}">
             {{timerText}}
           </h2>
           <div class="bar-container">
@@ -61,25 +49,79 @@
             <span class="time">{{preparedTime}}</span>
           </div>
         </div>
-        <button
-          [ngStyle]="{'background': this.colors[this.color].primary, 'borderColor': this.colors[this.color].primary}"
-        >{{buttonText}}</button>
 
-        <div class="created-by">Created by <a href="">Submaster</a></div>
-        <div class="privacy-policy-container"><a href="" class="privacy-policy">Privacy policy</a></div>
+        <button
+          [ngStyle]="{
+          'background': this.colors[this.color].primary,
+          'borderColor': this.colors[this.color].primary }"
+        >{{buttonText}}</button>
       </div>
     </div>
-    <div class="background" [ngStyle]="{'background': backgroundUrl ? 'center / cover url(' + backgroundUrl + ')' : '#eee'}">
-      <iframe
-        *ngIf="youtube"
-        width="235"
-        height="270"
-        [src] = "youtube | safe: 'resourceUrl'"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+  </div>
+</div>
+
+
+
+<div *ngIf="device == 'desktop'" class="device-container desktop" [ngStyle]="{color: this.colors[this.color].textColor}">
+  <div class="desktop-screen">
+
+    <div class="column picture-container"  [ngStyle]="{backgroundColor: this.colors[this.color].layoutColor}">
+      <div class="bg-loyaut" [ngStyle]="{
+        background: this.colors[this.color].bgColor
+      }">
+        <div
+          class="tracery"
+          [ngStyle]="{backgroundImage: 'url(/assets/images/templates/template2/image-bg-'+ this.color +'.svg)'}"
+
+        ></div>
+      </div>
+      <div class="image-container">
+        <div class="image" *ngIf="!youtube" [ngStyle]="{'background': backgroundUrl ? 'right / cover url(' + backgroundUrl + ')' : '#eee'}"></div>
+        <div class="image" *ngIf="youtube" class="youtube-control">
+          <iframe
+            width="210"
+            height="140"
+            [src] = "youtube | safe: 'resourceUrl'"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
     </div>
+    <div class="column content-container" [ngStyle]="{
+      backgroundImage: 'url(/assets/images/templates/template2/content-bg-' + color + '.svg)',
+      backgroundColor: this.colors[this.color].layoutColor
+    }">
+      <div class="content">
+        <div>
+          <h1 [ngStyle]="{color: this.colors[this.color].textColor}">{{title}}</h1>
+          <p>
+            {{description}}
+          </p>
+          <div class="timer" *ngIf="timerEnable">
+            <h2 [ngStyle]="{color: this.colors[this.color].textColor}">
+              {{timerText}}
+            </h2>
+            <div class="bar-container">
+              <div
+                class="progress-bar"
+                [ngStyle]="{'background': this.colors[this.color].gradient}"
+              ></div>
+              <span class="time">{{preparedTime}}</span>
+            </div>
+          </div>
+          <button
+            [ngStyle]="{'background': this.colors[this.color].primary, 'borderColor': this.colors[this.color].primary}"
+          >{{buttonText}}</button>
+
+          <div class="created-by">Created by <a [ngStyle]="{color: this.colors[this.color].primary}" href="">Submaster</a></div>
+          <div class="privacy-policy-container"><a [ngStyle]="{color: this.colors[this.color].textColor}" href="" class="privacy-policy">Privacy policy</a></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

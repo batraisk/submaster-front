@@ -5,7 +5,7 @@
 <!--        [nzActive]="true"-->
 <!--        nzHeader="{{ 'STATISTICS.TOTAL STATS' | translate }}"-->
 <!--      >-->
-<div >
+<div *ngIf="stats">
   <h1>{{ 'PAGE.STATISTICS' | translate }}</h1>
   <nz-space>
     <nz-select *nzSpaceItem [(ngModel)]="mode">
