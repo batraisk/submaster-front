@@ -20,6 +20,8 @@ import { Template1Component } from './components/mobile-view/templates/template1
 import { Template2Component } from './components/mobile-view/templates/template2/template2.component';
 import { Template3Component } from './components/mobile-view/templates/template3/template3.component';
 import { Template4Component } from './components/mobile-view/templates/template4/template4.component';
+import { Template5Component } from './components/mobile-view/templates/template5/template5.component';
+import { Template6Component } from './components/mobile-view/templates/template6/template6.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { Template4Component } from './components/mobile-view/templates/template4
     Template2Component,
     Template3Component,
     Template4Component,
-    SafePipe
+    SafePipe,
+    Template5Component,
+    Template6Component
   ],
   imports: [
     CommonModule,

@@ -1,12 +1,11 @@
 <div *ngIf="device == 'mobile'" class="device-container mobile" [ngStyle]="{color: this.colors[this.color].textColor}">
   <div style="height: 4px"></div>
   <div class="picture-container" [ngStyle]="{backgroundColor: this.colors[this.color].layoutColor}">
-    <div class="title" [ngStyle]="{backgroundColor: this.colors[this.color].bgColor}"><h1 [ngStyle]="{backgroundColor: this.colors[this.color].bgColor}">{{title}}</h1></div>
     <div class="image-container">
       <div class="image" *ngIf="!youtube" [ngStyle]="{'background': backgroundUrl ? 'right / cover url(' + backgroundUrl + ')' : '#eee'}"></div>
       <div class="image" *ngIf="youtube" class="youtube-control">
         <iframe
-          width="119"
+          width="149"
           height="139"
           [src] = "youtube | safe: 'resourceUrl'"
           title="YouTube video player"
@@ -23,6 +22,7 @@
   }">
     <div class="content">
       <div>
+        <h1 [ngStyle]="{color: this.colors[this.color].textColor}">{{title}}</h1>
         <p>
           {{description}}
         </p>
@@ -44,9 +44,6 @@
           'background': this.colors[this.color].primary,
           'borderColor': this.colors[this.color].primary }"
         >{{buttonText}}</button>
-        <div class="created-by">Created by <a [ngStyle]="{color: this.colors[this.color].primary}" href="">Submaster</a></div>
-        <div class="privacy-policy-container"><a [ngStyle]="{color: this.colors[this.color].textColor}" href="" class="privacy-policy">Privacy policy</a></div>
-
       </div>
     </div>
   </div>
@@ -56,34 +53,12 @@
 
 <div *ngIf="device == 'desktop'" class="device-container desktop" [ngStyle]="{color: this.colors[this.color].textColor}">
   <div class="desktop-screen">
-
-    <div class="column picture-container"  [ngStyle]="{backgroundColor: this.colors[this.color].layoutColor}">
-      <div class="title" [ngStyle]="{backgroundColor: this.colors[this.color].bgColor}">
-        <h1>{{title}}</h1>
-      </div>
-
-      <div class="image-container">
-        <div class="image" *ngIf="!youtube" [ngStyle]="{'background': backgroundUrl ? 'right / cover url(' + backgroundUrl + ')' : '#eee'}"></div>
-        <div class="image" *ngIf="youtube" class="youtube-control">
-          <iframe
-            width="184"
-            height="270"
-            [src] = "youtube | safe: 'resourceUrl'"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </div>
-
-    </div>
     <div class="column content-container" [ngStyle]="{
       backgroundColor: this.colors[this.color].layoutColor
     }">
       <div class="content">
         <div>
-<!--          <h1 [ngStyle]="{color: this.colors[this.color].textColor}">{{title}}</h1>-->
+          <h1 [ngStyle]="{color: this.colors[this.color].textColor}">{{title}}</h1>
           <p>
             {{description}}
           </p>
@@ -107,6 +82,23 @@
           <div class="privacy-policy-container"><a [ngStyle]="{color: this.colors[this.color].textColor}" href="" class="privacy-policy">Privacy policy</a></div>
         </div>
       </div>
+    </div>
+    <div class="column picture-container"  [ngStyle]="{backgroundColor: this.colors[this.color].layoutColor}">
+      <div class="image-container">
+        <div class="image" *ngIf="!youtube" [ngStyle]="{'background': backgroundUrl ? 'right / cover url(' + backgroundUrl + ')' : '#eee'}"></div>
+        <div class="image" *ngIf="youtube" class="youtube-control">
+          <iframe
+            width="244"
+            height="270"
+            [src] = "youtube | safe: 'resourceUrl'"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
     </div>
 
   </div>

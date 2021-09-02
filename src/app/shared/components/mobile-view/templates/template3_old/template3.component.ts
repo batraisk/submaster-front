@@ -1,13 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-template4',
-  templateUrl: './template4.component.html',
-  styleUrls: ['./template4.component.scss']
+  selector: 'app-template3',
+  templateUrl: './template3.component.html',
+  styleUrls: ['./template3.component.scss']
 })
-export class Template4Component implements OnInit {
+export class Template3Component implements OnInit {
   @Input() device: 'mobile' | 'desktop' = 'mobile';
-  @Input() color = 'default';
+  @Input() color = 'natural';
   @Input() title: '';
   @Input() description: '';
   @Input() timerText: '';
@@ -17,40 +17,33 @@ export class Template4Component implements OnInit {
   @Input() backgroundUrl: string | null = null;
   @Input() youtube: string | null = null;
   colors: any = {
-    default: {
+    natural: {
       primary: '#2F54EB',
-      bgColor: '#597EF7',
-      layoutColor: '#FFF',
-      gradient: 'linear-gradient(90deg, #2F54EB 55.12%, #ADC6FF 100%)',
-      textColor: '#1F1F1F',
+      gradient: 'linear-gradient(90deg, #2F54EB 55.12%, #ADC6FF 100%)'
+    },
+    gold: {
+      primary: '#FA541C',
+      gradient: 'linear-gradient(90deg, #FA541C 55.12%, #FFBB96 100%)'
+    },
+    lime: {
+      primary: '#7CB305',
+      gradient: 'linear-gradient(90deg, #A0D911 55.12%, #EAFF8F 100%)',
     },
     blue: {
-      primary: '#08979C',
-      bgColor: '#08979C',
-      layoutColor: '#F0F5FF',
-      gradient: 'linear-gradient(90deg, #13C2C2 55.12%, #87E8DE 100%)',
-      textColor: '#1F1F1F',
+      primary: '#1890FF',
+      gradient: 'linear-gradient(90deg, #1890FF 55.12%, #91D5FF 100%)',
     },
-    pink: {
+    magenta: {
       primary: '#EB2F96',
-      bgColor: '#EB2F96',
-      layoutColor: '#FFF0F6',
       gradient: 'linear-gradient(90deg, #EB2F96 55.12%, #FFADD2 100%)',
-      textColor: '#1F1F1F',
     },
-    mustard: {
-      primary: '#262626',
-      bgColor: '#262626',
-      layoutColor: '#ffd254',
+    yellow: {
+      primary: '#434343',
       gradient: 'linear-gradient(90deg, #262626 55.12%, #8C8C8C 100%)',
-      textColor: '#1F1F1F',
     },
-    dark: {
+    purple: {
       primary: '#722ED1',
-      bgColor: '#722ED1',
-      layoutColor: '#262626',
       gradient: 'linear-gradient(90deg, #722ED1 55.12%, #D3ADF7 100%)',
-      textColor: '#FFF',
     }
   };
   constructor() { }

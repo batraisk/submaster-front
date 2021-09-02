@@ -66,6 +66,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: left;
+    background-position-y: -1px;
 
     .top-bg {
       display: none;
@@ -151,7 +152,6 @@
   .youtube-control {
     position: absolute;
     z-index: 0;
-    border-radius: 12px;
     overflow: hidden;
   }
 }
@@ -306,9 +306,8 @@
   .youtube-control {
     position: absolute;
     z-index: 0;
-    left: 61px;
-    bottom: 93px;
-    border-radius: 4px;
+    left: 20px;
+    bottom: 32px;
     overflow: hidden;
   }
 }
