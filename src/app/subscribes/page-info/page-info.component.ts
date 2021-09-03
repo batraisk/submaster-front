@@ -12,6 +12,7 @@ import {NavigationService} from '@navigation-services';
 export class PageInfoComponent implements OnInit {
   pageId: number;
   page: any;
+  indexPage: number
 
   constructor(
     private pagesService: PagesService,
@@ -29,6 +30,10 @@ export class PageInfoComponent implements OnInit {
       this.page = page;
       this.navigationService.header = `CUSTOM {{${page.pageName}}}`;
     });
+  }
+
+  setIndex(index: number): void {
+    this.pageId = index;
   }
 
 }

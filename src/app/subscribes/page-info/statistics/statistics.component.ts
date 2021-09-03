@@ -18,7 +18,11 @@ export class StatisticsComponent implements OnInit {
   constructor(private statisticsService: StatisticsService) { }
 
   ngOnInit(): void {
-    this.getStats();
+    const params = {
+      date: format(this.date, 'Y-M-d'),
+      mode: this.mode
+    };
+    this.getStats(params);
   }
 
   getStats(params = null): void {
