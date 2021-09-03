@@ -30,6 +30,16 @@
     "CLICKS": "Показы",
     "CTR": "CTR"
   },
+  "UTM": {
+    "UTM TAGS": "UTM Метки",
+    "SOURCE": "Source",
+    "MEDIUM": "Medium",
+    "CAMPAIGN": "Campaign",
+    "CONTENT": "Content",
+    "CLICKS": "Показы",
+    "SUBSCRIPTIONS": "Подписки",
+    "CONVERSION": "Конверсия"
+  },
   "AUTH": {
     "EMAIL": "Почта",
     "PASSWORD": "Пароль",
