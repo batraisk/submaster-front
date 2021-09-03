@@ -30,6 +30,16 @@
     "CLICKS": "Clicks",
     "CTR": "CTR"
   },
+  "UTM": {
+    "UTM TAGS": "UTM Tags",
+    "SOURCE": "Source",
+    "MEDIUM": "Medium",
+    "CAMPAIGN": "Campaign",
+    "CONTENT": "Content",
+    "CLICKS": "Сlicks",
+    "SUBSCRIPTIONS": "Subscriptions",
+    "CONVERSION": "Conversion"
+  },
   "AUTH": {
     "EMAIL": "Email",
     "PASSWORD": "Password",

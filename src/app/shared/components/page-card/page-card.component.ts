@@ -30,7 +30,15 @@ export class PageCardComponent implements OnInit {
       return match[2];
     }
     return '';
-  };
+  }
+
+  // getInstaAvatar = (): void => {
+  //   fetch(`https://www.instagram.com/${this.page.instagramLogin}/?__a=1`).then(res =>
+  //     res.json().then(resp => {
+  //       console.log(resp);
+  //     }));
+  // }
+  // https://www.instagram.com/user/?__a=1
 
   goToInfo(id: number): void {
     this.router.navigate(['/subscribe-pages', id]);

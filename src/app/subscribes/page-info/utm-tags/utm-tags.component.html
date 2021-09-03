@@ -1,5 +1,5 @@
 <div class="logins-container mt-3">
-  <h1>UTM Tags ({{utmTags.length}})</h1>
+  <h1>{{'UTM.UTM TAGS' | translate}} ({{utmTags.length}})</h1>
   <div class="actions-row d-flex justify-space-between">
     <nz-range-picker
       nzFormat="yyyy-MM-dd"
@@ -13,25 +13,38 @@
   <nz-table [nzTotal]="total" [nzPageSize]="20" class="mt-4" #sortTable [nzData]="utmTags" [nzFrontPagination]="false" (nzQueryParams)="onQueryParamsChange($event)">
     <thead>
     <tr>
-      <th  [nzSortFn]="true" nzColumnKey="name" [nzSortPriority]="1">
-<!--        {{ 'PAGE.LOGIN' | translate }}-->
-        source
+      <th  [nzSortFn]="true" nzColumnKey="utm_source" [nzSortPriority]="1">
+        {{ 'UTM.SOURCE' | translate }}
       </th>
-      <th  [nzSortFn]="true" nzColumnKey="created_at" [nzSortPriority]="2">
-<!--        {{ 'PAGE.DATE' | translate }}-->
-        medium
+      <th  [nzSortFn]="true" nzColumnKey="utm_medium" [nzSortPriority]="2">
+        {{ 'UTM.MEDIUM' | translate }}
       </th>
-      <th  [nzSortFn]="true" nzColumnKey="status" [nzSortPriority]="3">
-<!--        {{ 'PAGE.STATUS' | translate }}-->
-        campaign
+      <th  [nzSortFn]="true" nzColumnKey="utm_campaign" [nzSortPriority]="3">
+        {{ 'UTM.CAMPAIGN' | translate }}
+      </th>
+      <th  [nzSortFn]="true" nzColumnKey="utm_content" [nzSortPriority]="4">
+        {{ 'UTM.CONTENT' | translate }}
+      </th>
+      <th  [nzSortFn]="true" nzColumnKey="clicks" [nzSortPriority]="5">
+        {{ 'UTM.CLICKS' | translate }}
+      </th>
+      <th  [nzSortFn]="true" nzColumnKey="subscriptions" [nzSortPriority]="6">
+        {{ 'UTM.SUBSCRIPTIONS' | translate }}
+      </th>
+      <th  [nzSortFn]="true" nzColumnKey="conversion" [nzSortPriority]="7">
+        {{ 'UTM.CONVERSION' | translate }}
       </th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let data of sortTable.data">
-      <td>{{ data.source }}</td>
-      <td>{{ data.medium }}</td>
-      <td>{{ data.campaign }}</td>
+      <td>{{ data.utm_source }}</td>
+      <td>{{ data.utm_medium }}</td>
+      <td>{{ data.utm_campaign }}</td>
+      <td>{{ data.utm_content }}</td>
+      <td>{{ data.clicks }}</td>
+      <td>{{ data.subscriptions }}</td>
+      <td>{{ data.conversion }}%</td>
     </tr>
     </tbody>
   </nz-table>

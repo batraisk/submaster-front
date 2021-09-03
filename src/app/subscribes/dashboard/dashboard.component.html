@@ -18,7 +18,7 @@
       <app-page-card [page]="page"></app-page-card>
     </div>
   </div>
-  <div nz-col [nzSpan]="10" [nzXl]="10">
+  <div nz-col [nzSpan]="10" [nzXl]="10" *ngIf="stats">
     <nz-card [nzBorderless]="true" class="ml-5" [nzBodyStyle]="{padding: '0'}">
       <nz-collapse nzGhost>
         <nz-collapse-panel
@@ -46,7 +46,7 @@
                 <div style="position: relative; min-width: 89px; text-align: right;">
                   <span class="total-count">{{stats.clicks.total_count}}</span>
                   <div style="position: absolute; right: 0" class="trend-value {{stats.clicks.trendDirection}}">
-                    <i nz-icon nzType="caret-up" nzTheme="outline"></i>{{stats.clicks.trend}}%
+                    <i *ngIf="stats.clicks && stats.clicks.trend !== 0" nz-icon nzType="caret-up" nzTheme="outline"></i>{{stats.clicks.trend}}%
                   </div>
                 </div>
               </div>
@@ -63,7 +63,7 @@
                 <div style="position: relative; min-width: 89px; text-align: right;">
                   <span class="total-count">{{stats.subscribers.total_count}}</span>
                   <div style="position: absolute; right: 0" class="trend-value {{stats.subscribers.trendDirection}}">
-                    <i nz-icon nzType="caret-up" nzTheme="outline"></i>{{stats.subscribers.trend}}%
+                    <i *ngIf="stats.clicks && stats.subscribers.trend !== 0" nz-icon nzType="caret-up" nzTheme="outline"></i>{{stats.subscribers.trend}}%
                   </div>
                 </div>
               </div>
@@ -80,7 +80,7 @@
                 <div style="position: relative; min-width: 89px; text-align: right;">
                   <span class="total-count">{{stats.ctr.total_count}}%</span>
                   <div style="position: absolute; right: 0" class="trend-value {{stats.ctr.trendDirection}}">
-                    <i nz-icon nzType="caret-up" nzTheme="outline"></i>{{stats.ctr.trend}}%
+                    <i *ngIf="stats.clicks && stats.ctr.trend !== 0" nz-icon nzType="caret-up" nzTheme="outline"></i>{{stats.ctr.trend}}%
                   </div>
                 </div>
               </div>

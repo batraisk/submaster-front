@@ -1,9 +1,9 @@
-<nz-tabset [nzTabBarExtraContent]="extraTemplate">
+<nz-tabset (nzSelectedIndexChange)="setIndex($event)" [nzTabBarExtraContent]="extraTemplate">
   <nz-tab  nzTitle="{{ 'PAGE.LOGIN LIST' | translate }}">
     <app-logins *ngIf="page" [page]="page"></app-logins>
   </nz-tab>
   <nz-tab  nzTitle="{{ 'PAGE.STATISTICS' | translate }}">
-    <app-statistics *ngIf="page" [page]="page"></app-statistics>
+    <app-statistics *ngIf="page && pageId === 1" [page]="page"></app-statistics>
   </nz-tab>
   <nz-tab  nzTitle="{{ 'PAGE.UTM TAGS' | translate }}">
     <app-utm-tags *ngIf="page" [page]="page"></app-utm-tags>
