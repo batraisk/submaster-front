@@ -30,6 +30,7 @@ export class GraphWrapperComponent implements OnChanges, OnDestroy, AfterViewIni
 
   @Input() height = 400;
   @Input() dataName = '';
+  @Input() countName = '';
   @Input() width = 400;
   @Input() data: any = null;
   @Input() public counter = 10;
@@ -64,7 +65,7 @@ export class GraphWrapperComponent implements OnChanges, OnDestroy, AfterViewIni
 
     if (el && this.data) {
       ReactDOM.render(<div className={'i-am-classy'}>
-        <GraphComponent data={this.data} height={this.height} width={this.width}/>
+        <GraphComponent data={this.data} countName={this.countName} height={this.height} width={this.width}/>
       </div>, document.getElementById(this.dataName));
     }
   }

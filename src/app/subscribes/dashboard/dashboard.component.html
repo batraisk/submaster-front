@@ -40,7 +40,7 @@
             <h1>{{ 'STATISTICS.CLICKS' | translate }}</h1>
             <div class="w-100 d-flex">
               <div class="graph-container" style="width: 200px">
-                <app-stats-graph [data]="stats.clicks.data" dataName="clicks" [height]="77" width="200"></app-stats-graph>
+                <app-stats-graph countName="{{ 'STATISTICS.CLICKS' | translate }}" [data]="stats.clicks.data" dataName="clicks" [height]="77" width="200"></app-stats-graph>
               </div>
               <div style="text-align:center; flex-grow: 2; display: flex; justify-content: center; align-items: center">
                 <div style="position: relative; min-width: 89px; text-align: right;">
@@ -57,7 +57,7 @@
             <h1>{{ 'STATISTICS.SUBSCRIBERS' | translate }}</h1>
             <div class="w-100 d-flex">
               <div class="graph-container" style="width: 200px">
-                <app-stats-graph [data]="stats.subscribers.data" dataName="subscribers" [height]="77" width="200"></app-stats-graph>
+                <app-stats-graph countName="{{ 'STATISTICS.SUBSCRIBERS' | translate }}" [data]="stats.subscribers.data" dataName="subscribers" [height]="77" width="200"></app-stats-graph>
               </div>
               <div style="text-align:center; flex-grow: 2; display: flex; justify-content: center; align-items: center">
                 <div style="position: relative; min-width: 89px; text-align: right;">
@@ -74,7 +74,7 @@
             <h1>{{ 'STATISTICS.CTR' | translate }}</h1>
             <div class="w-100 d-flex">
               <div class="graph-container" style="width: 200px">
-                <app-stats-graph [data]="stats.ctr.data" dataName="ctr" [height]="77" width="200"></app-stats-graph>
+                <app-stats-graph countName="{{ 'STATISTICS.CTR' | translate }}" [data]="stats.ctr.data" dataName="ctr" [height]="77" width="200"></app-stats-graph>
               </div>
               <div style="text-align:center; flex-grow: 2; display: flex; justify-content: center; align-items: center">
                 <div style="position: relative; min-width: 89px; text-align: right;">
