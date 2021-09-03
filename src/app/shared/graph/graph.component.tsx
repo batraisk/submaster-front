@@ -8,13 +8,14 @@ import './GraphComponent.scss';
 export interface IProps {
   height: number;
   width: number;
+  countName: string;
   data: any;
 }
 
 
 export const GraphComponent: React.FC<IProps> = (props: IProps) => {
   // const [data, setData] = useState([]);
-  const {height, width, data} = props;
+  const {height, width, data, countName} = props;
   // useEffect(() => {
   //   asyncFetch();
   // }, []);
@@ -48,6 +49,7 @@ export const GraphComponent: React.FC<IProps> = (props: IProps) => {
       },
       count: {
         tickCount: 3,
+        alias: countName || 'count'
       }
     },
     autoFit: true,
