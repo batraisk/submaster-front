@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   constructor(
     public router: Router,
     public translate: TranslateService,
-    private userService: UserService,
+    public userService: UserService,
     private authenticationService: AuthenticationService,
     private navigationService: NavigationService) {
   }

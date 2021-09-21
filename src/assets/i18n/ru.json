@@ -60,7 +60,11 @@
     "NEW PASSWORD": "Новый пароль",
     "CONFIRM PASSWORD": "Подтвердите пароль",
     "PASSWORD CHANGED": "Пароль успешно изменен",
-    "EMAIL CHANGED": "Почта успешно изменена"
+    "EMAIL CHANGED": "Почта успешно изменена",
+    "PASSWORD RECOVERY": "Восстановление пароля",
+    "DO YOU HAVE": "У вас есть аккаунт?",
+    "SEND LINK": "Мы отправили ссылку для восстановления пароля. Проверьте почту",
+    "GO TO LOG IN": "Войти"
   },
   "PAGE": {
     "EDIT PAGE DETAILS": "Основная информация",

@@ -60,7 +60,11 @@
     "NEW PASSWORD": "New password",
     "CONFIRM PASSWORD": "Confirm password",
     "PASSWORD CHANGED": "Password changed",
-    "EMAIL CHANGED": "Email changed"
+    "EMAIL CHANGED": "Email changed",
+    "PASSWORD RECOVERY": "Password recovery",
+    "DO YOU HAVE": "Do you have an account?",
+    "SEND LINK": "We have sent you a link to reset your password. Check your mail",
+    "GO TO LOG IN": "Go to Log in"
   },
   "PAGE": {
     "EDIT PAGE DETAILS": "Edit page details",

@@ -47,6 +47,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   goToNewPage(): void {
+    this.router.onSameUrlNavigation = 'reload';
     this.router.navigate(['/subscribe-pages/new'], { replaceUrl: true });
   }
 

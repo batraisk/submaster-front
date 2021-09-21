@@ -1,5 +1,5 @@
-<nz-layout class="app-layout" *ngIf="router.url.indexOf('/auth/') == -1">
-  <nz-sider [nzWidth]="256" [ngClass]="{'close': !isOpen}">
+<nz-layout class="app-layout">
+  <nz-sider [nzWidth]="256" [ngClass]="{'close': !isOpen}" *ngIf="router.url.indexOf('/auth/') == -1">
     <div class="sidebar-logo" (click)="goToHome()">
       <img src="assets/images/icons/logo.svg" alt="">
       <h1>SubMaster</h1>
@@ -29,7 +29,7 @@
         <i nz-icon nzType="thunderbolt" nzTheme="fill"></i>
         <span>{{ 'MENU.ONLINE COURSE' | translate }}</span>
       </li>
-      <li nz-menu-item (click)="logOut()">
+      <li nz-menu-item (click)="goToLogin()">
         <i nz-icon nzType="logout" nzTheme="outline"></i>
         <span>{{ 'MENU.LOGOUT' | translate }}</span>
       </li>
@@ -39,21 +39,23 @@
     </ul>
   </nz-sider>
   <div class="banner" *ngIf="isOpen" (click)="closeMenu()"></div>
+
   <nz-layout>
-    <app-header *ngIf="userService.currentUserInfo"></app-header>
+    <app-header *ngIf=" router.url.indexOf('/auth/') == -1 && userService.currentUserInfo"></app-header>
     <nz-content class="site-content">
-      <div class="inner-content">
+      <div
+        [ngClass]="{'inner-content': router.url.indexOf('/auth/') == -1,'h-100 d-flex align-items-center justify-content-center': router.url.indexOf('/auth/') !== -1}">
         <router-outlet></router-outlet>
       </div>
     </nz-content>
   </nz-layout>
 </nz-layout>
 
-<nz-layout *ngIf="router.url.indexOf('/auth/') != -1" style="height:100vh">
-  <nz-content class="d-flex align-items-center justify-content-center" style="height:100%">
-      <router-outlet></router-outlet>
-  </nz-content>
-</nz-layout>
+<!--<nz-layout *ngIf="router.url.indexOf('/auth/') != -1" style="height:100vh">-->
+<!--  <nz-content class="d-flex align-items-center justify-content-center" style="height:100%">-->
+<!--      <router-outlet></router-outlet>-->
+<!--  </nz-content>-->
+<!--</nz-layout>-->
 <!--<div>-->
 <!--  <h2>{{ 'HOME.TITLE' | translate }}</h2>-->
 <!--  <label>-->

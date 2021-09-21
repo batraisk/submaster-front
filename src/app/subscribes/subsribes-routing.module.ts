@@ -39,7 +39,11 @@ const routes: Routes = [
   // },
   // { path: 'subscribe-pages/new', component: NewPageComponent },
   { path: '', pathMatch: 'full', redirectTo: 'subscribes-pages' },
-  { canActivate: [AuthenticationGuard], path: 'subscribes-pages', component: DashboardComponent },
+  {
+    canActivate: [AuthenticationGuard],
+    path: 'subscribes-pages', component:
+    DashboardComponent
+  },
 ];
 
 @NgModule({
