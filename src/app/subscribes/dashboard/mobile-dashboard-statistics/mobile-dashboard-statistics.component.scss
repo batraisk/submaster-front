@@ -1,0 +1,57 @@
+.total-count {
+  color: #8C8C8C;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 47px;
+}
+
+.title {
+  font-size: 22px;
+  line-height: 35px;
+  margin-bottom: 16px;
+
+  img {
+    cursor: pointer;
+    margin-right: 16px;
+  }
+}
+
+.trend-value {
+  font-size: 12px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  i {
+    margin-right: 5px;
+  }
+  &.up {
+    color: #52C41A;
+  }
+  &.down {
+    color: #FF7A45;
+    i {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.full-height {
+  min-height: 100vh;
+}
+
+.container-card {
+  box-shadow: none;
+  position: fixed;
+  width: 100%;
+
+  ::ng-deep {
+    .ant-card-body {
+      height: calc(100vh - 58px);
+      overflow: scroll;
+    }
+  }
+
+  nz-select, nz-date-picker {
+    width: 100%;
+  }
+}

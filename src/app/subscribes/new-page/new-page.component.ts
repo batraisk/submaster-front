@@ -14,11 +14,13 @@ export class NewPageComponent implements OnInit, OnDestroy {
   current = 0;
   page: any;
   currentFrom: any;
+  isMobile = false;
 
   constructor(private router: Router, private pagesService: PagesService) {}
 
   ngOnInit(): void {
     this.page = {};
+    this.isMobile = document.body.clientWidth < 670;
   }
 
   setPage(event): void {

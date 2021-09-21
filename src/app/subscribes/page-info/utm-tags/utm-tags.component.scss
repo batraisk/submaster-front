@@ -1,0 +1,29 @@
+@media only screen and (max-width: 669px) {
+  h1 {
+    margin-bottom: 0;
+  }
+  .page-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    .show-more {
+      font-size: 14px;
+      line-height: 22px;
+      color: #2F54EB;
+    }
+  }
+
+  .actions-row {
+    display: block;
+    nz-range-picker {
+      width: 100%;
+    }
+
+    button {
+      margin-top: 16px;
+      width: 100%;
+    }
+  }
+}

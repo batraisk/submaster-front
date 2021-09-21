@@ -1,6 +1,11 @@
+<div class="page-title" *ngIf="this.isMobile">
+  <h1>{{ 'PAGE.PAGE SETTINGS' | translate }}</h1>
+  <div class="show-more" (click)="showMenu()">{{'PAGE.SHOW MORE' | translate}}</div>
+</div>
 <form nz-form [formGroup]="pageForm" *ngIf="page">
   <div nz-row>
-    <div nz-col [nzSpan]="11" [nzXl]="8">
+    <div nz-col [nzSpan]="11" [nzXl]="8" [nzMd]="24" [nzSm]="24" [nzXs]="24">
+<!--      [nzXl]="10" [nzMd]="24" [nzSm]="24" [nzXs]="24"-->
       <h1>{{ 'PAGE.MAIN INFO' | translate }}</h1>
       <nz-space nzDirection="vertical" [nzSize]="'large'" class="mt-4" style="width:100%">
         <nz-form-item *nzSpaceItem>
@@ -31,9 +36,9 @@
           </nz-form-control>
         </nz-form-item>
 
-        <nz-form-item *nzSpaceItem>
-          <nz-form-label >{{ 'PAGE.STATUS' | translate }}</nz-form-label>
-          <nz-form-control class="mt-2">
+        <nz-form-item *nzSpaceItem class="status-row">
+          <nz-form-label class="status-label">{{ 'PAGE.STATUS' | translate }}</nz-form-label>
+          <nz-form-control class="mt-2 switch-control">
             <nz-switch
               id="status"
               formControlName="status"
@@ -41,16 +46,16 @@
               nzUnCheckedChildren="{{ 'STATUSES.INACTIVE' | translate }}"
             ></nz-switch>
           </nz-form-control>
-          <nz-form-control style="align-items: flex-end;">
+          <nz-form-control class="remove-container" style="align-items: flex-end;">
             <button (click)="showDeleteConfirm()" [nzDanger]="true" nz-button nzType="text" nzSize="small">{{ 'ACTIONS.DELETE' | translate }}</button>
           </nz-form-control>
         </nz-form-item>
       </nz-space>
     </div>
-    <div nz-col nzSpan="1" style="text-align:center; padding: 10px 0;">
+    <div *ngIf="!isMobile" nz-col nzSpan="1" style="text-align:center; padding: 10px 0;">
       <nz-divider [nzOrientation]="'center'" [nzType]="'vertical'" style="height: 100%;"></nz-divider>
     </div>
-    <div nz-col [nzSpan]="11" [nzXl]="8">
+    <div nz-col [nzSpan]="11" [nzXl]="8" [nzMd]="24" [nzSm]="24" [nzXs]="24">
       <h1>{{ 'PAGE.METRICS' | translate }}</h1>
       <nz-space nzDirection="vertical" [nzSize]="'large'" class="mt-4" style="width:100%">
         <nz-form-item *nzSpaceItem>
@@ -78,17 +83,17 @@
   </div>
 
   <div nz-row class="mt-5">
-    <div nz-col [nzSpan]="11" [nzXl]="8">
+    <div nz-col [nzSpan]="11" [nzXl]="8" [nzMd]="24" [nzSm]="24" [nzXs]="24">
       <h1>{{ 'PAGE.WELCOME PAGE INFO' | translate }}</h1>
       <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
         <nz-form-item *nzSpaceItem>
           <nz-form-label [nzSpan]="24">{{ 'PAGE.BACKGROUND' | translate }}</nz-form-label>
           <div nz-row style="width:100%" class="mt-2">
-            <div nz-col [nzSpan]="11" [nzXl]="10">
+            <div nz-col [nzSpan]="11" [nzXl]="10" [nzMd]="24" [nzSm]="24" [nzXs]="24">
               <button (click)="showModalYoutube()" nz-button [nzBlock]="true" nzType="primary" nzSize="small" [nzGhost]="true">{{ 'PAGE.YOUTUBE LINK' | translate }}</button>
             </div>
-            <div nz-col [nzSpan]="2" [nzXl]="4" style="text-align:center; line-height:30px">{{ 'PAGE.OR' | translate }}</div>
-            <div nz-col [nzSpan]="11" [nzXl]="10">
+            <div nz-col [nzSpan]="2" [nzXl]="4" [nzMd]="24" [nzSm]="24" [nzXs]="24" style="text-align:center; line-height:30px">{{ 'PAGE.OR' | translate }}</div>
+            <div nz-col [nzSpan]="11" [nzXl]="10" [nzMd]="24" [nzSm]="24" [nzXs]="24">
               <button (click)="fileInput.click()" nz-button [nzBlock]="true" nzType="primary" nzSize="small" [nzGhost]="true">{{ 'PAGE.UPLOAD IMAGE' | translate }}</button>
               <input #fileInput (change)="onSelectFile($event)" hidden type="file" formControlName="background">
             </div>
@@ -164,16 +169,16 @@
       </nz-space>
     </div>
 
-    <div nz-col nzSpan="1" style="text-align:center; padding: 10px 0;">
+    <div *ngIf="!isMobile" nz-col nzSpan="1" style="text-align:center; padding: 10px 0;">
       <nz-divider [nzOrientation]="'center'" [nzType]="'vertical'" style="height: 100%;"></nz-divider>
     </div>
 
-    <div nz-col [nzSpan]="11" [nzXl]="15">
+    <div class="margin-section-container" nz-col [nzSpan]="11" [nzXl]="15" [nzMd]="24" [nzSm]="24" [nzXs]="24">
       <h1>{{ 'PAGE.DESIGN' | translate }}</h1>
       <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
         <nz-form-item *nzSpaceItem>
           <div nz-row style="width:100%">
-            <div nz-col [nzSpan]="11">
+            <div nz-col [nzSpan]="11" [nzMd]="24" [nzSm]="24" [nzXs]="24">
               <nz-form-label [nzSpan]="24" nzFor="timer-text">{{ 'PAGE.LAYOUT' | translate }}</nz-form-label>
               <nz-form-control [nzSpan]="24" class="mt-2 w-100">
                 <nz-select formControlName="layout" class="w-100">
@@ -188,8 +193,8 @@
                 </nz-select>
               </nz-form-control>
             </div>
-            <div nz-col [nzSpan]="1"></div>
-            <div nz-col [nzSpan]="12">
+            <div nz-col [nzSpan]="1" [nzMd]="0" [nzSm]="0" [nzXs]="0"></div>
+            <div nz-col class="color-theme-container" [nzSpan]="12" [nzMd]="24" [nzSm]="24" [nzXs]="24">
               <nz-form-label [nzSpan]="24" nzFor="theme">{{ 'PAGE.COLOR THEME' | translate }}</nz-form-label>
               <nz-form-control [nzSpan]="24" class="mt-2 w-100">
                 <nz-radio-group [nzSize]="'large'" formControlName="theme" nzName="theme">
@@ -236,7 +241,7 @@
 
 
   <div nz-row class="mt-5">
-    <div nz-col [nzSpan]="11" [nzXl]="8">
+    <div nz-col [nzSpan]="11" [nzXl]="8" [nzMd]="24" [nzSm]="24" [nzXs]="24">
       <h1>{{ 'PAGE.SUCCESS PAGE' | translate }}</h1>
       <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
         <nz-form-item *nzSpaceItem>
@@ -268,11 +273,11 @@
       </nz-space>
     </div>
 
-    <div nz-col nzSpan="1" style="text-align:center; padding: 10px 0;">
+    <div *ngIf="!isMobile" nz-col nzSpan="1" style="text-align:center; padding: 10px 0;">
       <nz-divider [nzOrientation]="'center'" [nzType]="'vertical'" style="height: 100%;"></nz-divider>
     </div>
 
-    <div nz-col [nzSpan]="11" [nzXl]="8">
+    <div class="margin-section-container" nz-col [nzSpan]="11" [nzXl]="8" [nzMd]="24" [nzSm]="24" [nzXs]="24">
       <h1>{{ 'PAGE.OUT OF STOCK PAGE' | translate }}</h1>
       <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
         <nz-form-item *nzSpaceItem>
@@ -292,7 +297,7 @@
       </nz-space>
     </div>
   </div>
-  <button class="mt-5 mb-5" nz-button nzType="primary" (click)="onSubmit()">{{ 'ACTIONS.SAVE' | translate }}</button>
+  <button class="mt-5 mb-5 submit-button" nz-button nzType="primary" (click)="onSubmit()">{{ 'ACTIONS.SAVE' | translate }}</button>
 </form>
 
 <nz-modal [(nzVisible)]="isVisibleYoutubeModal" nzTitle="{{ 'PAGE.YOUTUBE LINK' | translate }}" (nzOnCancel)="handleCancelModal()">

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {makeYoutubeEmbed, matchYoutubeUrl, selectFile, toSnakeCaseObject} from '@helpers';
 import {Router} from '@angular/router';
@@ -15,6 +15,7 @@ import {environment} from '@environment';
 export class PageSettingsComponent implements OnInit {
   @Input() page;
   @ViewChild('fileInput') fileInput: any;
+  @Output() openMenu = new EventEmitter<any>();
   baseUrl = environment.apiUrl;
   domain = 'https://submaster.com/';
   pageForm: FormGroup;
@@ -27,6 +28,7 @@ export class PageSettingsComponent implements OnInit {
   backgroundName: string | null = null;
   isVisibleYoutubeModal = false;
   youtubeLink = '';
+  isMobile = false;
   youtube: string | null = null;
   fileTypes: string[] = [
     'image/jpeg',
@@ -73,6 +75,7 @@ export class PageSettingsComponent implements OnInit {
     });
     if (this.page.background) { this.backgroundUrl = this.baseUrl + this.page.background; }
     this.youtube = this.page.youtube;
+    this.isMobile = document.body.clientWidth < 670;
   }
 
   onSelectFile(event): void {
@@ -111,6 +114,10 @@ export class PageSettingsComponent implements OnInit {
     this.pagesService.updatePage(this.page.id, formData).subscribe(res => {
       this.router.navigate(['/']);
     });
+  }
+
+  showMenu(): void {
+    this.openMenu.emit();
   }
 
   showDeleteConfirm(): void {

@@ -41,4 +41,78 @@
   .promo-content {
     width: 240px;
   }
+
+  .promo-container {
+    display: flex; align-items: flex-end;
+  }
+  .promo-input-container {
+    width: 170px
+  }
+}
+
+@media only screen and (max-width: 669px) {
+  .value-control, button {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+  .slider {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    ::ng-deep {
+      .ant-slider {
+        margin-top: 24px;
+        margin-bottom: 24px;
+      }
+    }
+  }
+
+  .balance-container {
+    .row {
+      display: block;
+      width: 100%;
+    }
+    .promo-container {
+      display: block;
+
+      button {
+        margin-top: 24px;
+      }
+    }
+
+    .promo-content {
+      width: 100%;
+    }
+    .promo-input-container {
+      width: 100%;
+      margin-bottom: 24px;
+    }
+  }
+
+  .mobile-table {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+    .title {
+      margin-top: 16px;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 22px;
+    }
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 40px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    .name {
+      text-align: left;
+    }
+  }
+
 }

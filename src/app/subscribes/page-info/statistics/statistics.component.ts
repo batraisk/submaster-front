@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { StatisticsService } from '@subscribes-services';
-import {kFormatter} from "@helpers";
-import {format} from "date-fns";
+import {kFormatter} from '@helpers';
+import {format} from 'date-fns';
 
 @Component({
   selector: 'app-statistics',
@@ -10,8 +10,10 @@ import {format} from "date-fns";
 })
 export class StatisticsComponent implements OnInit {
   @Input() page;
+  @Output() openMenu = new EventEmitter<any>();
   stats: any;
   mode = 'date';
+  isMobile = false;
   date = new Date();
   statsList = ['clicks', 'subscribers', 'ctr'];
 
@@ -23,6 +25,7 @@ export class StatisticsComponent implements OnInit {
       mode: this.mode
     };
     this.getStats(params);
+    this.isMobile = document.body.clientWidth < 670;
   }
 
   getStats(params = null): void {
@@ -38,6 +41,10 @@ export class StatisticsComponent implements OnInit {
         }
       });
     });
+  }
+
+  showMenu(): void {
+    this.openMenu.emit();
   }
 
   changeStateRange(e): void {

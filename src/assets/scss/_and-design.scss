@@ -109,3 +109,37 @@
 .ant-card {
   box-shadow: 0px 2px 8px 0px #00000026;
 }
+
+@media only screen and (max-width: 669px) {
+  .ant-picker-dropdown-range {
+    .ant-picker-date-panel {
+      .ant-picker-content {
+        width: 300px!important;
+        td {
+          padding: 6px 0;
+        }
+      }
+      width: 320px!important;
+      .ant-picker-cell-inner {
+        font-size: 24px;
+      }
+    }
+    .ant-picker-panel {
+      &:last-child {
+        width: 0;
+        .ant-picker-header {
+          position: absolute;
+          right: 0;
+          .ant-picker-header-prev-btn, .ant-picker-header-view {
+            visibility: hidden;
+          }
+        }
+
+        .ant-picker-body {
+          display: none;
+        }
+      }
+    }
+
+  }
+}

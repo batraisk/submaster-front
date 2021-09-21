@@ -85,3 +85,27 @@ h1 {
 body {
   font-family: Roboto;
 }
+
+
+
+@media only screen and (min-width: 1024px) {
+  .hide-for-fullscreen {
+    display: none!important;
+  }
+}
+@media only screen and (max-width: 1023px) and (min-width: 670px) {
+  .hide-for-tablet {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 669px) {
+  .hide-for-mobile {
+    display: none !important;
+  }
+  //::ng-deep {
+  //  .hide-for-mobile {
+  //    display: none;
+  //  }
+  //}
+}

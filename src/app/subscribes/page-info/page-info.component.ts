@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { PagesService } from '@subscribes-services';
 // @ts-ignore
 import {NavigationService} from '@navigation-services';
@@ -12,17 +12,63 @@ import {NavigationService} from '@navigation-services';
 export class PageInfoComponent implements OnInit {
   pageId: number;
   page: any;
-  indexPage: number
+  indexTab = 0;
+  isMobile = false;
+  isVisibleMenu = false;
 
   constructor(
     private pagesService: PagesService,
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private navigationService: NavigationService,
   ) {
     this.activatedRoute
       .params
-      .subscribe(params => (this.pageId = params.id)
-      );
+      .subscribe(params => {
+        this.pageId = params.id;
+      });
+    this.activatedRoute.queryParams.subscribe( paramMap => {
+      const tab = paramMap.tab;
+      if (tab) {
+        switch (tab) {
+          case 'logins':
+            this.indexTab = 0;
+            break;
+          case 'statistics':
+            this.indexTab = 1;
+            break;
+          case 'utm':
+            this.indexTab = 2;
+            break;
+          case 'edit':
+            this.indexTab = 3;
+            break;
+          default:
+            this.indexTab = 0;
+        }
+      }
+    });
+  }
+
+  handleCancel(): void {
+    this.isVisibleMenu = false;
+  }
+
+  openMenu(): void {
+    this.isVisibleMenu = true;
+  }
+
+  goToInfo(tab: string): void {
+    this.router.navigate(['/subscribe-pages', this.page.id], { queryParams: { tab } });
+    this.isVisibleMenu = false;
+  }
+
+  goToPage(): void {
+    window.location.href = `https://submaster.pro/pages/${this.page.url}`;
+  }
+
+  close(): void {
+    this.router.navigate(['/subscribes-pages']);
   }
 
   ngOnInit(): void {
@@ -30,10 +76,11 @@ export class PageInfoComponent implements OnInit {
       this.page = page;
       this.navigationService.header = `CUSTOM {{${page.pageName}}}`;
     });
+    this.isMobile = document.body.clientWidth < 670;
   }
 
   setIndex(index: number): void {
-    this.pageId = index;
+    this.indexTab = index;
   }
 
 }

@@ -1,6 +1,14 @@
 <div class="locale-container">
-  <button #toggleButton (click)="toggleOpen()" nz-button class="locale" nzType="text" nzSize="default"><img [src]="activeLocale.icon">{{activeLocale.label}}</button>
+  <button #toggleButton (click)="toggleOpen()" nz-button class="locale" nzType="text" nzSize="default"><img [src]="activeLocale.icon">
+    <span class="hide-for-tablet hide-for-mobile">
+      {{activeLocale.label}}
+    </span>
+  </button>
   <div class="dropdown" *ngIf="open" #menu>
-    <button (click)="setLang(lang)" *ngFor="let lang of langs" nz-button class="locale" nzType="text" nzSize="default"><img [src]="lang.icon">{{lang.label}}</button>
+    <button (click)="setLang(lang)" *ngFor="let lang of langs" nz-button class="locale" nzType="text" nzSize="default"><img [src]="lang.icon">
+      <span class="hide-for-tablet hide-for-mobile">
+        {{lang.label}}
+      </span>
+    </button>
   </div>
 </div>

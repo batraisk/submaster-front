@@ -1,0 +1,25 @@
+.title {
+  font-size: 22px;
+  line-height: 35px;
+  margin-bottom: 24px;
+}
+::ng-deep {
+  .ant-list-item {
+    font-size: 16px;
+    line-height: 24px;
+    font-family: Roboto;
+    font-weight: normal;
+    justify-content: center;
+  }
+}
+
+.model-menu {
+  ::ng-deep {
+    .ant-list-item {
+      justify-content: center;
+    }
+    nz-list-item {
+      justify-content: center;
+    }
+  }
+}

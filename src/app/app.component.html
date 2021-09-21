@@ -1,5 +1,5 @@
 <nz-layout class="app-layout" *ngIf="router.url.indexOf('/auth/') == -1">
-  <nz-sider [nzWidth]="256">
+  <nz-sider [nzWidth]="256" [ngClass]="{'close': !isOpen}">
     <div class="sidebar-logo" (click)="goToHome()">
       <img src="assets/images/icons/logo.svg" alt="">
       <h1>SubMaster</h1>
@@ -7,31 +7,23 @@
     <ul nz-menu nzMode="inline" class="menu">
       <li nz-menu-item [nzSelected]="true" nzMatchRouter>
         <i nz-icon nzType="copy" nzTheme="fill"></i>
-
-        <a [routerLink]="['/', 'subscribes-pages']">{{ 'MENU.PAGES' | translate }}</a>
-
-<!--        <span>{{ 'MENU.PAGES' | translate }} (2)</span>-->
+        <a (click)="closeMenu()" [routerLink]="['/', 'subscribes-pages']">{{ 'MENU.PAGES' | translate }}</a>
       </li>
       <li nz-menu-item nzMatchRouter>
         <i nz-icon nzType="wallet" nzTheme="fill"></i>
-        <a [routerLink]="['/', 'balance']">{{ 'MENU.BALANCE' | translate }}</a>
-<!--        <span>{{ 'MENU.BALANCE' | translate }}</span>-->
+        <a (click)="closeMenu()" [routerLink]="['/', 'balance']">{{ 'MENU.BALANCE' | translate }}</a>
       </li>
-<!--      <li nz-menu-item (click)="goToAccount()">-->
       <li nz-menu-item nzMatchRouter>
         <i nz-icon nzType="setting" nzTheme="fill"></i>
-        <a [routerLink]="['/', 'account']">{{ 'MENU.ACCOUNT SETTINGS' | translate }}</a>
-<!--        <span>{{ 'MENU.ACCOUNT SETTINGS' | translate }}</span>-->
+        <a (click)="closeMenu()" [routerLink]="['/', 'account']">{{ 'MENU.ACCOUNT SETTINGS' | translate }}</a>
       </li>
       <li nz-menu-item nzMatchRouter>
         <i nz-icon nzType="api" nzTheme="fill"></i>
-        <a [routerLink]="['/', 'domains']">{{ 'MENU.DOMAIN BINDING' | translate }}</a>
-<!--        <span>{{ 'MENU.DOMAIN BINDING' | translate }}</span>-->
+        <a (click)="closeMenu()" [routerLink]="['/', 'domains']">{{ 'MENU.DOMAIN BINDING' | translate }}</a>
       </li>
       <li nz-menu-item nzMatchRouter>
         <i nz-icon nzType="question-circle" nzTheme="fill"></i>
-        <a [routerLink]="['/', 'faq']">FAQ</a>
-<!--        <span>FAQ</span>-->
+        <a (click)="closeMenu()" [routerLink]="['/', 'faq']">FAQ</a>
       </li>
       <li nz-menu-item>
         <i nz-icon nzType="thunderbolt" nzTheme="fill"></i>
@@ -46,9 +38,10 @@
       </li>
     </ul>
   </nz-sider>
+  <div class="banner" *ngIf="isOpen" (click)="closeMenu()"></div>
   <nz-layout>
     <app-header *ngIf="userService.currentUserInfo"></app-header>
-    <nz-content>
+    <nz-content class="site-content">
       <div class="inner-content">
         <router-outlet></router-outlet>
       </div>

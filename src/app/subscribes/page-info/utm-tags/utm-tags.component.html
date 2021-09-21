@@ -1,5 +1,8 @@
 <div class="logins-container mt-3">
-  <h1>{{'UTM.UTM TAGS' | translate}} ({{utmTags.length}})</h1>
+  <div class="page-title">
+    <h1>{{'UTM.UTM TAGS' | translate}} ({{utmTags.length}})</h1>
+    <div class="show-more" *ngIf="this.isMobile" (click)="showMenu()">{{'PAGE.SHOW MORE' | translate}}</div>
+  </div>
   <div class="actions-row d-flex justify-space-between">
     <nz-range-picker
       nzFormat="yyyy-MM-dd"

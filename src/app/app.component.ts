@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {UserService} from '@core-services';
+import {NavigationService} from '@navigation-services';
 import {IUserInfo} from '@models';
 
 @Component({
@@ -10,7 +11,11 @@ import {IUserInfo} from '@models';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(public router: Router, public translate: TranslateService, private userService: UserService) {
+  constructor(
+    public router: Router,
+    public translate: TranslateService,
+    private userService: UserService,
+    private navigationService: NavigationService) {
   }
 
   ngOnInit(): void {
@@ -27,5 +32,13 @@ export class AppComponent implements OnInit {
   }
   goToAccount(): void {
     this.router.navigate(['/account']);
+  }
+
+  get isOpen(): boolean {
+    return this.navigationService.isOpenMenu.getValue();
+  }
+
+  closeMenu(): void {
+    this.navigationService.closeMenu();
   }
 }

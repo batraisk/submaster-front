@@ -21,14 +21,18 @@
     "YES": "Yes",
     "NO": "No",
     "SEND": "Send",
-    "CONNECT": "Connect"
+    "CONNECT": "Connect",
+    "LOAD MORE": "Load more",
+    "STEP": "Step",
+    "OF": "of"
   },
   "STATISTICS": {
     "SUBSCRIBERS": "Subscribers",
     "VIEWS": "Views",
     "TOTAL STATS": "Total stats",
     "CLICKS": "Clicks",
-    "CTR": "CTR"
+    "CTR": "CTR",
+    "VIEW TOTAL STATS": "View total stats"
   },
   "UTM": {
     "UTM TAGS": "UTM Tags",
@@ -87,6 +91,7 @@
     "STATISTICS": "Statistics",
     "UTM TAGS": "UTM tags",
     "PAGE SETTINGS": "Page settings",
+    "COPY PAGE LINK": "Copy page link",
 
     "LOGINS": "Logins",
     "LOGIN": "Login",
@@ -100,7 +105,9 @@
     "SUCCESS PAGE": "Success page",
     "OUT OF STOCK PAGE": "Out of stock page",
     "CONFIRM DELETE": "Are you sure delete this page?",
-    "NOTHING HERE": "There is nothing here yet"
+    "NOTHING HERE": "There is nothing here yet",
+    "SHOW MORE": "Show more",
+    "VIEW PAGE": "View page"
   },
   "PROFILE": {
     "PROFILE": "Profile",
@@ -145,6 +152,26 @@
     "WEEK": "Week",
     "MONTH": "Month",
     "YEAR": "Year"
+  },
+  "BALANCE": {
+    "COMPLETED": "COMPLETED",
+    "IN PROGRESS": "IN PROGRESS",
+    "STATUS": "Status",
+    "AMOUNT": "Amount",
+    "DATE": "Date",
+    "PAYMENT HISTORY": "Payment history",
+    "PROMO CODE": "Promo code",
+    "PROMO CODE ACTIVATION": "Promo code activation",
+    "PAY": "Pay",
+    "TOP-UP BALANCE": "Top-up balance",
+    "SERVICE COST": "Service cost is $1 for a successful check.",
+    "BALANCE WILL NOT BE DEDUCTED": "The balance will not be deducted if a person has launched a check and has not subscribed to you.",
+    "APPLY": "Apply",
+    "PROMOCODE ACTIVATED": "Promocode activated",
+    "code_expired": "The promo code has expired",
+    "code_not yet": "The promo code is not valid",
+    "code_used": "The promo code has already been used",
+    "promocode_must exist": "Promo code not found"
   }
 
 

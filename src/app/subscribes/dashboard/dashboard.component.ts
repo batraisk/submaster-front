@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { getISOWeek, format } from 'date-fns';
 // @ts-ignore
@@ -12,18 +12,19 @@ import {kFormatter} from '@helpers';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   pages: any[] = [];
   stats: any = null;
   mode = 'date';
   date = new Date();
-  statsList = ['clicks', 'subscribers', 'ctr'];
+  isShowStats = false;
+  isDesktop = false;
 
   constructor(
     private router: Router,
     private pagesService: PagesService,
     private statisticsService: StatisticsService,
-    private navigationService: NavigationService,
+    public navigationService: NavigationService,
   ) { }
 
   ngOnInit(): void {
@@ -31,26 +32,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.pagesService.getPages().subscribe(res => {
       this.pages = res;
     });
-    const params = {
-      date: format(this.date, 'Y-M-d'),
-      mode: this.mode
-    };
-    this.getStats(params);
   }
 
-  getStats(params = null): void {
-    this.statisticsService.getStats(params).subscribe(res => {
-      this.stats = res.data;
-      this.statsList.forEach(caption => {
-        this.stats[caption].total_count = kFormatter(this.stats[caption].total_count);
-        if (this.stats[caption].trend < 0) {
-          this.stats[caption].trendDirection = 'down';
-          this.stats[caption].trend = Math.abs(this.stats[caption].trend);
-        } else {
-          this.stats[caption].trendDirection = 'up';
-        }
-      });
-    });
+  ngAfterViewInit(): void {
+    this.isDesktop = document.body.clientWidth >= 1024;
+  }
+
+  showStats(): void {
+    this.isShowStats = true;
   }
 
   ngOnDestroy(): void {
@@ -58,17 +47,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   goToNewPage(): void {
-    // console.log(this.router.)
-
     this.router.navigate(['/subscribe-pages/new'], { replaceUrl: true });
   }
 
-  changeStateRange(e): void {
-    const params = {
-      date: format(e, 'Y-M-d'),
-      mode: this.mode
-    };
-    this.getStats(params);
+  closeStats(): void {
+    this.isShowStats = false;
   }
-
 }

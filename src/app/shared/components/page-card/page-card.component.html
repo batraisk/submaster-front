@@ -32,16 +32,88 @@
     <div class="footer">
       <div nz-row nzGutter="32">
         <div nz-col [nzSpan]="12">
-          <button (click)="goToInfo(page.id)" nz-button nzType="primary" nzBlock [nzSize]="'small'" nzGhost>
+          <button (click)="goToInfo('edit')" nz-button nzType="primary" nzBlock [nzSize]="'small'" nzGhost>
             <i nz-icon nzType="edit"></i>{{ 'ACTIONS.EDIT' | translate }}
           </button>
         </div>
         <div nz-col [nzSpan]="12" class="d-flex align-items-center">
-          <a href="https://batraisk.ru/pages/{{page.url}}" target="_blank">
-            <i nz-icon nzType="export"></i> <span>https://batraisk.ru/{{page.url}}</span>
+          <a href="https://submaster.pro/pages/{{page.url}}" target="_blank">
+            <i nz-icon nzType="export"></i> <span>https://submaster.pro/pages/{{page.url}}</span>
           </a>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+<div nz-row class="mobile-card-container" #card>
+  <div class="header d-flex align-items-center">
+    <div class="d-flex align-items-center">
+      <div class="avatar"></div>
+      <span class="ml-3">{{page.instagramLogin}}</span>
+    </div>
+    <botton (click)="showMenu()" nz-button nzType="text"><i nz-icon nzType="more" nzTheme="outline"></i></botton>
+  </div>
+  <div class="title-container">
+    <h1 class="title" [ngClass]="{'active': page.status == 'active'}">{{page.pageName}}</h1>
+  </div>
+  <div class="picture" [ngStyle]="{'background-image': 'url(' + background + ')'}" #picture></div>
+
+
+
+  <div class="details" *ngIf="fullMode">
+    <button nz-button nzType="primary" (click)="goToInfo('edit')" nzBlock [nzSize]="'small'" class="mt-2 mb-4" nzGhost>
+      <i nz-icon nzType="edit"></i>{{ 'ACTIONS.EDIT' | translate }}
+    </button>
+    <a href="https://submaster.ru/pages/{{page.url}}" target="_blank" class="mb-4">
+      <i nz-icon nzType="export" class="mr-2"></i> <span>https://submaster.pro/pages/{{page.url}}</span>
+    </a>
+    <div class="stats">
+      <div class="item">
+        <div class="key"><img class="mr-3" src="assets/images/icons/ctr.svg" alt="">CTR</div>
+        <div class="value">{{page.statistics.ctr | percent}}</div>
+      </div>
+      <div class="item mt-4">
+        <div class="key"><img class="mr-3" src="assets/images/icons/subscribers.svg" alt="">{{ 'STATISTICS.SUBSCRIBERS' | translate }}</div>
+        <div class="value">{{page.statistics.subscribers | number}}</div>
+      </div>
+      <div class="item mt-4">
+        <div class="key"><img class="mr-3" src="assets/images/icons/views.svg" alt="">{{ 'STATISTICS.VIEWS' | translate }}</div>
+        <div class="value">{{page.statistics.clicks | number}}</div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="footer">
+    <a (click)="toggleFullMode()" nz-button nzType="link">{{ 'PAGE.SHOW MORE' | translate }}</a>
+  </div>
+<!--  <div class="picture">-->
+
+<!--  </div>-->
+<!--  <div class="picture" [ngStyle]="{'background-image': 'url(' + background + ')'}"></div>-->
+</div>
+
+<nz-modal
+  class="model-menu"
+  [(nzVisible)]="isVisibleMenu"
+  [nzFooter]="null"
+  [nzClosable]="false"
+  nzTitle=""
+  (nzOnCancel)="handleCancel()"
+  [nzBodyStyle]="{padding: '0'}"
+  [nzMaskStyle]="{background: 'rgba(3, 8, 82, 0.75)', backdropFilter: 'blur(5px)'}"
+>
+  <ng-container *nzModalContent>
+    <nz-list nzBordered nzSize="small">
+      <nz-list-item (click)="goToInfo('logins')">{{ 'PAGE.LOGIN LIST' | translate }}</nz-list-item>
+      <nz-list-item (click)="goToInfo('statistics')">{{ 'PAGE.STATISTICS' | translate }}</nz-list-item>
+      <nz-list-item (click)="goToInfo('utm')">{{ 'PAGE.UTM TAGS' | translate }}</nz-list-item>
+<!--      <nz-list-item>{{ 'PAGE.COPY PAGE LINK' | translate }}</nz-list-item>-->
+      <nz-list-item>{{ 'ACTIONS.DELETE' | translate }}</nz-list-item>
+      <nz-list-item (click)="handleCancel()">{{ 'ACTIONS.CANCEL' | translate }}</nz-list-item>
+    </nz-list>
+  </ng-container>
+</nz-modal>

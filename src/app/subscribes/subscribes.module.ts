@@ -24,6 +24,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzListModule } from 'ng-zorro-antd/list';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
@@ -41,6 +42,8 @@ import { PageSettingsComponent } from './page-info/page-settings/page-settings.c
 import { AccountComponent } from './account/account.component';
 import { UtmTagsComponent } from './page-info/utm-tags/utm-tags.component';
 import { StatisticsComponent } from './page-info/statistics/statistics.component';
+import { DashboardStatisticsComponent } from './dashboard/dashboard-statistics/dashboard-statistics.component';
+import { MobileDashboardStatisticsComponent } from './dashboard/mobile-dashboard-statistics/mobile-dashboard-statistics.component';
 
 
 
@@ -58,6 +61,8 @@ import { StatisticsComponent } from './page-info/statistics/statistics.component
     UtmTagsComponent,
     DomainBindingComponent,
     StatisticsComponent,
+    DashboardStatisticsComponent,
+    MobileDashboardStatisticsComponent,
   ],
   imports: [
     NzIconModule,
@@ -86,7 +91,8 @@ import { StatisticsComponent } from './page-info/statistics/statistics.component
     NzDatePickerModule,
     NzCollapseModule,
     NzAlertModule,
-    NzCardModule
+    NzCardModule,
+    NzListModule
   ],
   providers: [
     PagesService,

@@ -1,5 +1,6 @@
 <div class="balance-container">
-  <h1>$ 2989,00</h1>
+<!--  <h1>{{currencyIcon}} 2989,00</h1>-->
+  <h1>{{balance}}</h1>
   <nz-alert
     class="alert"
     nzType="info"
@@ -7,59 +8,89 @@
   ></nz-alert>
 
   <div class="mt-5">
-    <h2>Top-up balance</h2>
+    <h2>{{ 'BALANCE.TOP-UP BALANCE' | translate }}</h2>
     <div class="row">
-      <nz-input-group nzAddOnBeforeIcon="dollar">
-        <input type="text" nz-input [(ngModel)]="value1" />
+      <nz-input-group class="value-control" nzAddOnBeforeIcon="dollar">
+        <input type="text" nz-input [(ngModel)]="value" />
 
       </nz-input-group>
-      <nz-slider class="mr-5 ml-5" [(ngModel)]="value1" [nzMin]="0" [nzMax]="200"></nz-slider>
-      <button nz-button nzType="primary" nzSize="small">Pay</button>
+      <nz-slider class="mr-5 ml-5 slider" [(ngModel)]="value" [nzMin]="0" [nzMax]="200"></nz-slider>
+      <button (click)="onPay()" nz-button nzType="primary" nzSize="small">{{ 'BALANCE.PAY' | translate }}</button>
     </div>
   </div>
 
   <section class="promo-content">
-    <h2>Promo code activation</h2>
-    <div>
-      <nz-form-label [nzSpan]="24">Promo code</nz-form-label>
-      <nz-form-control [nzSpan]="24" class="mt-2">
-        <input [(ngModel)]="promo" [ngModelOptions]="{standalone: true}" nz-input name="promo" type="promo" id="promo">
-      </nz-form-control>
+    <h2>{{ 'BALANCE.PROMO CODE ACTIVATION' | translate }}</h2>
+    <div class="promo-container" style="">
+      <div>
+        <nz-form-label [nzSpan]="24">{{ 'BALANCE.PROMO CODE' | translate }}</nz-form-label>
+        <nz-form-control class="promo-input-container" [nzSpan]="24" class="mt-2">
+          <input [(ngModel)]="promo" [ngModelOptions]="{standalone: true}" nz-input name="promo" type="promo" id="promo">
+        </nz-form-control>
+      </div>
+      <button *ngIf="promo" class="ml-5" (click)="applyPromoCode()" nz-button nzType="primary" nzSize="small">{{ 'BALANCE.APPLY' | translate }}</button>
+
     </div>
   </section>
 
   <section>
-    <h2>Payment history</h2>
-    <nz-table [nzTotal]="3" [nzPageSize]="20" class="mt-4" #sortTable [nzData]="billings" [nzFrontPagination]="false">
+    <h2>{{ 'BALANCE.PAYMENT HISTORY' | translate }}</h2>
+    <nz-table
+      *ngIf="!isMobile"
+      [nzTotal]="3"
+      [nzPageSize]="20"
+      class="mt-4"
+      #sortTable [nzData]="payments"
+      [nzFrontPagination]="false"
+      (nzQueryParams)="onQueryParamsChange($event)"
+    >
       <thead>
       <tr>
         <th  [nzSortFn]="true" nzColumnKey="date" nzWidth="95px" [nzSortPriority]="1">
-          Date
+          {{ 'BALANCE.DATE' | translate }}
         </th>
         <th  [nzSortFn]="true" nzColumnKey="amount" nzWidth="190px" [nzSortPriority]="2">
-          Amount
+          {{ 'BALANCE.AMOUNT' | translate }}
         </th>
         <th  [nzSortFn]="true" nzColumnKey="status" nzWidth="115px" [nzSortPriority]="3">
-          Status
+          {{ 'BALANCE.STATUS' | translate }}
         </th>
       </tr>
       </thead>
       <tbody>
         <tr *ngFor="let data of sortTable.data">
-          <td>{{ data.date }}</td>
-          <td>{{ data.amount }}</td>
+          <td>{{ data.orderTime }}</td>
+          <td>{{currencyIcon}} {{ data.amount }}</td>
           <td>
-            <nz-tag *ngIf="data.status == 'completed'" nzColor="success">COMPLETED</nz-tag>
-            <nz-tag *ngIf="data.status == 'in_progress'" nzColor="blue">IN PROGRESS</nz-tag>
+            <nz-tag *ngIf="data.orderStatus == 'approved'" nzColor="success">{{ 'BALANCE.COMPLETED' | translate }}</nz-tag>
+            <nz-tag *ngIf="data.status == 'in_progress'" nzColor="blue">{{ 'BALANCE.IN PROGRESS' | translate }}</nz-tag>
           </td>
         </tr>
       </tbody>
     </nz-table>
+
+    <div *ngIf="this.isMobile" class="mobile-table">
+      <div *ngFor="let login of mobileData">
+        <div class="title">{{login.date}}</div>
+        <div *ngFor="let data of login.data">
+          <div class="item">
+            <div class="name">{{currencyIcon}} {{ data.amount }}</div>
+            <div class="status">
+              <nz-tag *ngIf="data.orderStatus == 'approved'" nzColor="success">{{ 'BALANCE.COMPLETED' | translate }}</nz-tag>
+              <nz-tag *ngIf="data.status == 'in_progress'" nzColor="blue">{{ 'BALANCE.IN PROGRESS' | translate }}</nz-tag>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <button (click)="loadMore()" *ngIf="isMobile && payments.length < total" nz-button nzType="primary" nzBlock [nzSize]="'small'" class="mt-5 mb-4" nzGhost>{{ 'ACTIONS.LOAD MORE' | translate }}</button>
+    <div style="height: 24px"></div>
   </section>
 </div>
 
 <ng-template #alert>
-  Service cost is $1 for a successful check.
+  {{ 'BALANCE.SERVICE COST' | translate }}
   <br>
-  The balance will not be deducted if a person has launched a check and has not subscribed to you.
+  {{ 'BALANCE.BALANCE WILL NOT BE DEDUCTED' | translate }}
 </ng-template>

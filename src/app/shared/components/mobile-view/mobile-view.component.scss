@@ -10,3 +10,14 @@
     background-image: url("/assets/images/iMac - 19.svg");
   }
 }
+
+@media only screen and (max-width: 669px) {
+  .device-container {
+    &.desktop {
+      height: 184px;
+      width: 327px;
+      background-position: center;
+      background-size: contain;
+    }
+  }
+}

@@ -1,11 +1,70 @@
 .logins-container {
   width: 580px;
 
+  .actions-row {
+    display: flex;
+  }
+
   .download-link-btn {
     padding: 5px 16px;
   }
 
   tr, td {
     padding: 8px;
+  }
+}
+
+@media only screen and (max-width: 669px) {
+  .logins-container {
+    width: 100%;
+    .actions-row {
+      display: block;
+      nz-range-picker {
+        width: 100%;
+      }
+
+      button {
+        margin-top: 16px;
+        width: 100%;
+      }
+    }
+    h1 {
+      margin-bottom: 0;
+    }
+
+    .page-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+
+      .show-more {
+        font-size: 14px;
+        line-height: 22px;
+        color: #2F54EB;
+      }
+    }
+  }
+
+  .mobile-table {
+    margin-top: 24px;
+    text-align: center;
+    .title {
+      margin-top: 16px;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 22px;
+    }
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 40px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    .name {
+      text-align: left;
+    }
   }
 }
