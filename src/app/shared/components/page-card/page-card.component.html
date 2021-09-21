@@ -16,7 +16,16 @@
       <botton nz-button nzType="text"><i nz-icon nzType="more" nzTheme="outline"></i></botton>
     </div>
     <div class="body">
-      <h1 class="title" [ngClass]="{'active': page.status == 'active'}">{{page.pageName}}</h1>
+      <div class="d-flex justify-space-between">
+        <h1 class="title" [ngClass]="{'active': page.status == 'active'}">{{page.pageName}}</h1>
+        <nz-switch
+          id="status"
+          [(ngModel)]="switchActive"
+          (ngModelChange)="setStatus()"
+          nzCheckedChildren="{{ 'STATUSES.ACTIVE' | translate }}"
+          nzUnCheckedChildren="{{ 'STATUSES.INACTIVE' | translate }}"
+        ></nz-switch>
+      </div>
       <nz-row [nzGutter]="16" class="summary">
         <nz-col [nzSpan]="8" class="text-center">
           <nz-statistic [nzValue]="(page.statistics.ctr | percent)!" [nzTitle]="'CTR'"></nz-statistic>
@@ -56,7 +65,17 @@
     <botton (click)="showMenu()" nz-button nzType="text"><i nz-icon nzType="more" nzTheme="outline"></i></botton>
   </div>
   <div class="title-container">
-    <h1 class="title" [ngClass]="{'active': page.status == 'active'}">{{page.pageName}}</h1>
+    <div class="d-flex justify-space-between">
+      <h1 class="title" [ngClass]="{'active': page.status == 'active'}">{{page.pageName}}</h1>
+<!--        id="status"-->
+      <nz-switch
+        [(ngModel)]="switchActive"
+        (ngModelChange)="setStatus()"
+        nzCheckedChildren="{{ 'STATUSES.ACTIVE' | translate }}"
+        nzUnCheckedChildren="{{ 'STATUSES.INACTIVE' | translate }}"
+      ></nz-switch>
+    </div>
+<!--    <h1 class="title" [ngClass]="{'active': page.status == 'active'}">{{page.pageName}}</h1>-->
   </div>
   <div class="picture" [ngStyle]="{'background-image': 'url(' + background + ')'}" #picture></div>
 

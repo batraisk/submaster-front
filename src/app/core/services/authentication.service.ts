@@ -39,4 +39,8 @@ export class AuthenticationService {
   changePassword(user: any): Observable<any> {
     return this.http.put<any>('api/v1/password', user);
   }
+
+  logout(): Observable<any> {
+    return this.http.delete<any>('api/v1/logout');
+  }
 }

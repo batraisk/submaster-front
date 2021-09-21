@@ -9,7 +9,7 @@
 </div>
 
 <div nz-row *ngIf="pages.length > 0">
-  <div nz-col [nzSpan]="14" [nzXl]="14" [nzLg]="14" [nzMd]="24" [nzSm]="24" [nzXs]="24">
+  <div nz-col [nzSpan]="14" [nzXl]="14" [nzLg]="14" [nzMd]="24" [nzSm]="24" [nzXs]="24" class="mb-5">
 
     <div *ngIf="navigationService.header" class="title hide-for-fullscreen">
       {{ "HEADERS." + navigationService.header | translate: navigationService.headerParams }}

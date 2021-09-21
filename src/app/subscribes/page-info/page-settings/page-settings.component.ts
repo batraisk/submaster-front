@@ -20,7 +20,7 @@ export class PageSettingsComponent implements OnInit {
   domain = 'https://submaster.com/';
   pageForm: FormGroup;
   // themes = ['natural', 'gold', 'lime', 'blue', 'magenta', 'yellow', 'purple'];
-  themes = ['default', 'blue', 'pink', 'mustard', 'dark'];
+  themes = ['default', 'red', 'green', 'blue', 'pink', 'mustard', 'dark'];
   view = 'mobile';
   file: File;
   translates: any = {};

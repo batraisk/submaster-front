@@ -2,6 +2,7 @@ import {AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChil
 import {environment} from '@environment';
 import {TranslateService} from '@ngx-translate/core';
 import {Router} from '@angular/router';
+import {PagesService} from '@subscribes-services';
 
 @Component({
   selector: 'app-page-card',
@@ -16,7 +17,14 @@ export class PageCardComponent implements OnInit, AfterViewInit {
   isVisibleMenu = false;
   baseUrl = environment.apiUrl;
   background = '';
-  constructor(public translate: TranslateService, private router: Router, private renderer: Renderer2) { }
+  switchActive = false;
+
+  constructor(
+    public translate: TranslateService,
+    private router: Router,
+    private renderer: Renderer2,
+    private pagesService: PagesService,
+  ) { }
 
   ngOnInit(): void {
     if (this.page.youtube) {
@@ -24,6 +32,7 @@ export class PageCardComponent implements OnInit, AfterViewInit {
     } else {
       this.background = this.baseUrl + this.page.background;
     }
+    this.switchActive = this.page.status === 'active';
   }
 
   ngAfterViewInit(): void {
@@ -50,6 +59,17 @@ export class PageCardComponent implements OnInit, AfterViewInit {
 
   showMenu(): void {
     this.isVisibleMenu = true;
+  }
+
+  setStatus(): void {
+    const status = this.switchActive ? 'active' : 'inactive';
+    const formData: any = new FormData();
+    formData.append('status', status);
+    // formData.append('status', property.status ? 'active' : 'inactive');
+    this.pagesService.updatePage(this.page.id, formData).subscribe(res => {
+      this.page.status = res.status;
+      // this.router.navigate(['/']);
+    });
   }
 
   // getInstaAvatar = (): void => {

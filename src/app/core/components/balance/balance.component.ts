@@ -40,7 +40,6 @@ export class BalanceComponent implements OnInit, OnDestroy {
       this.payments = res.data;
       this.total = res.total_count;
       this.prepareMobileData(this.payments);
-      console.log('this.total', this.total)
     });
     findUserCountry()
       .then(response => {

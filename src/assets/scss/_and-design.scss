@@ -69,6 +69,22 @@
       }
     }
   }
+  .green {
+    .ant-radio-inner {
+      background: $green-v2-bg;
+      &:after {
+        background: $green-v2-button;
+      }
+    }
+  }
+  .red {
+    .ant-radio-inner {
+      background: $red-v2-bg;
+      &:after {
+        background: $red-v2-button;
+      }
+    }
+  }
   .purple, .dark {
     .ant-radio-inner {
       background: $golden-purple-9;

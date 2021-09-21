@@ -51,6 +51,20 @@ export class Template5Component implements OnInit {
       layoutColor: '#262626',
       gradient: 'linear-gradient(90deg, #722ED1 55.12%, #D3ADF7 100%)',
       textColor: '#FFF',
+    },
+    red: {
+      primary: '#F21414',
+      bgColor: '#FFBBAC',
+      layoutColor: '#FFF2E8',
+      gradient: 'linear-gradient(90deg, #CF1322 55.12%, #F9C6C3 100%)',
+      textColor: '#1F1F1F',
+    },
+    green: {
+      primary: '#008F5C',
+      bgColor: '#93D0B2',
+      layoutColor: '#EEF2E9',
+      gradient: 'linear-gradient(90deg, #008F5C 55.12%, #93D0B2 100%)',
+      textColor: '#1F1F1F',
     }
   };
   constructor() { }
