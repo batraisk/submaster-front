@@ -3,9 +3,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 // @ts-ignore
-import {AuthenticationService} from '@core-services';
+import {AuthenticationService, UserService} from '@core-services';
 // @ts-ignore
-import {IUserRegister} from '@models';
+import {IUserInfo, IUserRegister} from '@models';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private authService: AuthenticationService,
-    private message: NzMessageService
+    private message: NzMessageService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -64,6 +65,9 @@ export class LoginComponent implements OnInit {
         const currentUser = localStorage.getItem('currentUser');
         localStorage.setItem('currentUser', JSON.stringify(res.body));
         localStorage.setItem('token', res.headers.get('Authorization'));
+        this.userService.getUserInfo().subscribe((info: IUserInfo) => {
+          this.userService.currentUserInfo = info;
+        });
         this.router.navigate(['/']);
       }}, err => {
       if (!!err.error.error) {
