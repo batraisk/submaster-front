@@ -1,7 +1,11 @@
 <div class="logins-container mt-3">
-  <h1>{{ 'PAGE.LOGINS' | translate }} ({{logins.length}})</h1>
+  <div class="page-title">
+    <h1>{{ 'PAGE.LOGINS' | translate }} ({{logins.length}})</h1>
+    <div class="show-more" *ngIf="this.isMobile" (click)="showMenu()">{{'PAGE.SHOW MORE' | translate}}</div>
+  </div>
   <div class="actions-row d-flex justify-space-between">
     <nz-range-picker
+      class="date-range"
       nzFormat="yyyy-MM-dd"
       (ngModelChange)="onChange($event)"
       ngModel
@@ -10,7 +14,16 @@
 
     <a #xlsxLink *ngIf="page" hidden [href]="dowloadLink" target="_blank">Download excel file</a>
   </div>
-  <nz-table [nzTotal]="total" [nzPageSize]="20" class="mt-4" #sortTable [nzData]="logins" [nzFrontPagination]="false" (nzQueryParams)="onQueryParamsChange($event)">
+  <nz-table
+    *ngIf="!this.isMobile"
+    [nzTotal]="total"
+    [nzPageSize]="20"
+    class="mt-4"
+    #sortTable
+    [nzData]="logins"
+    [nzFrontPagination]="false"
+    (nzQueryParams)="onQueryParamsChange($event)"
+  >
     <thead>
     <tr>
       <th  [nzSortFn]="true" nzColumnKey="name" nzWidth="328px" [nzSortPriority]="1">
@@ -26,7 +39,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let data of sortTable.data">
-      <td>{{ data.name }}</td>
+      <td nzEllipsis>{{ data.name }}</td>
       <td>{{ data.date }}</td>
       <td>
         <nz-tag *ngIf="data.status == 'subscribed'" nzColor="success">{{ 'PAGE.SUBSCRIBED' | translate }}</nz-tag>
@@ -35,4 +48,24 @@
     </tr>
     </tbody>
   </nz-table>
+
+
+
+  <div *ngIf="this.isMobile" class="mobile-table">
+    <div *ngFor="let login of mobileData">
+      <div class="title">{{login.date}}</div>
+      <div *ngFor="let data of login.data">
+        <div class="item">
+          <div class="name">{{data.name}}</div>
+          <div class="status">
+            <nz-tag *ngIf="data.status == 'subscribed'" nzColor="success">{{ 'PAGE.SUBSCRIBED' | translate }}</nz-tag>
+            <nz-tag *ngIf="data.status == 'not_subscribed'" nzColor="blue">{{ 'PAGE.NOT SUBSCRIBED' | translate }}</nz-tag>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <button (click)="loadMore()" *ngIf="isMobile && logins.length < total" nz-button nzType="primary" nzBlock [nzSize]="'small'" class="mt-5 mb-4" nzGhost>{{ 'ACTIONS.LOAD MORE' | translate }}</button>
+
 </div>

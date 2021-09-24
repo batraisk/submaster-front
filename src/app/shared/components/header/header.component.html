@@ -1,7 +1,15 @@
 <nz-header class="app-header">
-  <div *ngIf="navigationService.header" class="title">{{ "HEADERS." + navigationService.header | translate: navigationService.headerParams }}</div>
+
+  <div *ngIf="navigationService.header" class="title hide-for-mobile hide-for-tablet">
+    {{ "HEADERS." + navigationService.header | translate: navigationService.headerParams }}
+  </div>
   <div class="summary">
-    <button nz-button class="wallet" nzType="text" nzSize="default"><i nz-icon nzType="dollar"></i>2989,00</button>
+    <div class="menu-icon" (click)="toggleMenu()" style="width: 18px">
+      <img *ngIf="!isOpen" src="assets/images/icons/menu.svg" alt="">
+      <img *ngIf="isOpen" src="assets/images/icons/close.svg" alt="">
+    </div>
+    <button nz-button class="wallet" nzType="text" nzSize="default">{{balance}}</button>
+<!--    <button nz-button class="wallet" nzType="text" nzSize="default"><i nz-icon nzType="dollar"></i>{{balance}}</button>-->
     <app-localizer></app-localizer>
   </div>
 </nz-header>

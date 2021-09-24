@@ -6,14 +6,18 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzListModule } from 'ng-zorro-antd/list';
 import { MobileViewComponent } from './components/mobile-view/mobile-view.component';
 import { PageCardComponent } from './components/page-card/page-card.component';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import { LocalizerComponent } from './components/localizer/localizer.component';
 import {TranslateModule} from '@ngx-translate/core';
-import {CustomValidationService} from './validations/custom-validation.service';
+import {CustomValidationService} from '@validation-services';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 import {SafePipe} from './pipes/safe.pipe';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // @ts-ignore
 import {GraphWrapperComponent} from './graph/graph-wrapper.component';
 import { Template1Component } from './components/mobile-view/templates/template1/template1.component';
@@ -48,6 +52,11 @@ import { Template6Component } from './components/mobile-view/templates/template6
     NzGridModule,
     NzStatisticModule,
     TranslateModule,
+    NzModalModule,
+    NzListModule,
+    NzSwitchModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     GraphWrapperComponent,

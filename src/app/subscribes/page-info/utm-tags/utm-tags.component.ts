@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {IUTMTag} from '@models';
 import {UTMTagsService} from '@subscribes-services';
 import {format} from 'date-fns';
@@ -11,7 +11,7 @@ import {NzTableQueryParams} from 'ng-zorro-antd/table';
 })
 export class UtmTagsComponent implements OnInit {
   @Input() page;
-
+  @Output() openMenu = new EventEmitter<any>();
   @ViewChild('xlsxLink') xlsxLink: ElementRef;
   pagintation: any = {
     pageIndex: 0,
@@ -20,12 +20,13 @@ export class UtmTagsComponent implements OnInit {
   total = 0;
   sort: any = {};
   filter: any = null;
-
+  isMobile = false;
   utmTags: IUTMTag[] = [];
   constructor(private utmTagsService: UTMTagsService) { }
 
   ngOnInit(): void {
     this.getUTMTags();
+    this.isMobile = document.body.clientWidth < 670;
   }
 
   getUTMTags(): void {
@@ -34,6 +35,10 @@ export class UtmTagsComponent implements OnInit {
       this.utmTags = res.data;
       this.total = res.total_count;
     });
+  }
+
+  showMenu(): void {
+    this.openMenu.emit();
   }
 
   onChange(result: Date[]): void {

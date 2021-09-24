@@ -30,6 +30,7 @@ export class WelcomePageComponent implements OnInit {
   isVisibleYoutubeModal = false;
   youtubeLink = '';
   youtube: string | null = null;
+  isMobile = false;
 
   constructor(private fb: FormBuilder) { }
 
@@ -47,6 +48,7 @@ export class WelcomePageComponent implements OnInit {
     });
     this.updatePageEmitter.emit({page: this.pageForm.value, form: this.pageForm});
     this.onChanges();
+    this.isMobile = document.body.clientWidth < 670;
   }
 
   onChanges(): void {

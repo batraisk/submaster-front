@@ -1,22 +1,57 @@
-<nz-tabset (nzSelectedIndexChange)="setIndex($event)" [nzTabBarExtraContent]="extraTemplate">
+<div *ngIf="isMobile && page">
+  <div class="title">
+    <img src="assets/images/icons/back.svg" class="mr-4" alt="" (click)="close()">
+    {{ page.pageName }}
+  </div>
+</div>
+<nz-tabset
+  (nzSelectedIndexChange)="setIndex($event)"
+  [nzTabBarExtraContent]="extraTemplate"
+  [nzSelectedIndex] = indexTab
+  [nzTabBarStyle] = "{display: isMobile ? 'none' : 'flex'}"
+>
   <nz-tab  nzTitle="{{ 'PAGE.LOGIN LIST' | translate }}">
-    <app-logins *ngIf="page" [page]="page"></app-logins>
+    <app-logins (openMenu)="openMenu()" *ngIf="page" [page]="page"></app-logins>
   </nz-tab>
   <nz-tab  nzTitle="{{ 'PAGE.STATISTICS' | translate }}">
-    <app-statistics *ngIf="page && pageId === 1" [page]="page"></app-statistics>
+    <app-statistics (openMenu)="openMenu()" *ngIf="page && indexTab === 1" [page]="page"></app-statistics>
   </nz-tab>
   <nz-tab  nzTitle="{{ 'PAGE.UTM TAGS' | translate }}">
-    <app-utm-tags *ngIf="page" [page]="page"></app-utm-tags>
+    <app-utm-tags (openMenu)="openMenu()" *ngIf="page" [page]="page"></app-utm-tags>
   </nz-tab>
   <nz-tab nzTitle="{{ 'PAGE.PAGE SETTINGS' | translate }}">
-    <app-page-settings *ngIf="page" [page]="page"></app-page-settings>
+    <app-page-settings (openMenu)="openMenu()" *ngIf="page" [page]="page"></app-page-settings>
   </nz-tab>
 </nz-tabset>
 <ng-template #extraTemplate>
   <div class="d-flex align-items-center" *ngIf="page">
     <span>{{ 'PAGE.PAGE LINK' | translate }}:</span>
-    <a class="ml-3" href="https://batraisk.ru/pages/{{page.url}}" target="_blank">
-      <i class="mr-2"nz-icon nzType="export"></i> <span>https://batraisk.ru/pages/{{page.url}}</span>
+    <a class="ml-3" href="https://submaster.pro/pages/{{page.url}}" target="_blank">
+      <i class="mr-2"nz-icon nzType="export"></i> <span>https://submaster.pro/pages/{{page.url}}</span>
     </a>
   </div>
 </ng-template>
+
+<nz-modal
+  class="model-menu"
+  [(nzVisible)]="isVisibleMenu"
+  [nzFooter]="null"
+  [nzClosable]="false"
+  nzTitle=""
+  (nzOnCancel)="handleCancel()"
+  [nzBodyStyle]="{padding: '0'}"
+  [nzMaskStyle]="{background: 'rgba(3, 8, 82, 0.75)', backdropFilter: 'blur(5px)'}"
+>
+  <ng-container *nzModalContent>
+    <nz-list nzBordered nzSize="small">
+      <nz-list-item *ngIf="indexTab !== 0" (click)="goToInfo('logins')">{{ 'PAGE.LOGIN LIST' | translate }}</nz-list-item>
+      <nz-list-item *ngIf="indexTab !== 1" (click)="goToInfo('statistics')">{{ 'PAGE.STATISTICS' | translate }}</nz-list-item>
+      <nz-list-item *ngIf="indexTab !== 2" (click)="goToInfo('utm')">{{ 'PAGE.UTM TAGS' | translate }}</nz-list-item>
+      <nz-list-item *ngIf="indexTab !== 3" (click)="goToInfo('edit')">{{ 'PAGE.PAGE SETTINGS' | translate }}</nz-list-item>
+      <nz-list-item (click)="goToPage()">{{ 'PAGE.VIEW PAGE' | translate }}</nz-list-item>
+<!--      &lt;!&ndash;      <nz-list-item>{{ 'PAGE.COPY PAGE LINK' | translate }}</nz-list-item>&ndash;&gt;-->
+<!--      <nz-list-item>{{ 'ACTIONS.DELETE' | translate }}</nz-list-item>-->
+      <nz-list-item (click)="handleCancel()">{{ 'ACTIONS.CANCEL' | translate }}</nz-list-item>
+    </nz-list>
+  </ng-container>
+</nz-modal>

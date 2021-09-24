@@ -17,6 +17,7 @@ import {CustomValidationService} from '@validation-services';
 export class AccountComponent implements OnInit, OnDestroy {
   pageForm: FormGroup;
   errors: any = {};
+  isMobile = false;
   constructor(
     private fb: FormBuilder,
     private navigationService: NavigationService,
@@ -38,6 +39,7 @@ export class AccountComponent implements OnInit, OnDestroy {
       {
         validators: this.customValidator.MatchPassword('newPassword', 'confirmPassword'),
       });
+    this.isMobile = document.body.clientWidth < 670;
   }
 
   ngOnDestroy(): void {

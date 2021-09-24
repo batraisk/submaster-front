@@ -1,11 +1,11 @@
 <div nz-row>
-  <div nz-col [nzSpan]="11" [nzXl]="8">
+  <div nz-col [nzSpan]="11" [nzXl]="8" [nzMd]="24" [nzSm]="24" [nzXs]="24">
     <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
 
       <div *nzSpaceItem>
         <nz-form-label [nzSpan]="24">{{ 'DOMAIN.DOMAIN NAME' | translate }}</nz-form-label>
         <nz-form-control [nzSpan]="24" class="mt-2">
-          <div class="d-flex">
+          <div class="d-flex domain-input-container">
             <input [(ngModel)]="domain" [ngModelOptions]="{standalone: true}" nz-input name="domain" type="domain" id="domain">
             <button
               class="ml-4 connect-btn"

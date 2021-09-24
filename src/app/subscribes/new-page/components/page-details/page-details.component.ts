@@ -13,6 +13,7 @@ export class PageDetailsComponent implements OnInit {
   @Output() nextEmitter = new EventEmitter<any>();
   domain = 'https://submaster.com/';
   pageForm: FormGroup;
+  isMobile = false;
   errors: any = {};
 
   constructor(
@@ -32,6 +33,7 @@ export class PageDetailsComponent implements OnInit {
     });
     this.updatePageEmitter.emit({page: this.pageForm.value, form: this.pageForm});
     this.onChanges();
+    this.isMobile = document.body.clientWidth < 670;
   }
 
   onChanges(): void {

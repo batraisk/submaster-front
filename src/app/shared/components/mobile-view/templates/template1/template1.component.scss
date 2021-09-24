@@ -311,3 +311,32 @@
     overflow: hidden;
   }
 }
+@media only screen and (max-width: 669px) {
+  .desktop {
+    .desktop-screen {
+      height: 184px;
+      width: 327px;
+      padding: 2px;
+    }
+    .content-container {
+      height: 180px;
+    }
+    .picture-container {
+      .image {
+        height: 141px;
+        width: 114px;
+      }
+      .bg-loyaut {
+        height: 180px;
+        width: 161px;
+      }
+    }
+    .content {
+      min-height: 180px;
+      > div {
+        padding: 13px;
+      }
+    }
+  }
+}
+

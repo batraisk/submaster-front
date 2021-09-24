@@ -1,7 +1,11 @@
 
 <div *ngIf="stats" class="mb-5">
+  <div class="page-title">
   <h1 >{{ 'PAGE.STATISTICS' | translate }}</h1>
-  <nz-space>
+    <div class="show-more" *ngIf="this.isMobile" (click)="showMenu()">{{'PAGE.SHOW MORE' | translate}}</div>
+  </div>
+    <!--  <nz-space nzDirection="vertical">-->
+  <nz-space [nzDirection]="isMobile ? 'vertical' : 'horizontal'">
     <nz-select *nzSpaceItem [(ngModel)]="mode">
       <nz-option nzValue="date" nzLabel="{{ 'DATE TIME.DATE' | translate }}"></nz-option>
       <nz-option nzValue="week" nzLabel="{{ 'DATE TIME.WEEK' | translate }}"></nz-option>

@@ -1,9 +1,20 @@
 <nz-divider class="divider-top"></nz-divider>
-<nz-steps [nzCurrent]="current">
+<nz-steps *ngIf="!isMobile" [nzCurrent]="current">
   <nz-step nzTitle="{{ 'PAGE.EDIT PAGE DETAILS' | translate }}"></nz-step>
   <nz-step nzTitle="{{ 'PAGE.EDIT WELCOME PAGE' | translate }}"></nz-step>
   <nz-step nzTitle="{{ 'PAGE.EDIT ADDITIONAL PAGES' | translate }}"></nz-step>
 </nz-steps>
+<div *ngIf="isMobile">
+  <div *ngIf="current == 0">
+    {{ 'ACTIONS.STEP' | translate }} 1 {{ 'ACTIONS.OF' | translate }}  3: {{ 'PAGE.EDIT PAGE DETAILS' | translate }}
+  </div>
+  <div *ngIf="current == 1">
+    {{ 'ACTIONS.STEP' | translate }} 2 {{ 'ACTIONS.OF' | translate }}  3: {{ 'PAGE.EDIT WELCOME PAGE' | translate }}
+  </div>
+  <div *ngIf="current == 2">
+    {{ 'ACTIONS.STEP' | translate }} 3 {{ 'ACTIONS.OF' | translate }}  3: {{ 'PAGE.EDIT ADDITIONAL PAGES' | translate }}
+  </div>
+</div>
 <nz-divider class="divider-bottom"></nz-divider>
 
 

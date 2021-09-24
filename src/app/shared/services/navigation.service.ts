@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class NavigationService {
   headerTitle = '';
   headerParamsPrivate: any = {value: ''};
+  isOpenMenu = new BehaviorSubject<boolean>(false);
 
   constructor() { }
 
@@ -24,6 +26,19 @@ export class NavigationService {
   get header(): string { return this.headerTitle; }
 
   get headerParams(): string { return this.headerParamsPrivate; }
+
+  openMenu(): void {
+    this.isOpenMenu.next(true);
+  }
+
+  closeMenu(): void {
+    this.isOpenMenu.next(false);
+  }
+
+  toggleMenu(): void {
+    const isOpen = this.isOpenMenu.getValue();
+    this.isOpenMenu.next(!isOpen);
+  }
 
   resetHeader(): void {
     this.header = '';

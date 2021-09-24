@@ -1,6 +1,6 @@
 <form nz-form [formGroup]="pageForm">
   <div nz-row>
-    <div nz-col [nzSpan]="11" [nzXl]="8">
+    <div nz-col [nzSpan]="11" [nzXl]="8" [nzMd]="24" [nzSm]="24" [nzXs]="24">
       <h1>{{ 'PAGE.SUCCESS PAGE' | translate }}</h1>
       <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
         <nz-form-item *nzSpaceItem>
@@ -32,11 +32,11 @@
       </nz-space>
     </div>
 
-    <div nz-col nzSpan="1" style="text-align:center; padding: 10px 0;">
+    <div *ngIf="!isMobile" nz-col nzSpan="1" style="text-align:center; padding: 10px 0;">
       <nz-divider [nzOrientation]="'center'" [nzType]="'vertical'" style="height: 100%;"></nz-divider>
     </div>
 
-    <div nz-col [nzSpan]="11" [nzXl]="8">
+    <div class="margin-section-container" nz-col [nzSpan]="11" [nzXl]="8" [nzMd]="24" [nzSm]="24" [nzXs]="24">
       <h1>{{ 'PAGE.OUT OF STOCK PAGE' | translate }}</h1>
       <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
         <nz-form-item *nzSpaceItem>

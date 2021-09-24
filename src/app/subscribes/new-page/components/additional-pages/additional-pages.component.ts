@@ -11,6 +11,7 @@ export class AdditionalPagesComponent implements OnInit {
   @Output() updatePageEmitter = new EventEmitter<any>();
   pageForm: FormGroup;
   errors: any = {};
+  isMobile = false;
 
   constructor(private fb: FormBuilder) { }
 
@@ -25,6 +26,7 @@ export class AdditionalPagesComponent implements OnInit {
     });
     this.updatePageEmitter.emit({page: this.pageForm.value, form: this.pageForm});
     this.onChanges();
+    this.isMobile = document.body.clientWidth < 670;
   }
   onChanges(): void {
     this.pageForm.valueChanges.subscribe(val => {

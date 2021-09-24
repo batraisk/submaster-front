@@ -16,14 +16,12 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { ForgotComponent } from './components/authentication/forgot/forgot.component';
-import { AuthenticationService } from './services/authentication.service';
-import { UserService } from './services/user.service';
-import { AccountService } from './services/account.service';
-import { FaqService } from './services/faq.service';
+import { AuthenticationService, FaqService, AccountService } from '@core-services';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {AuthenticationGuard} from './services/authentication.guard';
+import {AuthenticationGuard} from '@core-services';
+import {PaymentsService} from './services';
 import {TranslateModule} from '@ngx-translate/core';
 import {EditPasswordComponent} from './components/authentication/edit-password/edit-password.component';
 import {BalanceComponent} from './components/balance/balance.component';
@@ -79,6 +77,7 @@ import { SharedModule } from '../shared/shared.module';
     AuthenticationGuard,
     AccountService,
     FaqService,
+    PaymentsService,
   ]
 })
 export class CoreModule { }

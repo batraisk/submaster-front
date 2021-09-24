@@ -50,3 +50,14 @@
 .youtube-frame-container {
   margin: 24px 0 0;
 }
+
+@media only screen and (max-width: 669px) {
+
+  .margin-section-container {
+    margin-top: 24px;
+  }
+
+  .color-theme-container {
+    margin-top: 24px;
+  }
+}

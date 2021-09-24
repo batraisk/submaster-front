@@ -1,7 +1,7 @@
 <form nz-form [formGroup]="pageForm">
   <div class="steps-content">
   <div nz-row>
-    <div nz-col [nzSpan]="11" [nzXl]="8">
+    <div nz-col [nzSpan]="11" [nzXl]="8" [nzMd]="24" [nzSm]="24" [nzXs]="24">
       <h1>{{ 'PROFILE.PROFILE' | translate }}</h1>
       <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
         <nz-form-item *nzSpaceItem>
@@ -45,11 +45,11 @@
   </div>
   </div>
   <div style="height: 112px"></div>
-  <nz-divider class="divider-bottom"></nz-divider>
+  <nz-divider *ngIf="!isMobile" class="divider-bottom"></nz-divider>
 
 
   <div class="steps-action d-flex">
-    <button nz-button nzType="primary" (click)="submit()" [disabled]="!canSend || !pageForm.valid">
+    <button nz-button nzType="primary" class="submit-button" (click)="submit()" [disabled]="!canSend || !pageForm.valid">
       <span>{{ 'ACTIONS.SAVE CHANGES' | translate }}</span>
     </button>
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {IUserInfo} from '@models';
 import {map} from 'rxjs/operators';
 import {toCamelCaseObject} from '@helpers';
@@ -10,6 +10,7 @@ import {toCamelCaseObject} from '@helpers';
 })
 export class UserService {
   userInfo: IUserInfo;
+  balance = new BehaviorSubject<string>('0');
 
   constructor(private http: HttpClient) {
     // this.getUserInfo().subscribe(res => this.userInfo = res);
@@ -25,7 +26,11 @@ export class UserService {
 
   getUserInfo(): Observable<IUserInfo> {
     return this.http.get<IUserInfo>('/api/v1/user_info')
-      .pipe(map((res: IUserInfo) => toCamelCaseObject(res)));
+      .pipe(map((res: IUserInfo) => {
+        const localeBalance = + res.balance;
+        this.balance.next(localeBalance.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' }));
+        return toCamelCaseObject(res);
+      }));
   }
 
   setLocale(locale: string): Observable<IUserInfo> {

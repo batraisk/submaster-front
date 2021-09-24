@@ -69,6 +69,22 @@
       }
     }
   }
+  .green {
+    .ant-radio-inner {
+      background: $green-v2-bg;
+      &:after {
+        background: $green-v2-button;
+      }
+    }
+  }
+  .red {
+    .ant-radio-inner {
+      background: $red-v2-bg;
+      &:after {
+        background: $red-v2-button;
+      }
+    }
+  }
   .purple, .dark {
     .ant-radio-inner {
       background: $golden-purple-9;
@@ -108,4 +124,38 @@
 // cards
 .ant-card {
   box-shadow: 0px 2px 8px 0px #00000026;
+}
+
+@media only screen and (max-width: 669px) {
+  .ant-picker-dropdown-range {
+    .ant-picker-date-panel {
+      .ant-picker-content {
+        width: 300px!important;
+        td {
+          padding: 6px 0;
+        }
+      }
+      width: 320px!important;
+      .ant-picker-cell-inner {
+        font-size: 24px;
+      }
+    }
+    .ant-picker-panel {
+      &:last-child {
+        width: 0;
+        .ant-picker-header {
+          position: absolute;
+          right: 0;
+          .ant-picker-header-prev-btn, .ant-picker-header-view {
+            visibility: hidden;
+          }
+        }
+
+        .ant-picker-body {
+          display: none;
+        }
+      }
+    }
+
+  }
 }

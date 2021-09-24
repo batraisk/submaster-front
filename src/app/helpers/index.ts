@@ -69,4 +69,16 @@ export const kFormatter = (num) => {
   } else {
     return Math.sign(num) * Number(Math.abs(num));
   }
-}
+};
+
+export const findUserCountry = () => {
+   return fetch('https://extreme-ip-lookup.com/json/').then( res => res.json());
+};
+// fetch('https://extreme-ip-lookup.com/json/')
+//   .then( res => res.json())
+//   .then(response => {
+//     console.log("Country: ", response.country);
+//   })
+//   .catch((data, status) => {
+//     console.log('Request failed');
+//   })
