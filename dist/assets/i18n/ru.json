@@ -21,14 +21,18 @@
     "YES": "Да",
     "NO": "Нет",
     "SEND": "Отправить",
-    "CONNECT": "Подключить"
+    "CONNECT": "Подключить",
+    "LOAD MORE": "Показать еще",
+    "STEP": "Шаг",
+    "OF": "из"
   },
   "STATISTICS": {
     "SUBSCRIBERS": "Подписок",
     "VIEWS": "Показы",
     "TOTAL STATS": "Статистика",
     "CLICKS": "Показы",
-    "CTR": "CTR"
+    "CTR": "CTR",
+    "VIEW TOTAL STATS": "Показать статистику"
   },
   "UTM": {
     "UTM TAGS": "UTM Метки",
@@ -56,7 +60,11 @@
     "NEW PASSWORD": "Новый пароль",
     "CONFIRM PASSWORD": "Подтвердите пароль",
     "PASSWORD CHANGED": "Пароль успешно изменен",
-    "EMAIL CHANGED": "Почта успешно изменена"
+    "EMAIL CHANGED": "Почта успешно изменена",
+    "PASSWORD RECOVERY": "Восстановление пароля",
+    "DO YOU HAVE": "У вас есть аккаунт?",
+    "SEND LINK": "Мы отправили ссылку для восстановления пароля. Проверьте почту",
+    "GO TO LOG IN": "Войти"
   },
   "PAGE": {
     "EDIT PAGE DETAILS": "Основная информация",
@@ -87,6 +95,7 @@
     "STATISTICS": "Статистика",
     "UTM TAGS": "UTM метки",
     "PAGE SETTINGS": "Настройки",
+    "COPY PAGE LINK": "Копировать ссылку",
 
     "LOGINS": "Логины",
     "LOGIN": "Логин",
@@ -100,9 +109,11 @@
     "DOWNLOAD LINK": "Ссылка для скачивания",
 
     "SUCCESS PAGE": "Страница успеха",
-    "OUT OF STOCK PAGE": "Страница для не подписавшегося",
+    "OUT OF STOCK PAGE": "Не активная страница",
     "CONFIRM DELETE": "Вы уверены, что хотите удалить эту страницу?",
-    "NOTHING HERE": "Здесь пока ничего нет"
+    "NOTHING HERE": "Здесь пока ничего нет",
+    "SHOW MORE": "Показать еще",
+    "VIEW PAGE": "Перейти на страницу"
   },
   "PROFILE": {
     "PROFILE": "Профиль",
@@ -147,5 +158,26 @@
     "WEEK": "Неделя",
     "MONTH": "Месяц",
     "YEAR": "Год"
+  },
+  "BALANCE": {
+    "COMPLETED": "ЗАЧИСЛЕН",
+    "IN PROGRESS": "В ОБРАБОТКЕ",
+    "STATUS": "Статус",
+    "AMOUNT": "Сумма",
+    "DATE": "Дата",
+    "PAYMENT HISTORY": "История платежей",
+    "PROMO CODE": "Промо код",
+    "PROMO CODE ACTIVATION": "Активация промо кода",
+    "PAY": "Оплатить",
+    "TOP-UP BALANCE": "Пополнить баланс",
+    "SERVICE COST": "Стоимость услуги составляет 3 рубля при успешной проверке.",
+    "BALANCE WILL NOT BE DEDUCTED": "Средства с баланса не будут списаны, если человек запустил проверку, но не подписался на вас.",
+    "APPLY": "Применить",
+    "PROMOCODE ACTIVATED": "Промокод активирован",
+    "code_expired": "Срок действия промокода истек",
+    "code_not yet": "Промокод не действителен",
+    "code_used": "Промокод уже использовался",
+    "promocode_must exist": "Промокод не найден"
+
   }
 }
