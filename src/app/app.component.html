@@ -29,7 +29,7 @@
         <i nz-icon nzType="thunderbolt" nzTheme="fill"></i>
         <span>{{ 'MENU.ONLINE COURSE' | translate }}</span>
       </li>
-      <li nz-menu-item (click)="goToLogin()">
+      <li nz-menu-item (click)="logOut()">
         <i nz-icon nzType="logout" nzTheme="outline"></i>
         <span>{{ 'MENU.LOGOUT' | translate }}</span>
       </li>
@@ -45,7 +45,7 @@
     <nz-content class="site-content">
       <div
         [ngClass]="{'inner-content': router.url.indexOf('/auth/') == -1,'h-100 d-flex align-items-center justify-content-center': router.url.indexOf('/auth/') !== -1}">
-        <router-outlet></router-outlet>
+        <router-outlet *ngIf=" router.url.indexOf('/auth/') == 1 || userService.currentUserInfo"></router-outlet>
       </div>
     </nz-content>
   </nz-layout>

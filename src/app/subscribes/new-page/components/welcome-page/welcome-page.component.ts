@@ -14,7 +14,7 @@ export class WelcomePageComponent implements OnInit {
   @ViewChild('fileInput') fileInput: any;
   switchValue = false;
   radioValue = 'default';
-  themes = ['default', 'blue', 'pink', 'mustard', 'dark'];
+  themes = ['default', 'red', 'green', 'blue', 'pink', 'mustard', 'dark'];
   view = 'mobile';
   views = ['mobile', 'desktop'];
   pageForm: FormGroup;

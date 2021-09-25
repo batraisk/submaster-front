@@ -25,6 +25,8 @@ export class BalanceComponent implements OnInit, OnDestroy {
   payments: any[] = [];
   currency = 'RUB'; // USD
   mobileData: any[] = [];
+  currencyStr = '';
+  price = 0;
 
   constructor(
     private translate: TranslateService,
@@ -41,14 +43,25 @@ export class BalanceComponent implements OnInit, OnDestroy {
       this.total = res.total_count;
       this.prepareMobileData(this.payments);
     });
-    findUserCountry()
-      .then(response => {
-        if (response.country !== 'Russia') {
-          this.currency = 'USD';
-        }
-        // console.log('Country: ', response.country);
-      });
+
+    // findUserCountry()
+    //   .then(response => {
+    //     if (response.country !== 'Russia') {
+    //       this.currency = 'USD';
+    //     }
+    //     // console.log('Country: ', response.country);
+    //   });
     this.isMobile = document.body.clientWidth < 670;
+    if (!this.userService.currentUserInfo) { return; }
+    this.price = this.userService.currentUserInfo.price;
+    console.log('this.translate.currentLang', this.translate.currentLang)
+    if (this.userService.currentUserInfo.country !== 'RU') {
+      this.currency = 'USD';
+      this.currencyStr = 'USD';
+    } else {
+      this.currency = 'RUB';
+      this.currencyStr = this.translate.currentLang === 'ru' ? 'руб.' : 'RUB';
+    }
   }
 
   loadMore(): void {
@@ -127,7 +140,6 @@ export class BalanceComponent implements OnInit, OnDestroy {
     });
 
     this.mobileData = this.mobileData.concat(res);
-    console.log('this.mobileData', this.mobileData);
   }
 
 }

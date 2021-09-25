@@ -9,18 +9,18 @@ import {toCamelCaseObject} from '@helpers';
   providedIn: 'root'
 })
 export class UserService {
-  userInfo: IUserInfo;
+  userInfo: IUserInfo | null;
   balance = new BehaviorSubject<string>('0');
 
   constructor(private http: HttpClient) {
     // this.getUserInfo().subscribe(res => this.userInfo = res);
   }
 
-  public get currentUserInfo(): IUserInfo {
+  public get currentUserInfo(): IUserInfo | null {
     return this.userInfo;
   }
 
-  public set currentUserInfo(info: IUserInfo) {
+  public set currentUserInfo(info: IUserInfo | null) {
     this.userInfo = info;
   }
 
@@ -28,6 +28,9 @@ export class UserService {
     return this.http.get<IUserInfo>('/api/v1/user_info')
       .pipe(map((res: IUserInfo) => {
         const localeBalance = + res.balance;
+        if (res.country && res.country !== 'RU') {
+          this.balance.next(localeBalance.toLocaleString('en-US', { style: 'currency', currency: 'USD' }));
+        }
         this.balance.next(localeBalance.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' }));
         return toCamelCaseObject(res);
       }));
