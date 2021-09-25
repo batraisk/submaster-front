@@ -20,7 +20,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this.authenticationService.currentUserValue) { return; }
+    if (!this.authenticationService.currentUserValue) {
+      const browserLang = this.translate.getBrowserLang();
+      const code = (browserLang.match(/en|ru/) ? browserLang : 'en');
+      this.translate.use(code);
+      return;
+    }
     this.userService.getUserInfo().subscribe((res: IUserInfo) => {
       this.userService.currentUserInfo = res;
     });
@@ -37,7 +42,9 @@ export class AppComponent implements OnInit {
   }
   logOut(): void {
     this.authenticationService.logout().subscribe(() => {
+      this.userService.currentUserInfo = null;
       localStorage.removeItem('currentUser');
+      console.log('logOut')
       localStorage.removeItem('token');
       this.router.navigate(['/auth/login']);
     });

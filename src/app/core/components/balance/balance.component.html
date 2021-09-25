@@ -90,7 +90,7 @@
 </div>
 
 <ng-template #alert>
-  {{ 'BALANCE.SERVICE COST' | translate }}
+  {{ 'BALANCE.SERVICE COST' | translate: {price: price, currency: currencyStr} }}
   <br>
   {{ 'BALANCE.BALANCE WILL NOT BE DEDUCTED' | translate }}
 </ng-template>
