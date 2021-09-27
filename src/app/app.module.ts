@@ -80,7 +80,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         }
       },
     },
-    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    // {provide: LocationStrategy, useClass: HashLocationStrategy},
     ],
   bootstrap: [AppComponent]
 })
