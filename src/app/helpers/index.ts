@@ -78,7 +78,7 @@ export const findUserCountry = () => {
 export const  isValidUrl = (str: string) => {
   let url;
   if (str.indexOf('http:') === -1 || str.indexOf('https:') === -1) {
-    url = `https://${str}`;
+    str = `https://${str}`;
   }
   try {
     url = new URL(str);
