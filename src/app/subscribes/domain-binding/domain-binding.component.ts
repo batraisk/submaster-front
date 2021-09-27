@@ -141,6 +141,7 @@ export class DomainBindingComponent implements OnInit, OnDestroy {
     this.domain = this.domain.trim();
     this.domain = this.domain.replace('http://', '');
     this.domain = this.domain.replace('https://', '');
+    this.domain = this.domain.replace('www.', '');
     const req: IDomain = {url: this.domain};
     if (!this.validateDomain()) {
       this.showErrors();
