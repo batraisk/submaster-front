@@ -41,16 +41,18 @@
   <div class="banner" *ngIf="isOpen" (click)="closeMenu()"></div>
 
   <nz-layout>
-    <app-header *ngIf=" router.url.indexOf('/auth/') == -1 && userService.currentUserInfo"></app-header>
+    <app-header *ngIf="!isAuthPage && userService.currentUserInfo"></app-header>
     <nz-content class="site-content">
       <div
-        [ngClass]="{'inner-content': router.url.indexOf('/auth/') == -1,'h-100 d-flex align-items-center justify-content-center': router.url.indexOf('/auth/') !== -1}">
-        <router-outlet *ngIf=" router.url.indexOf('/auth/') == 1 || userService.currentUserInfo"></router-outlet>
+        [ngClass]="{'inner-content': !isAuthPage,'h-100 d-flex align-items-center justify-content-center': router.url.indexOf('/auth/') !== -1}">
+        <router-outlet *ngIf="isAuthPage || userService.currentUserInfo"></router-outlet>
+<!--        <router-outlet *ngIf=" isAuthPage || userService.currentUserInfo"></router-outlet>-->
+
+<!--        <router-outlet></router-outlet>-->
       </div>
     </nz-content>
   </nz-layout>
 </nz-layout>
-
 <!--<nz-layout *ngIf="router.url.indexOf('/auth/') != -1" style="height:100vh">-->
 <!--  <nz-content class="d-flex align-items-center justify-content-center" style="height:100%">-->
 <!--      <router-outlet></router-outlet>-->

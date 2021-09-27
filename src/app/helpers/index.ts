@@ -74,6 +74,20 @@ export const kFormatter = (num) => {
 export const findUserCountry = () => {
    return fetch('https://extreme-ip-lookup.com/json/').then( res => res.json());
 };
+
+export const  isValidUrl = (str: string) => {
+  let url;
+  if (str.indexOf('http:') === -1 || str.indexOf('https:') === -1) {
+    url = `https://${str}`;
+  }
+  try {
+    url = new URL(str);
+  } catch (_) {
+    return false;
+  }
+
+  return url.protocol === 'http:' || url.protocol === 'https:';
+}
 // fetch('https://extreme-ip-lookup.com/json/')
 //   .then( res => res.json())
 //   .then(response => {

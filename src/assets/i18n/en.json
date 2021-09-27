@@ -148,8 +148,14 @@
     "STATUS": "Status",
     "ACTION": "Action",
     "CONNECTED": "CONNECTED",
+    "PENDING": "PENDING",
+    "REJECT": "Reject",
     "NOT CONNECTED": "NOT CONNECTED",
-    "DELETE": "DELETE"
+    "DELETE": "DELETE",
+    "notValid": "Domain name is not valid",
+    "exists": "Domain name already exists",
+    "has already been taken": "Domain name already exists",
+    "enterDomain": "Enter a domain name"
   },
   "DATE TIME": {
     "DATE": "Date",

@@ -4,9 +4,9 @@
 
       <div *nzSpaceItem>
         <nz-form-label [nzSpan]="24">{{ 'DOMAIN.DOMAIN NAME' | translate }}</nz-form-label>
-        <nz-form-control [nzSpan]="24" class="mt-2">
+        <nz-form-control [nzSpan]="24" class="mt-2" [ngClass]="{'ant-form-item-has-error': this.domainError}">
           <div class="d-flex domain-input-container">
-            <input [(ngModel)]="domain" [ngModelOptions]="{standalone: true}" nz-input name="domain" type="domain" id="domain">
+            <input (ngModelChange)="onChangeModel($event)" [(ngModel)]="domain" [ngModelOptions]="{standalone: true}" nz-input name="domain" type="domain" id="domain">
             <button
               class="ml-4 connect-btn"
               (click)="createDomain()"
@@ -56,10 +56,11 @@
       <th  [nzSortFn]="true" nzColumnKey="url" [nzSortPriority]="1">
         {{ 'DOMAIN.DOMAIN' | translate }}
       </th>
-      <th  [nzSortFn]="true" nzColumnKey="pages" [nzSortPriority]="2">
+<!--      <th  [nzSortFn]="true" nzColumnKey="pages" [nzSortPriority]="2">-->
+      <th  nzColumnKey="pages">
         {{ 'DOMAIN.PAGES' | translate }}
       </th>
-      <th  [nzSortFn]="true" nzColumnKey="status" [nzSortPriority]="3">
+      <th  [nzSortFn]="true" nzColumnKey="status" [nzSortPriority]="2">
         {{ 'DOMAIN.STATUS' | translate }}
       </th>
       <th  nzColumnKey="action">
@@ -83,6 +84,9 @@
             <td>
 <!--              <nz-tag *ngIf="item.status == 'subscribed'" nzColor="success">{{ 'PAGE.SUBSCRIBED' | translate }}</nz-tag>-->
               <nz-tag *ngIf="!item.status || item.status == 'not_connected'" nzColor="red">{{ 'DOMAIN.NOT CONNECTED' | translate }}</nz-tag>
+              <nz-tag *ngIf="item.status && item.status == 'pending'" nzColor="blue">{{ 'DOMAIN.PENDING' | translate }}</nz-tag>
+              <nz-tag *ngIf="item.status && item.status == 'connected'" nzColor="green">{{ 'DOMAIN.CONNECTED' | translate }}</nz-tag>
+              <nz-tag *ngIf="item.status && item.status == 'reject'" nzColor="black">{{ 'DOMAIN.REJECT' | translate }}</nz-tag>
             </td>
             <td>
               <button
