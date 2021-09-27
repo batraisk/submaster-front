@@ -151,7 +151,13 @@
     "ACTION": "Действие",
     "CONNECTED": "ПОДКЛЮЧЕН",
     "NOT CONNECTED": "НЕ ПОДКЛЮЧЕН",
-    "DELETE": "УДАЛИТЬ"
+    "PENDING": "В ОБРАБОТКЕ",
+    "REJECT": "Откланен",
+    "DELETE": "УДАЛИТЬ",
+    "notValid": "Вы ввели некорректное имя домена",
+    "exists": "Домен уже существует",
+    "has already been taken": "Домен уже существует",
+    "enterDomain": "Введите имя домена"
   },
   "DATE TIME": {
     "DATE": "Дата",
