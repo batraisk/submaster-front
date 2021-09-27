@@ -33,6 +33,10 @@ export class DomainsService {
     return this.http.delete(`${pageUrl}/${domainId}`);
   }
 
+  getStatuses(list: number[]): Observable<any> {
+    return this.http.post(`${pageUrl}/statuses`, {ids: list});
+  }
+
   getDomains(
     pageIndex: number = 0,
     pageSize: number = 20,

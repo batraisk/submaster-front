@@ -13,12 +13,14 @@ export class NavigationService {
 
   set header(title: string) {
     if (title.indexOf('{{') !== -1) {
-      // debugger
       this.headerTitle =  title.match(/(.*?)(?=\s\{\{)/g)[0];
-      this.headerParamsPrivate =  {value: title.match(/(?<=\{\{).*(?=\}\})/g)[0]};
+      const startIndex = title.indexOf('{{');
+      const endIndex = title.indexOf('}}');
+      // console.log('title.match(/(?<=\\{\\{).*(?=\\}\\})/g)[0]', title.match(/(?<=\{\{).*(?=\}\})/g)[0]);
+      // this.headerParamsPrivate =  {value: title.match(/(?<=\{\{).*(?=\}\})/g)[0]};
+      this.headerParamsPrivate =  {value: title.slice(startIndex + 2, endIndex)};
     } else {
       this.headerTitle = title;
-      // this.headerTitle = title;
       this.headerParamsPrivate = {value: ''};
     }
   }

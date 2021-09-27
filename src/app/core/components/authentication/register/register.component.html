@@ -1,6 +1,6 @@
 <div class="auth-container d-flex align-items-center">
   <img src="assets/images/icons/Logotype.svg" alt="">
-  <p class="mt-4 title">Create new account</p>
+  <p class="mt-4 title">{{ 'AUTH.NEW ACCOUNT' | translate }}</p>
   <form nz-form class="w-100" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <nz-space nzDirection="vertical" [nzSize]="16" style="width:100%">
       <nz-form-item *nzSpaceItem>

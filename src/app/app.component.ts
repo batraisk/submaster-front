@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { Location } from '@angular/common';
 import {TranslateService} from '@ngx-translate/core';
 import {UserService, AuthenticationService} from '@core-services';
 import {NavigationService} from '@navigation-services';
@@ -11,12 +12,17 @@ import {IUserInfo} from '@models';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  isAuthPage = true;
   constructor(
+    private location: Location,
     public router: Router,
     public translate: TranslateService,
     public userService: UserService,
     private authenticationService: AuthenticationService,
     private navigationService: NavigationService) {
+    router.events.subscribe((val) => {
+      this.isAuthPage = location.path().indexOf('/auth/') !== -1;
+    });
   }
 
   ngOnInit(): void {

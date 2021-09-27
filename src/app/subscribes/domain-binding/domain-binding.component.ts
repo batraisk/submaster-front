@@ -5,11 +5,14 @@ import {IDomain} from '@models';
 import {NzTableQueryParams} from 'ng-zorro-antd/table';
 import {FormBuilder} from '@angular/forms';
 import {NavigationService} from '@navigation-services';
+import {isValidUrl} from '@helpers';
+import {NzMessageService} from 'ng-zorro-antd/message';
 
 export interface TreeNodeInterface {
+  id: number;
   key: string;
   url: string;
-  status?: number;
+  status?: string;
   pages?: string;
   level?: number;
   expand?: boolean;
@@ -25,7 +28,11 @@ export interface TreeNodeInterface {
 export class DomainBindingComponent implements OnInit, OnDestroy {
   domain = '';
   domains: IDomain[];
+  intervalId: any;
+  pendingDomainIds: number[];
   mapOfExpandedData: { [key: string]: TreeNodeInterface[] } = {};
+  domainError = false;
+  errors: any[] = [];
   panels = [
     {
       active: false,
@@ -51,7 +58,8 @@ export class DomainBindingComponent implements OnInit, OnDestroy {
   constructor(
     private translate: TranslateService,
     private domainsService: DomainsService,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private message: NzMessageService,
   ) { }
 
   ngOnInit(): void {
@@ -68,14 +76,50 @@ export class DomainBindingComponent implements OnInit, OnDestroy {
     this.pagintation = {
       pageIndex, pageSize
     };
+    if (this.intervalId) { clearInterval(this.intervalId); }
+    this.pendingDomainIds = [];
     this.domainsService.getDomains(pageIndex, pageSize, sort).subscribe(res => {
       this.domains = this.mapDate(res.data);
       this.total = res.total_count;
-
       this.domains.forEach((item: any) => {
+        if (item.status === 'pending') {
+          this.pendingDomainIds.push(item.id);
+        }
+        // this.pendingDomainIds.push(item.id)
         this.mapOfExpandedData[item.key] = this.convertTreeToList(item);
+
+      });
+      // this.domainsService.getStatuses(this.pendingDomainIds).subscribe(ress => {
+      // });
+      this.runChecking();
+    });
+  }
+
+  runChecking(): void {
+    if (this.pendingDomainIds.length === 0) { return; }
+    this.intervalId = setInterval(() => {
+      this.domainsService.getStatuses(this.pendingDomainIds).subscribe(res => {
+        this.statusCheckHandler(res);
+      });
+    }, 4000);
+  }
+
+  statusCheckHandler(list: any[]): void {
+    const notPendingList = list.filter(item => item.status !== 'pending');
+    const notPendingListIds = notPendingList.map(listItem => listItem.id);
+    console.log('notPendingList', notPendingList)
+    Object.keys(this.mapOfExpandedData).forEach(key => {
+      this.mapOfExpandedData[key].forEach((item, index) => {
+        if (notPendingListIds.includes(item.id)) {
+          const status = notPendingList.filter(notPendingItem => notPendingItem.id === item.id)[0].status;
+          this.mapOfExpandedData[key][index].status = status;
+          item.status = status;
+        }
       });
     });
+    console.log('this.mapOfExpandedData', this.mapOfExpandedData)
+    this.pendingDomainIds = this.pendingDomainIds.filter(id => !notPendingListIds.includes(id));
+    if (this.intervalId && this.pendingDomainIds.length === 0) { clearInterval(this.intervalId); }
   }
 
   mapDate(data: any[]): any[] {
@@ -93,11 +137,58 @@ export class DomainBindingComponent implements OnInit, OnDestroy {
   }
 
   createDomain(): void {
+    this.resetErrors();
+    this.domain = this.domain.trim();
+    this.domain = this.domain.replace('http://', '');
+    this.domain = this.domain.replace('https://', '');
     const req: IDomain = {url: this.domain};
-    this.domainsService.createDomain(req).subscribe(res => {
-      this.domain = '';
-      this.getDomains();
+    // if (!this.validateDomain()) {
+    //   this.showErrors();
+    //   return;
+    // }
+    this.domainsService.createDomain(req).subscribe(
+      res => {
+        this.domain = '';
+        this.getDomains();
+      },
+      err => {
+        if (!!err.error.url) {
+          this.errors.push(this.translate.instant(`DOMAIN.${err.error.url}`));
+          this.domainError = true;
+          this.message.error(this.translate.instant(`DOMAIN.${err.error.url}`));
+          // return;
+        }
+      });
+  }
+
+  validateDomain(): boolean {
+    if (this.domain === '') {
+      this.errors.push(this.translate.instant('DOMAIN.enterDomain'));
+      this.domainError = true;
+      return false;
+    }
+    const isValid = isValidUrl(this.domain);
+    if (!isValid) {
+      this.errors.push(this.translate.instant('DOMAIN.notValid'));
+      this.domainError = true;
+    }
+    return isValid;
+  }
+
+  showErrors(): void {
+    if (this.errors.length === 0) { return; }
+    this.errors.forEach(error => {
+      this.message.error(error);
     });
+  }
+
+  onChangeModel($event): void {
+    this.resetErrors();
+  }
+
+  resetErrors(): void {
+    this.errors = [];
+    this.domainError = false;
   }
 
   onQueryParamsChange(params: NzTableQueryParams): void {
