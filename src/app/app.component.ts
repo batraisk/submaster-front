@@ -28,7 +28,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     if (!this.authenticationService.currentUserValue) {
       const browserLang = this.translate.getBrowserLang();
-      const code = (browserLang.match(/en|ru/) ? browserLang : 'en');
+      // const code = (browserLang.match(/en|ru/) ? browserLang : 'en');
+      const code = 'en';
       this.translate.use(code);
       return;
     }

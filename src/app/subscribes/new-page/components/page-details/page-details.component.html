@@ -17,8 +17,11 @@
               <input type="text" nz-input id="domain" formControlName="url" />
             </nz-input-group>
             <ng-template #addOnBeforeTemplate>
-              <nz-select [(ngModel)]="domain" [ngModelOptions]="{standalone: true}">
-                <nz-option nzLabel="https://submaster.com/" nzValue="https://submaster.com/"></nz-option>
+<!--              <nz-select [(ngModel)]="domain" [ngModelOptions]="{standalone: true}">-->
+              <nz-select formControlName="domainId">
+                <nz-option *ngFor="let domain of domains" [nzLabel]="'https://' + domain.url + '/pages/'" [nzValue]="domain.id"></nz-option>
+
+<!--                <nz-option nzLabel="https://submaster.com/" nzValue="https://submaster.com/"></nz-option>-->
               </nz-select>
             </ng-template>
           </nz-form-control>

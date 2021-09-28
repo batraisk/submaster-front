@@ -154,10 +154,11 @@ export class DomainBindingComponent implements OnInit, OnDestroy {
       },
       err => {
         if (!!err.error.url) {
-          this.errors.push(this.translate.instant(`DOMAIN.${err.error.url}`));
+          err.error.url.forEach(error => {
+            this.errors.push(this.translate.instant(`DOMAIN.${error}`));
+            this.message.error(this.translate.instant(`DOMAIN.${error}`));
+          });
           this.domainError = true;
-          this.message.error(this.translate.instant(`DOMAIN.${err.error.url}`));
-          // return;
         }
       });
   }
@@ -173,6 +174,7 @@ export class DomainBindingComponent implements OnInit, OnDestroy {
       this.errors.push(this.translate.instant('DOMAIN.notValid'));
       this.domainError = true;
     }
+
     return isValid;
   }
 

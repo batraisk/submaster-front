@@ -154,6 +154,7 @@
     "DELETE": "DELETE",
     "notValid": "Domain name is not valid",
     "exists": "Domain name already exists",
+    "wrong_ip": "The specified domain has a wrong ip",
     "has already been taken": "Domain name already exists",
     "enterDomain": "Enter a domain name"
   },

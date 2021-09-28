@@ -46,8 +46,8 @@
           </button>
         </div>
         <div nz-col [nzSpan]="12" class="d-flex align-items-center">
-          <a href="https://submaster.pro/pages/{{page.url}}" target="_blank">
-            <i nz-icon nzType="export"></i> <span>https://submaster.pro/pages/{{page.url}}</span>
+          <a [href]="page.linkToPage" target="_blank">
+            <i nz-icon nzType="export"></i> <span>{{page.linkToPage}}</span>
           </a>
         </div>
       </div>
@@ -85,8 +85,8 @@
     <button nz-button nzType="primary" (click)="goToInfo('edit')" nzBlock [nzSize]="'small'" class="mt-2 mb-4" nzGhost>
       <i nz-icon nzType="edit"></i>{{ 'ACTIONS.EDIT' | translate }}
     </button>
-    <a href="https://submaster.ru/pages/{{page.url}}" target="_blank" class="mb-4">
-      <i nz-icon nzType="export" class="mr-2"></i> <span>https://submaster.pro/pages/{{page.url}}</span>
+    <a [href]="page.linkToPage" target="_blank" class="mb-4">
+      <i nz-icon nzType="export" class="mr-2"></i> <span>{{page.linkToPage}}</span>
     </a>
     <div class="stats">
       <div class="item">

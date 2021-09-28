@@ -64,7 +64,7 @@ export class PageInfoComponent implements OnInit {
   }
 
   goToPage(): void {
-    window.location.href = `https://submaster.pro/pages/${this.page.url}`;
+    window.location.href = this.page.linkToPage;
   }
 
   close(): void {

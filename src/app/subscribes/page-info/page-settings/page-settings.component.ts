@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {makeYoutubeEmbed, matchYoutubeUrl, selectFile, toSnakeCaseObject} from '@helpers';
 import {Router} from '@angular/router';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import {PagesService} from '@subscribes-services';
+import {DomainsService, PagesService} from '@subscribes-services';
 import {TranslateService} from '@ngx-translate/core';
 import {environment} from '@environment';
 
@@ -17,11 +17,12 @@ export class PageSettingsComponent implements OnInit {
   @ViewChild('fileInput') fileInput: any;
   @Output() openMenu = new EventEmitter<any>();
   baseUrl = environment.apiUrl;
-  domain = 'https://submaster.com/';
+  domain = 0;
   pageForm: FormGroup;
   // themes = ['natural', 'gold', 'lime', 'blue', 'magenta', 'yellow', 'purple'];
   themes = ['default', 'red', 'green', 'blue', 'pink', 'mustard', 'dark'];
   view = 'mobile';
+  domains: any[] = [{id: 0, url: 'submaster.pro'}];
   file: File;
   translates: any = {};
   backgroundUrl: string | null = null;
@@ -40,7 +41,8 @@ export class PageSettingsComponent implements OnInit {
     private fb: FormBuilder,
     private modal: NzModalService,
     private router: Router, private pagesService: PagesService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private domainsService: DomainsService,
   ) {
     const foo: string = this.translate.instant('PAGE.CONFIRM DELETE');
   }
@@ -73,9 +75,17 @@ export class PageSettingsComponent implements OnInit {
       outOfStockTitle: [this.page.outOfStockTitle, [Validators.required]],
       outOfStockDescription: [this.page.outOfStockDescription, [Validators.required]],
     });
+    this.domain = this.page.domainId;
     if (this.page.background) { this.backgroundUrl = this.baseUrl + this.page.background; }
     this.youtube = this.page.youtube;
     this.isMobile = document.body.clientWidth < 670;
+    this.getDomains();
+  }
+
+  getDomains(): void {
+    this.domainsService.getDomains(1, 100).subscribe(data => {
+      this.domains = [{id: 0, url: 'submaster.pro'}, ...data.data.filter(item => item.status === 'connected')];
+    });
   }
 
   onSelectFile(event): void {
@@ -101,6 +111,7 @@ export class PageSettingsComponent implements OnInit {
       }
     }
     formData.append('status', property.status ? 'active' : 'inactive');
+    formData.append('domain_id', String(this.domain));
     if (this.file) {
       formData.append('background', this.file);
     } else if (this.page.background && !this.backgroundUrl) {
