@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {StatisticsService} from '@subscribes-services';
 import {kFormatter} from '@helpers';
 import {format} from 'date-fns';
+import {datepickerRU} from '../../../shared/ui_locales';
 
 @Component({
   selector: 'app-dashboard-statistics',
@@ -14,6 +15,7 @@ export class DashboardStatisticsComponent implements OnInit {
   mode = 'date';
   date = new Date();
   statsList = ['clicks', 'subscribers', 'ctr'];
+  datepickerRU = datepickerRU;
 
   constructor(private statisticsService: StatisticsService) { }
 

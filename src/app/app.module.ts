@@ -3,11 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import {NZ_DATE_CONFIG, NZ_I18N} from 'ng-zorro-antd/i18n';
 import { en_US, ru_RU } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import ru from '@angular/common/locales/ru';
+// import ru from '@angular/common/locales/ru';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -70,17 +71,24 @@ export function HttpLoaderFactory(http: HttpClient) {
     {
       provide: NZ_I18N,
       useValue: en_US ,
+      // useValue: ru_RU ,
       useFactory: (localId: string) => {
         switch (localId) {
           case 'en':
             return en_US;
-          case 'fr':
+          case 'ru':
             return ru_RU;
           default:
             return en_US;
         }
       },
     },
+    {
+      provide: NZ_DATE_CONFIG,
+      useValue: {
+        firstDayOfWeek: 1, // week starts on Monday (Sunday is 0)
+      },
+    }
     // {provide: LocationStrategy, useClass: HashLocationStrategy},
     ],
   bootstrap: [AppComponent]

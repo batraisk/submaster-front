@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {UserService} from '@core-services';
+import { en_US, ru_RU, NzI18nService } from 'ng-zorro-antd/i18n';
 
 @Component({
   selector: 'app-localizer',
@@ -21,7 +22,12 @@ export class LocalizerComponent implements OnInit {
     code: 'ru',
   }];
   activeLocale: any = this.langs[0];
-  constructor(private renderer: Renderer2, public translate: TranslateService, private userService: UserService) {
+  constructor(
+    private renderer: Renderer2,
+    public translate: TranslateService,
+    private userService: UserService,
+    private i18n: NzI18nService,
+  ) {
     translate.addLangs(['en', 'ru']);
   }
 
@@ -30,6 +36,7 @@ export class LocalizerComponent implements OnInit {
     const locale = this.userService.currentUserInfo.locale;
     const code = locale || (browserLang.match(/en|ru/) ? browserLang : 'en');
     this.translate.use(code);
+    code === 'ru' ? this.i18n.setLocale(ru_RU) : this.i18n.setLocale(en_US);
     this.activeLocale = this.langs.filter(lang => lang.code === code)[0];
 
     this.renderer.listen('window', 'click', (e: Event) => {
@@ -49,6 +56,7 @@ export class LocalizerComponent implements OnInit {
       this.userService.currentUserInfo = res;
       this.activeLocale = locale;
       this.translate.use(locale.code);
-    })
+      locale.code === 'ru' ? this.i18n.setLocale(ru_RU) : this.i18n.setLocale(en_US);
+    });
   }
 }

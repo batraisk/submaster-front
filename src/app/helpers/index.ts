@@ -75,7 +75,7 @@ export const findUserCountry = () => {
    return fetch('https://extreme-ip-lookup.com/json/').then( res => res.json());
 };
 
-export const  isValidUrl = (str: string) => {
+export const isValidUrl = (str: string) => {
   if (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(str)) {
     return true;
   }
