@@ -26,7 +26,7 @@
 <ng-template #extraTemplate>
   <div class="d-flex align-items-center" *ngIf="page">
     <span>{{ 'PAGE.PAGE LINK' | translate }}:</span>
-    <a class="ml-3" href="page.linkToPage" target="_blank">
+    <a class="ml-3" [href]="page.linkToPage" target="_blank">
       <i class="mr-2"nz-icon nzType="export"></i> <span>{{page.linkToPage}}</span>
     </a>
   </div>

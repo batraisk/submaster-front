@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://batraisk.ru/'
+  apiUrl: 'https://submaster.pro/'
 };
