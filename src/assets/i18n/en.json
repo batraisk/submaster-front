@@ -111,7 +111,8 @@
     "CONFIRM DELETE": "Are you sure delete this page?",
     "NOTHING HERE": "There is nothing here yet",
     "SHOW MORE": "Show more",
-    "VIEW PAGE": "View page"
+    "VIEW PAGE": "View page",
+    "TEMPLATE": "Template"
   },
   "PROFILE": {
     "PROFILE": "Profile",
@@ -128,7 +129,7 @@
     "DOMAIN BINDING": "Domain binding",
     "CUSTOM": {},
     "BALANCE": "Balance",
-    "FAQ": "FAQ",
+    "FAQ": "FAQ"
   },
   "STATUSES": {
     "ACTIVE": "Active",
@@ -137,7 +138,7 @@
   "DOMAIN": {
     "DOMAIN NAME": "Domain name",
     "HOW ADD": "How to add a domain?",
-    "HOW ADD CONTENT": "<p>1. Buy a domain</p><p>2. Add a new record for the data domain:<br>\"Subdomain\" - leave blank or specify the @ symbol<br>\"Type\" - select type \"A\"<br>\"Data\" - specify IP 81.91.178.197<br></p><p>3. Enter your domain in the field and click \"Connect Domain\". If the domain has been added and the status is \"Not attached, then you did everything right.\"</p><p>4. Go to \"Edit Page\" and select the added domain. You can link any number of subscription pages to one domain.</p>",
+    "HOW ADD CONTENT": "<p>1. Buy a domain</p><p>2. Add a new record for the data domain:<br>\"Subdomain\" - leave blank or specify the @ symbol<br>\"Type\" - select type \"A\"<br>\"Data\" - specify IP {{applicationHost}}<br></p><p>3. Enter your domain in the field and click \"Connect Domain\". If the domain has been added and the status is \"Not attached, then you did everything right.\"</p><p>4. Go to \"Edit Page\" and select the added domain. You can link any number of subscription pages to one domain.</p>",
     "HOW ADD WARNING": "Domain records should contain only A-record with our IP, others should be deleted.",
     "HOW VERIFY": "How to verify a domain on the facebook side?",
     "HOW VERIFY CONTENT": "<p> 1. Log into your Facebook business account and go to Brand Security → Domains </p> <p> 2. On the page that opens, click \"Add\" </p> <p> 3. In the “Domain name” field, enter your domain linked to InstaSub (without the http: // or https: // protocol) and click “Add domain” </p> <p> 4. Select the added domain and the “DNS Confirmation” method, copy the resulting record of the “facebook-domain-verification = **** ...” format </p> <p> 5. Add a new record for the data domain: \"Subdomain\" - leave blank or specify the @ symbol \"Type\" - select the \"TXT\" type. \"Data\" - Enter the entry provided by Facebook. </p>",
@@ -154,6 +155,7 @@
     "DELETE": "DELETE",
     "notValid": "Domain name is not valid",
     "exists": "Domain name already exists",
+    "wrong_ip": "The specified domain has a wrong ip",
     "has already been taken": "Domain name already exists",
     "enterDomain": "Enter a domain name"
   },

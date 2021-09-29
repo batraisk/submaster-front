@@ -33,8 +33,9 @@
         <i nz-icon nzType="logout" nzTheme="outline"></i>
         <span>{{ 'MENU.LOGOUT' | translate }}</span>
       </li>
-      <li nz-menu-item class="support-container">
-        <button nz-button [nzBlock]="true" class="support" nzType="primary" nzSize="default">{{ 'MENU.SUPPORT' | translate }}</button>
+      <li nz-menu-item class="support-container" *ngIf="supportLink">
+        <button (click)="support.click()" nz-button [nzBlock]="true" class="support" nzType="primary" nzSize="default">{{ 'MENU.SUPPORT' | translate }}</button>
+        <a hidden target="_blank" [href]="supportLink" #support></a>
       </li>
     </ul>
   </nz-sider>

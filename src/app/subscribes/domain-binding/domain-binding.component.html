@@ -32,7 +32,7 @@
       [nzActive]="panels[0].active"
       [nzDisabled]="panels[0].disabled"
     >
-      <p style="margin:0;" innerHtml="{{ panels[0].content | translate }}"></p>
+      <p style="margin:0;" innerHtml="{{ panels[0].content | translate: {applicationHost: applicationHost} }}"></p>
       <nz-alert nzType="info" nzMessage="{{'DOMAIN.HOW ADD WARNING' | translate}}"></nz-alert>
     </nz-collapse-panel>
   </nz-collapse>
@@ -83,13 +83,14 @@
             </td>
             <td>
 <!--              <nz-tag *ngIf="item.status == 'subscribed'" nzColor="success">{{ 'PAGE.SUBSCRIBED' | translate }}</nz-tag>-->
-              <nz-tag *ngIf="!item.status || item.status == 'not_connected'" nzColor="red">{{ 'DOMAIN.NOT CONNECTED' | translate }}</nz-tag>
+              <nz-tag *ngIf="item.status == 'not_connected'" nzColor="red">{{ 'DOMAIN.NOT CONNECTED' | translate }}</nz-tag>
               <nz-tag *ngIf="item.status && item.status == 'pending'" nzColor="blue">{{ 'DOMAIN.PENDING' | translate }}</nz-tag>
               <nz-tag *ngIf="item.status && item.status == 'connected'" nzColor="green">{{ 'DOMAIN.CONNECTED' | translate }}</nz-tag>
               <nz-tag *ngIf="item.status && item.status == 'reject'" nzColor="black">{{ 'DOMAIN.REJECT' | translate }}</nz-tag>
             </td>
             <td>
               <button
+                *ngIf="item.status"
                 class="action-btn"
                 nz-button
                 [nzBlock]="true"

@@ -21,7 +21,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {AuthenticationGuard} from '@core-services';
-import {PaymentsService} from './services';
+import {PaymentsService, ApplicationSettingsService} from './services';
 import {TranslateModule} from '@ngx-translate/core';
 import {EditPasswordComponent} from './components/authentication/edit-password/edit-password.component';
 import {BalanceComponent} from './components/balance/balance.component';
@@ -78,6 +78,7 @@ import { SharedModule } from '../shared/shared.module';
     AccountService,
     FaqService,
     PaymentsService,
+    ApplicationSettingsService,
   ]
 })
 export class CoreModule { }

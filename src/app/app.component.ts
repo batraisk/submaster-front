@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { Location } from '@angular/common';
 import {TranslateService} from '@ngx-translate/core';
-import {UserService, AuthenticationService} from '@core-services';
+import {UserService, AuthenticationService, ApplicationSettingsService} from '@core-services';
 import {NavigationService} from '@navigation-services';
 import {IUserInfo} from '@models';
+import { en_US, ru_RU, NzI18nService } from 'ng-zorro-antd/i18n';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit {
     public translate: TranslateService,
     public userService: UserService,
     private authenticationService: AuthenticationService,
+    private applicationSettingsService: ApplicationSettingsService,
     private navigationService: NavigationService) {
     router.events.subscribe((val) => {
       this.isAuthPage = location.path().indexOf('/auth/') !== -1;
@@ -35,6 +37,11 @@ export class AppComponent implements OnInit {
     this.userService.getUserInfo().subscribe((res: IUserInfo) => {
       this.userService.currentUserInfo = res;
     });
+    this.applicationSettingsService.getApplicationSettings().subscribe();
+  }
+
+  get supportLink(): string {
+    return this.applicationSettingsService.instance.getValue().supportLink;
   }
 
   goToHome(): void {

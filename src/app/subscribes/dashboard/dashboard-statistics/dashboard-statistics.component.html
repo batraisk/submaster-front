@@ -12,7 +12,7 @@
           <nz-option nzValue="year" nzLabel="{{ 'DATE TIME.YEAR' | translate }}"></nz-option>
         </nz-select>
 
-        <nz-date-picker (ngModelChange)="changeStateRange($event)" [(ngModel)]="date" *nzSpaceItem [nzMode]="mode"></nz-date-picker>
+        <nz-date-picker [nzLocale]="datepickerRU" (ngModelChange)="changeStateRange($event)" [(ngModel)]="date" *nzSpaceItem [nzMode]="mode"></nz-date-picker>
       </nz-space>
 
       <div class="mt-5">

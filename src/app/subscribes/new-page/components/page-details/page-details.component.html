@@ -17,8 +17,11 @@
               <input type="text" nz-input id="domain" formControlName="url" />
             </nz-input-group>
             <ng-template #addOnBeforeTemplate>
-              <nz-select [(ngModel)]="domain" [ngModelOptions]="{standalone: true}">
-                <nz-option nzLabel="https://submaster.com/" nzValue="https://submaster.com/"></nz-option>
+<!--              <nz-select [(ngModel)]="domain" [ngModelOptions]="{standalone: true}">-->
+              <nz-select formControlName="domainId">
+                <nz-option *ngFor="let domain of domains" [nzLabel]="'https://' + domain.url + '/pages/'" [nzValue]="domain.id"></nz-option>
+
+<!--                <nz-option nzLabel="https://submaster.com/" nzValue="https://submaster.com/"></nz-option>-->
               </nz-select>
             </ng-template>
           </nz-form-control>
@@ -46,14 +49,14 @@
         </nz-form-item>
 
         <nz-form-item *nzSpaceItem>
-          <nz-form-label [nzSpan]="24" nzFor="token">Facebook Server Side token</nz-form-label>
+          <nz-form-label [nzSpan]="24" nzFor="token">API Conversions token</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
             <input nz-input name="token" type="text" id="token" formControlName="facebookServerSideToken">
           </nz-form-control>
         </nz-form-item>
 
         <nz-form-item *nzSpaceItem>
-          <nz-form-label [nzSpan]="24" nzFor="metrika">Yandex.Metrica</nz-form-label>
+          <nz-form-label [nzSpan]="24" nzFor="metrika">Yandex Metrica</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
             <input nz-input name="metrika" type="text" id="metrika" formControlName="yandexMetrika">
           </nz-form-control>

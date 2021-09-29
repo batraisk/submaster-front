@@ -6,3 +6,4 @@ export * from './user-info.interface';
 export * from './domain.interface';
 export * from './profile.interface';
 export * from './faq.interface';
+export * from './application-setting.interface';

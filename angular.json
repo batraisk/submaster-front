@@ -48,7 +48,6 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/assets/i18n",
               {
                 "glob": "**/*",
                 "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
@@ -127,7 +126,6 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets/i18n",
               "src/assets"
             ],
             "styles": [

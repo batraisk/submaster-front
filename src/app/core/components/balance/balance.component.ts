@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {NavigationService} from '@navigation-services';
 import {PaymentsService, UserService} from '@core-services';
-import {findUserCountry} from '@helpers';
 import {NzTableQueryParams} from 'ng-zorro-antd/table';
 import {NzMessageService} from 'ng-zorro-antd/message';
 
@@ -54,7 +53,6 @@ export class BalanceComponent implements OnInit, OnDestroy {
     this.isMobile = document.body.clientWidth < 670;
     if (!this.userService.currentUserInfo) { return; }
     this.price = this.userService.currentUserInfo.price;
-    console.log('this.translate.currentLang', this.translate.currentLang)
     if (this.userService.currentUserInfo.country !== 'RU') {
       this.currency = 'USD';
       this.currencyStr = 'USD';

@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {DomainsService} from '@subscribes-services';
+import {ApplicationSettingsService} from '@core-services';
 import {IDomain} from '@models';
 import {NzTableQueryParams} from 'ng-zorro-antd/table';
 import {FormBuilder} from '@angular/forms';
@@ -59,6 +60,7 @@ export class DomainBindingComponent implements OnInit, OnDestroy {
     private translate: TranslateService,
     private domainsService: DomainsService,
     private navigationService: NavigationService,
+    private applicationSettingsService: ApplicationSettingsService,
     private message: NzMessageService,
   ) { }
 
@@ -107,7 +109,7 @@ export class DomainBindingComponent implements OnInit, OnDestroy {
   statusCheckHandler(list: any[]): void {
     const notPendingList = list.filter(item => item.status !== 'pending');
     const notPendingListIds = notPendingList.map(listItem => listItem.id);
-    console.log('notPendingList', notPendingList)
+    console.log('notPendingList', notPendingList);
     Object.keys(this.mapOfExpandedData).forEach(key => {
       this.mapOfExpandedData[key].forEach((item, index) => {
         if (notPendingListIds.includes(item.id)) {
@@ -117,7 +119,6 @@ export class DomainBindingComponent implements OnInit, OnDestroy {
         }
       });
     });
-    console.log('this.mapOfExpandedData', this.mapOfExpandedData)
     this.pendingDomainIds = this.pendingDomainIds.filter(id => !notPendingListIds.includes(id));
     if (this.intervalId && this.pendingDomainIds.length === 0) { clearInterval(this.intervalId); }
   }
@@ -134,6 +135,10 @@ export class DomainBindingComponent implements OnInit, OnDestroy {
       }
       return {...domain, key: i};
     });
+  }
+
+  get applicationHost(): string {
+    return this.applicationSettingsService.instance.getValue().applicationHost;
   }
 
   createDomain(): void {
@@ -154,10 +159,11 @@ export class DomainBindingComponent implements OnInit, OnDestroy {
       },
       err => {
         if (!!err.error.url) {
-          this.errors.push(this.translate.instant(`DOMAIN.${err.error.url}`));
+          err.error.url.forEach(error => {
+            this.errors.push(this.translate.instant(`DOMAIN.${error}`));
+            this.message.error(this.translate.instant(`DOMAIN.${error}`));
+          });
           this.domainError = true;
-          this.message.error(this.translate.instant(`DOMAIN.${err.error.url}`));
-          // return;
         }
       });
   }
@@ -173,6 +179,7 @@ export class DomainBindingComponent implements OnInit, OnDestroy {
       this.errors.push(this.translate.instant('DOMAIN.notValid'));
       this.domainError = true;
     }
+
     return isValid;
   }
 

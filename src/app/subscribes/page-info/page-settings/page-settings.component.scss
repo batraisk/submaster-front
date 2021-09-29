@@ -52,6 +52,14 @@
   margin: 24px 0 0;
 }
 
+::ng-deep {
+  @media only screen and (min-width: 1024px) {
+    nz-select-item {
+      width: 180px;
+    }
+  }
+}
+
 
 @media only screen and (max-width: 669px) {
   .page-title {

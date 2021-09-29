@@ -75,19 +75,12 @@ export const findUserCountry = () => {
    return fetch('https://extreme-ip-lookup.com/json/').then( res => res.json());
 };
 
-export const  isValidUrl = (str: string) => {
-  let url;
-  if (str.indexOf('http:') === -1 || str.indexOf('https:') === -1) {
-    str = `https://${str}`;
+export const isValidUrl = (str: string) => {
+  if (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(str)) {
+    return true;
   }
-  try {
-    url = new URL(str);
-  } catch (_) {
-    return false;
-  }
-
-  return url.protocol === 'http:' || url.protocol === 'https:';
-}
+  return false;
+};
 // fetch('https://extreme-ip-lookup.com/json/')
 //   .then( res => res.json())
 //   .then(response => {
