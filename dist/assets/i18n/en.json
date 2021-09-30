@@ -167,6 +167,8 @@
   },
   "BALANCE": {
     "COMPLETED": "COMPLETED",
+    "CREATED": "CREATED",
+    "REJECT": "REJECT",
     "IN PROGRESS": "IN PROGRESS",
     "STATUS": "Status",
     "AMOUNT": "Amount",
@@ -176,7 +178,7 @@
     "PROMO CODE ACTIVATION": "Promo code activation",
     "PAY": "Pay",
     "TOP-UP BALANCE": "Top-up balance",
-    "SERVICE COST": "Service cost is {{price}} for a successful check.",
+    "SERVICE COST": "Service cost is {{price}} {{currency}} for a successful check.",
     "BALANCE WILL NOT BE DEDUCTED": "The balance will not be deducted if a person has launched a check and has not subscribed to you.",
     "APPLY": "Apply",
     "PROMOCODE ACTIVATED": "Promocode activated",
