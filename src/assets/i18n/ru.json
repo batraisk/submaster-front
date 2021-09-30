@@ -169,6 +169,8 @@
   },
   "BALANCE": {
     "COMPLETED": "ЗАЧИСЛЕН",
+    "CREATED": "СОЗДАН",
+    "REJECT": "ОТКЛАНЕН",
     "IN PROGRESS": "В ОБРАБОТКЕ",
     "STATUS": "Статус",
     "AMOUNT": "Сумма",

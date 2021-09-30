@@ -78,6 +78,8 @@
             <div class="status">
               <nz-tag *ngIf="data.orderStatus == 'approved'" nzColor="success">{{ 'BALANCE.COMPLETED' | translate }}</nz-tag>
               <nz-tag *ngIf="data.status == 'in_progress'" nzColor="blue">{{ 'BALANCE.IN PROGRESS' | translate }}</nz-tag>
+              <nz-tag *ngIf="data.status == 'created'" nzColor="black">{{ 'BALANCE.CREATED' | translate }}</nz-tag>
+              <nz-tag *ngIf="data.status == 'reject'" nzColor="red">{{ 'BALANCE.REJECT' | translate }}</nz-tag>
             </div>
 
           </div>
