@@ -24,7 +24,8 @@
     "CONNECT": "Connect",
     "LOAD MORE": "Load more",
     "STEP": "Step",
-    "OF": "of"
+    "OF": "of",
+    "COPIED": "Copied"
   },
   "STATISTICS": {
     "SUBSCRIBERS": "Subscribers",
@@ -64,7 +65,11 @@
     "PASSWORD RECOVERY": "Password recovery",
     "DO YOU HAVE": "Do you have an account?",
     "SEND LINK": "We have sent you a link to reset your password. Check your mail",
-    "GO TO LOG IN": "Go to Log in"
+    "GO TO LOG IN": "Go to Log in",
+    "CHECK EMAIL": "You should check your email",
+    "REFERRAL LINK NOT ACTIVE": "Referral link not active",
+    "VERIFICATION DONE": "Your verification successfully done",
+    "VERIFICATION FAILED": "You verification failed"
   },
   "PAGE": {
     "EDIT PAGE DETAILS": "Edit page details",
@@ -90,6 +95,7 @@
     "LAYOUT": "Layout",
     "COLOR THEME": "Color theme",
     "PREVIEW": "Preview",
+    "PRIVACY POLICY": "Privacy policy",
 
     "LOGIN LIST": "Login list",
     "STATISTICS": "Statistics",
@@ -107,12 +113,13 @@
     "PAGE LINK": "Page link",
     "DOWNLOAD LINK": "Download link",
     "SUCCESS PAGE": "Success page",
-    "OUT OF STOCK PAGE": "Out of stock page",
+    "OUT OF STOCK PAGE": "Paused distribution",
     "CONFIRM DELETE": "Are you sure delete this page?",
     "NOTHING HERE": "There is nothing here yet",
     "SHOW MORE": "Show more",
     "VIEW PAGE": "View page",
-    "TEMPLATE": "Template"
+    "TEMPLATE": "Template",
+    "LINK FOR PROFILE HEADER": "Link for profile header"
   },
   "PROFILE": {
     "PROFILE": "Profile",
@@ -121,7 +128,10 @@
     "CHANGE PASSWORD": "Change password",
     "OLD PASSWORD": "Old password",
     "NEW PASSWORD": "New password",
-    "CONFIRM NEW PASSWORD": "Confirm new password"
+    "CONFIRM NEW PASSWORD": "Confirm new password",
+    "SEND INVITE": "Send invite",
+    "SUCCESS SEND": "Invitation sent to address",
+    "INVITE NEW USER": "Invite new user"
   },
   "HEADERS": {
     "ACCOUNT": "Account settings",
@@ -141,7 +151,7 @@
     "HOW ADD CONTENT": "<p>1. Buy a domain</p><p>2. Add a new record for the data domain:<br>\"Subdomain\" - leave blank or specify the @ symbol<br>\"Type\" - select type \"A\"<br>\"Data\" - specify IP {{applicationHost}}<br></p><p>3. Enter your domain in the field and click \"Connect Domain\". If the domain has been added and the status is \"Not attached, then you did everything right.\"</p><p>4. Go to \"Edit Page\" and select the added domain. You can link any number of subscription pages to one domain.</p>",
     "HOW ADD WARNING": "Domain records should contain only A-record with our IP, others should be deleted.",
     "HOW VERIFY": "How to verify a domain on the facebook side?",
-    "HOW VERIFY CONTENT": "<p> 1. Log into your Facebook business account and go to Brand Security → Domains </p> <p> 2. On the page that opens, click \"Add\" </p> <p> 3. In the “Domain name” field, enter your domain linked to InstaSub (without the http: // or https: // protocol) and click “Add domain” </p> <p> 4. Select the added domain and the “DNS Confirmation” method, copy the resulting record of the “facebook-domain-verification = **** ...” format </p> <p> 5. Add a new record for the data domain: \"Subdomain\" - leave blank or specify the @ symbol \"Type\" - select the \"TXT\" type. \"Data\" - Enter the entry provided by Facebook. </p>",
+    "HOW VERIFY CONTENT": "<p> 1. Log into your Facebook business account and go to Brand Security → Domains </p> <p> 2. On the page that opens, click \"Add\" </p> <p> 3. In the “Domain name” field, enter your domain linked to Submaster (without the http: // or https: // protocol) and click “Add domain” </p> <p> 4. Select the added domain and the “Check meta tags” method, copy the resulting string </p> <p> 5. Add this string to the \"Facebook Meta Tag\" field </p>",
 
     "DOMAINS": "Domains",
     "DOMAIN": "Domain",
@@ -157,7 +167,9 @@
     "exists": "Domain name already exists",
     "wrong_ip": "The specified domain has a wrong ip",
     "has already been taken": "Domain name already exists",
-    "enterDomain": "Enter a domain name"
+    "enterDomain": "Enter a domain name",
+    "enterMetaTag": "Enter a meta tag",
+    "META TAG": "Facebook meta tag"
   },
   "DATE TIME": {
     "DATE": "Date",
@@ -186,7 +198,8 @@
     "code_not yet": "The promo code is not valid",
     "code_used": "The promo code has already been used",
     "promocode_must exist": "Promo code not found",
-    "RUB": "RUB"
+    "RUB": "RUB",
+    "MIN PAYMENT IS": "Minimal payment is"
   }
 
 
