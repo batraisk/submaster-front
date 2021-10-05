@@ -1,4 +1,4 @@
-<div class="auth-container d-flex align-items-center">
+<div class="auth-container d-flex align-items-center" *ngIf="registerForm">
   <img src="assets/images/icons/Logotype.svg" alt="">
   <p class="mt-4 title">{{ 'AUTH.NEW ACCOUNT' | translate }}</p>
   <form nz-form class="w-100" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
@@ -12,13 +12,13 @@
       <nz-form-item *nzSpaceItem>
         <nz-form-label [nzSpan]="24" nzFor="username">{{ 'AUTH.USERNAME' | translate }}</nz-form-label>
         <nz-form-control [nzSpan]="24" class="mt-2" [nzErrorTip]="this.errors.username">
-          <input nz-input name="username" type="text" id="username" formControlName="username">
+          <input autocomplete="off" nz-input name="username" type="text" id="username" formControlName="username">
         </nz-form-control>
       </nz-form-item>
       <nz-form-item *nzSpaceItem>
         <nz-form-label [nzSpan]="24" nzFor="password">{{ 'AUTH.PASSWORD' | translate }}</nz-form-label>
         <nz-form-control [nzSpan]="24" class="mt-2" [nzErrorTip]="this.errors.password">
-          <input nz-input name="password" type="password" id="password" formControlName="password">
+          <input autocomplete="off" nz-input name="password" type="password" id="password" formControlName="password">
         </nz-form-control>
       </nz-form-item>
       <nz-form-item *nzSpaceItem class="mt-3">
@@ -42,5 +42,6 @@
         </nz-form-control>
       </nz-form-item>
     </nz-space>
+    <input hidden nz-input name="invite_token" id="invite_token" formControlName="invite_token">
   </form>
 </div>

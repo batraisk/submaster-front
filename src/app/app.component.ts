@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
     }
     this.userService.getUserInfo().subscribe((res: IUserInfo) => {
       this.userService.currentUserInfo = res;
+      if (res.locale) { this.translate.use(res.locale); }
     });
     this.applicationSettingsService.getApplicationSettings().subscribe();
   }
@@ -57,7 +58,6 @@ export class AppComponent implements OnInit {
     this.authenticationService.logout().subscribe(() => {
       this.userService.currentUserInfo = null;
       localStorage.removeItem('currentUser');
-      console.log('logOut')
       localStorage.removeItem('token');
       this.router.navigate(['/auth/login']);
     });

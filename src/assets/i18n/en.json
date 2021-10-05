@@ -64,7 +64,11 @@
     "PASSWORD RECOVERY": "Password recovery",
     "DO YOU HAVE": "Do you have an account?",
     "SEND LINK": "We have sent you a link to reset your password. Check your mail",
-    "GO TO LOG IN": "Go to Log in"
+    "GO TO LOG IN": "Go to Log in",
+    "CHECK EMAIL": "You should check your email",
+    "REFERRAL LINK NOT ACTIVE": "Referral link not active",
+    "VERIFICATION DONE": "Your verification successfully done",
+    "VERIFICATION FAILED": "You verification failed"
   },
   "PAGE": {
     "EDIT PAGE DETAILS": "Edit page details",
@@ -121,7 +125,10 @@
     "CHANGE PASSWORD": "Change password",
     "OLD PASSWORD": "Old password",
     "NEW PASSWORD": "New password",
-    "CONFIRM NEW PASSWORD": "Confirm new password"
+    "CONFIRM NEW PASSWORD": "Confirm new password",
+    "SEND INVITE": "Send invite",
+    "SUCCESS SEND": "Invitation sent to address",
+    "INVITE NEW USER": "Invite new user"
   },
   "HEADERS": {
     "ACCOUNT": "Account settings",

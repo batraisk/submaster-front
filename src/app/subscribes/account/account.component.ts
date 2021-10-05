@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 // @ts-ignore
 import {NavigationService} from '@navigation-services';
 import {AccountService} from '@core-services';
+import {ReferralInvitationsService} from '@subscribes-services';
 import {toSnakeCaseObject} from '@helpers';
 import {NzMessageService} from 'ng-zorro-antd/message';
 import {TranslateService} from '@ngx-translate/core';
@@ -17,7 +18,11 @@ import {CustomValidationService} from '@validation-services';
 export class AccountComponent implements OnInit, OnDestroy {
   pageForm: FormGroup;
   errors: any = {};
+  errorsInvate: any = {};
   isMobile = false;
+  isVisibleInviteModal = false;
+  isSending = false;
+  inviteForm: FormGroup;
   constructor(
     private fb: FormBuilder,
     private navigationService: NavigationService,
@@ -25,6 +30,7 @@ export class AccountComponent implements OnInit, OnDestroy {
     private message: NzMessageService,
     private translate: TranslateService,
     private customValidator: CustomValidationService,
+    private invitationsService: ReferralInvitationsService,
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +46,46 @@ export class AccountComponent implements OnInit, OnDestroy {
         validators: this.customValidator.MatchPassword('newPassword', 'confirmPassword'),
       });
     this.isMobile = document.body.clientWidth < 670;
+    this.inviteForm = this.fb.group({
+      recipient_email: ['', [Validators.required]],
+    });
+  }
+
+  get inviteFormControl(): any {
+    return this.inviteForm.controls;
+  }
+
+  handleOkInviteModal(): void {
+     // tslint:disable-next-line:forin
+    for (const i in this.inviteForm.controls) {
+      this.inviteForm.controls[i].markAsDirty();
+      this.inviteForm.controls[i].updateValueAndValidity();
+    }
+    if (this.inviteForm.invalid) {
+      return;
+    }
+    this.isSending = true;
+    const email = String(this.inviteFormControl.recipient_email.value);
+    this.invitationsService.sendInvite(email).subscribe(res => {
+      this.isVisibleInviteModal = false;
+      this.isSending = false;
+      this.inviteForm.reset();
+      this.message.success(`${this.translate.instant('PROFILE.SUCCESS SEND')} ${email}`);
+    }, err => {
+      this.isSending = false;
+      if (!!err.error.errors) {
+        this.message.error(err.error.errors);
+        return;
+      }
+      this.errorsInvate = err.error;
+      const errorsValues: string[] = Object.keys(err.error);
+      errorsValues.forEach(key => {this.inviteForm.get(key).setErrors({incorrect: true}); });
+    });
+  }
+
+  handleCancelInviteModal(): void {
+    this.inviteForm.reset();
+    this.isVisibleInviteModal = false;
   }
 
   ngOnDestroy(): void {
@@ -56,6 +102,10 @@ export class AccountComponent implements OnInit, OnDestroy {
       return false;
     }
     return true;
+  }
+
+  sendInvite(): void {
+    this.isVisibleInviteModal = true;
   }
 
   submit(): void {

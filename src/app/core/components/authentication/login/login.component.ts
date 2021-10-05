@@ -6,6 +6,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthenticationService, UserService} from '@core-services';
 // @ts-ignore
 import {IUserInfo, IUserRegister} from '@models';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -22,19 +23,20 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthenticationService,
     private message: NzMessageService,
-    private userService: UserService
+    private userService: UserService,
+    private translate: TranslateService,
   ) { }
 
   ngOnInit(): void {
     const queryParams = this.activatedRoute.snapshot.queryParams;
     if (queryParams?.confirmation_token) {
       this.authService.confirmEmail(queryParams?.confirmation_token).subscribe((res) => {
-        this.message.success('Your verification successfully done');
+        this.message.success(this.translate.instant('AUTH.VERIFICATION DONE'));
         // localStorage.setItem('currentUser', JSON.stringify(res.body));
         // localStorage.setItem('token', res.headers.get('Authorization'));
         // this.router.navigate(['/']);
       }, err => {
-        this.message.error('You verification failed');
+        this.message.error(this.translate.instant('AUTH.VERIFICATION FAILED'));
       });
     }
     this.loginForm = this.fb.group({
@@ -62,6 +64,7 @@ export class LoginComponent implements OnInit {
     };
     this.authService.login(user).subscribe(res => {
       if (res) {
+        console.log('res', res)
         const currentUser = localStorage.getItem('currentUser');
         localStorage.setItem('currentUser', JSON.stringify(res.body));
         localStorage.setItem('token', res.headers.get('Authorization'));

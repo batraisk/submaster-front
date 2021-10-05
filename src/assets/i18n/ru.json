@@ -64,7 +64,11 @@
     "PASSWORD RECOVERY": "Восстановление пароля",
     "DO YOU HAVE": "У вас есть аккаунт?",
     "SEND LINK": "Мы отправили ссылку для восстановления пароля. Проверьте почту",
-    "GO TO LOG IN": "Войти"
+    "GO TO LOG IN": "Войти",
+    "CHECK EMAIL": "Вам следует проверить свою почту",
+    "REFERRAL LINK NOT ACTIVE": "Реферальная ссылка не активна",
+    "VERIFICATION DONE": "Подтверждение аккаунта успешно завершено",
+    "VERIFICATION FAILED": "Вы не прошли проверку"
   },
   "PAGE": {
     "EDIT PAGE DETAILS": "Основная информация",
@@ -123,7 +127,10 @@
     "CHANGE PASSWORD": "Сменить пароль",
     "OLD PASSWORD": "Старый пароль",
     "NEW PASSWORD": "Новый пароль",
-    "CONFIRM NEW PASSWORD": "Подтвердите новый пароль"
+    "CONFIRM NEW PASSWORD": "Подтвердите новый пароль",
+    "SEND INVITE": "Отправить приглашение",
+    "SUCCESS SEND": "Приглашение отправлено на адрес",
+    "INVITE NEW USER": "Пригласить нового пользователя"
   },
   "HEADERS": {
     "ACCOUNT": "Настройки аккаунта",

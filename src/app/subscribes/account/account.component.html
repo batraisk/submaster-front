@@ -1,48 +1,52 @@
 <form nz-form [formGroup]="pageForm">
   <div class="steps-content">
-  <div nz-row>
-    <div nz-col [nzSpan]="11" [nzXl]="8" [nzMd]="24" [nzSm]="24" [nzXs]="24">
-      <h1>{{ 'PROFILE.PROFILE' | translate }}</h1>
-      <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
-        <nz-form-item *nzSpaceItem>
-          <nz-form-label [nzSpan]="24">{{ 'PROFILE.EMAIL' | translate }}</nz-form-label>
-          <nz-form-control [nzSpan]="24" class="mt-2">
-            <input nz-input name="email" type="text" id="email" formControlName="email">
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item *nzSpaceItem>
-          <nz-form-label [nzSpan]="24">{{ 'PROFILE.USERNAME' | translate }}</nz-form-label>
-          <nz-form-control [nzSpan]="24" class="mt-2">
-            <input nz-input name="username" type="text" id="username" formControlName="username">
-          </nz-form-control>
-        </nz-form-item>
-      </nz-space>
+    <div nz-row>
+      <div nz-col [nzSpan]="11" [nzXl]="8" [nzMd]="24" [nzSm]="24" [nzXs]="24">
+        <h1>{{ 'PROFILE.PROFILE' | translate }}</h1>
+        <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
+          <nz-form-item *nzSpaceItem>
+            <nz-form-label [nzSpan]="24">{{ 'PROFILE.EMAIL' | translate }}</nz-form-label>
+            <nz-form-control [nzSpan]="24" class="mt-2">
+              <input nz-input name="email" type="text" id="email" formControlName="email">
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item *nzSpaceItem>
+            <nz-form-label [nzSpan]="24">{{ 'PROFILE.USERNAME' | translate }}</nz-form-label>
+            <nz-form-control [nzSpan]="24" class="mt-2">
+              <input nz-input name="username" type="text" id="username" formControlName="username">
+            </nz-form-control>
+          </nz-form-item>
+        </nz-space>
 
-      <h1 class="second-title">{{ 'PROFILE.CHANGE PASSWORD' | translate }}</h1>
-      <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
-        <nz-form-item *nzSpaceItem>
-          <nz-form-label [nzSpan]="24">{{ 'PROFILE.OLD PASSWORD' | translate }}</nz-form-label>
-          <nz-form-control [nzSpan]="24" class="mt-2">
-            <input nz-input name="password" type="password" id="password" formControlName="password">
-          </nz-form-control>
-        </nz-form-item>
+        <h1 class="second-title">{{ 'PROFILE.CHANGE PASSWORD' | translate }}</h1>
+        <nz-space nzDirection="vertical" [nzSize]="16" class="mt-4" style="width:100%">
+          <nz-form-item *nzSpaceItem>
+            <nz-form-label [nzSpan]="24">{{ 'PROFILE.OLD PASSWORD' | translate }}</nz-form-label>
+            <nz-form-control [nzSpan]="24" class="mt-2">
+              <input nz-input name="password" type="password" id="password" formControlName="password">
+            </nz-form-control>
+          </nz-form-item>
 
-        <nz-form-item *nzSpaceItem>
-          <nz-form-label [nzSpan]="24">{{ 'PROFILE.NEW PASSWORD' | translate }}</nz-form-label>
-          <nz-form-control [nzSpan]="24" class="mt-2">
-            <input nz-input name="new-password" type="password" id="new-password" formControlName="newPassword">
-          </nz-form-control>
-        </nz-form-item>
+          <nz-form-item *nzSpaceItem>
+            <nz-form-label [nzSpan]="24">{{ 'PROFILE.NEW PASSWORD' | translate }}</nz-form-label>
+            <nz-form-control [nzSpan]="24" class="mt-2">
+              <input nz-input name="new-password" type="password" id="new-password" formControlName="newPassword">
+            </nz-form-control>
+          </nz-form-item>
 
-        <nz-form-item *nzSpaceItem>
-          <nz-form-label [nzSpan]="24">{{ 'PROFILE.CONFIRM NEW PASSWORD' | translate }}</nz-form-label>
-          <nz-form-control [nzSpan]="24" class="mt-2">
-            <input nz-input name="confirm-password" type="password" id="confirm-password" formControlName="confirmPassword">
-          </nz-form-control>
-        </nz-form-item>
-      </nz-space>
+          <nz-form-item *nzSpaceItem>
+            <nz-form-label [nzSpan]="24">{{ 'PROFILE.CONFIRM NEW PASSWORD' | translate }}</nz-form-label>
+            <nz-form-control [nzSpan]="24" class="mt-2">
+              <input nz-input name="confirm-password" type="password" id="confirm-password" formControlName="confirmPassword">
+            </nz-form-control>
+          </nz-form-item>
+        </nz-space>
+      </div>
+      <div nz-col [nzSpan]="11" [nzXl]="16" [nzMd]="24" [nzSm]="24" [nzXs]="24">
+        <button nz-button [ngStyle]="{float: 'right'}"  nzType="link" (click)="sendInvite()">{{ 'PROFILE.INVITE NEW USER' | translate }}</button>
+      </div>
     </div>
-  </div>
+
   </div>
   <div style="height: 112px"></div>
   <nz-divider *ngIf="!isMobile" class="divider-bottom"></nz-divider>
@@ -55,3 +59,22 @@
 
   </div>
 </form>
+
+
+<nz-modal [(nzVisible)]="isVisibleInviteModal" nzTitle="{{ 'PROFILE.SEND INVITE' | translate }}" (nzOnCancel)="handleCancelInviteModal()">
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="inviteForm">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="24" nzFor="email">{{'AUTH.EMAIL' | translate}}</nz-form-label>
+        <nz-form-control [nzSpan]="24" class="mt-2" [nzErrorTip]="this.errorsInvate.recipient_email">
+          <input nz-input name="email" type="text" id="recipient_email" formControlName="recipient_email">
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-container>
+  <div *nzModalFooter class="d-flex">
+    <button class="action-btn" nz-button nzType="default" nzSize="small" (click)="handleCancelInviteModal()">{{ 'ACTIONS.CANCEL' | translate }}</button>
+    <button class="action-btn" [disabled]="isSending" nz-button nzType="primary" nzSize="small" (click)="handleOkInviteModal()">{{ 'ACTIONS.SEND' | translate }}</button>
+  </div>
+
+</nz-modal>
