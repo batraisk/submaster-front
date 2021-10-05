@@ -12,7 +12,7 @@ const applicationSettingsUrl = '/api/v1/application_settings';
 })
 
 export class ApplicationSettingsService {
-  instance = new BehaviorSubject<IApplicationSetting>({applicationHost: '', privacyPolicy: '', supportLink: ''});
+  instance = new BehaviorSubject<IApplicationSetting>({applicationHost: '', privacyPolicy: '', supportLink: '', onlineCourseLink: ''});
 
   constructor(private http: HttpClient) { }
 

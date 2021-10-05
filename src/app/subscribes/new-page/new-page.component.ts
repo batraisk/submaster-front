@@ -15,6 +15,7 @@ export class NewPageComponent implements OnInit, OnDestroy {
   page: any;
   currentFrom: any;
   isMobile = false;
+  isLoading = false;
 
   constructor(private router: Router, private pagesService: PagesService) {}
 
@@ -67,8 +68,12 @@ export class NewPageComponent implements OnInit, OnDestroy {
     if (this.page.background) {
       formData.append('background', this.page.background);
     }
+    this.isLoading = true;
     this.pagesService.createPage(formData).subscribe(res => {
+      this.isLoading = false;
       this.router.navigate(['/']);
+    }, err => {
+      this.isLoading = false;
     });
   }
 

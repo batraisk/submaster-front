@@ -33,7 +33,9 @@ export class DomainBindingComponent implements OnInit, OnDestroy {
   pendingDomainIds: number[];
   mapOfExpandedData: { [key: string]: TreeNodeInterface[] } = {};
   domainError = false;
+  metaTagError = false;
   errors: any[] = [];
+  metaTag = '';
   panels = [
     {
       active: false,
@@ -147,7 +149,7 @@ export class DomainBindingComponent implements OnInit, OnDestroy {
     this.domain = this.domain.replace('http://', '');
     this.domain = this.domain.replace('https://', '');
     this.domain = this.domain.replace('www.', '');
-    const req: IDomain = {url: this.domain};
+    const req: IDomain = {url: this.domain, meta_tag: this.metaTag};
     if (!this.validateDomain()) {
       this.showErrors();
       return;
@@ -174,6 +176,11 @@ export class DomainBindingComponent implements OnInit, OnDestroy {
       this.domainError = true;
       return false;
     }
+    if (this.metaTag === '') {
+      this.errors.push(this.translate.instant('DOMAIN.enterMetaTag'));
+      this.metaTagError = true;
+      return false;
+    }
     const isValid = isValidUrl(this.domain);
     if (!isValid) {
       this.errors.push(this.translate.instant('DOMAIN.notValid'));
@@ -192,6 +199,10 @@ export class DomainBindingComponent implements OnInit, OnDestroy {
 
   onChangeModel($event): void {
     this.resetErrors();
+  }
+
+  onChangeMetaTagModel($event): void {
+    this.metaTagError = false;
   }
 
   resetErrors(): void {

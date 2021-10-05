@@ -35,6 +35,17 @@ $sider-width: 256px;
   height: 100vh;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .menu {
   background: inherit;
   padding: 16px 24px;

@@ -13,7 +13,7 @@ import {NzMessageService} from 'ng-zorro-antd/message';
 export class BalanceComponent implements OnInit, OnDestroy {
   inputValue = '';
   promo = '';
-  value = 30;
+  value = 1000;
   total = 0;
   pagintation: any = {
     pageIndex: 0,
@@ -25,7 +25,9 @@ export class BalanceComponent implements OnInit, OnDestroy {
   currency = 'RUB'; // USD
   mobileData: any[] = [];
   currencyStr = '';
+  minimalPriceStr = '';
   price = 0;
+  errors: any = {};
 
   constructor(
     private translate: TranslateService,
@@ -56,9 +58,11 @@ export class BalanceComponent implements OnInit, OnDestroy {
     if (this.userService.currentUserInfo.country !== 'RU') {
       this.currency = 'USD';
       this.currencyStr = 'USD';
+      this.minimalPriceStr = '10 USD';
     } else {
       this.currency = 'RUB';
       this.currencyStr = this.translate.currentLang === 'ru' ? 'руб.' : 'RUB';
+      this.minimalPriceStr = '1000 руб.';
     }
   }
 
@@ -85,7 +89,23 @@ export class BalanceComponent implements OnInit, OnDestroy {
     return this.currency === 'RUB' ? '₽' : '$';
   }
 
+  handleBlurValue(): void {
+    this.validateValue();
+  }
+
+  handleChangeValue(): void {
+    if (this.errors && this.errors.value) { delete this.errors.value; }
+  }
+
+  validateValue(): void {
+    if (this.value >= 1000) { return; }
+    this.message.error(`${this.translate.instant('BALANCE.MIN PAYMENT IS')} ${this.minimalPriceStr}`);
+    this.value = 1000;
+    // this.errors = {...this.errors, value: `${this.translate.instant('BALANCE.MIN PAYMENT IS')} ${this.minimalPriceStr}`  }
+  }
+
   onPay(): void {
+    this.validateValue();
     this.paymentsService.getPaymentLink({amount: this.value}).subscribe(url => {
       window.location.href = url.url;
     });

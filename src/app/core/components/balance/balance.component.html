@@ -11,11 +11,10 @@
     <h2>{{ 'BALANCE.TOP-UP BALANCE' | translate }}</h2>
     <div class="row">
       <nz-input-group class="value-control" nzAddOnBeforeIcon="dollar">
-        <input type="text" nz-input [(ngModel)]="value" />
-
+        <input type="number"  nz-input (ngModelChange)="handleChangeValue()" (blur)="handleBlurValue()" [(ngModel)]="value" />
       </nz-input-group>
-      <nz-slider class="mr-5 ml-5 slider" [(ngModel)]="value" [nzMin]="0" [nzMax]="200"></nz-slider>
-      <button (click)="onPay()" nz-button nzType="primary" nzSize="small">{{ 'BALANCE.PAY' | translate }}</button>
+      <nz-slider class="mr-5 ml-5 slider" [(ngModel)]="value" [nzMin]="1000" [nzMax]="20000"></nz-slider>
+      <button [disabled]="this.value < 1000" (click)="onPay()" nz-button nzType="primary" nzSize="small">{{ 'BALANCE.PAY' | translate }}</button>
     </div>
   </div>
 

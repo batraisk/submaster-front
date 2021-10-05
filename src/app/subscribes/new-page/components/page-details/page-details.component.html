@@ -28,9 +28,26 @@
         </nz-form-item>
 
         <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="returnLink">{{ 'PAGE.LINK FOR PROFILE HEADER' | translate }}</nz-form-label>
+          <div id="returnLink" class="return-link-container" *ngIf="returnLink">
+            <div class="return-link">
+              <span #link>{{returnLink}}</span>
+            </div>
+            <i nz-icon nzType="copy" nzTheme="outline" (click)="onCopy(link)"></i>
+          </div>
+        </nz-form-item>
+
+        <nz-form-item *nzSpaceItem>
           <nz-form-label [nzSpan]="24" nzFor="username">{{ 'PAGE.INSTAGRAM USERNAME' | translate }}</nz-form-label>
           <nz-form-control [nzSpan]="24" class="mt-2">
             <input nz-input name="name" type="text" id="username" placeholder="my_instagram_username" formControlName="instagramLogin">
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item *nzSpaceItem>
+          <nz-form-label [nzSpan]="24" nzFor="privacyPolicy">{{ 'PAGE.PRIVACY POLICY' | translate }}</nz-form-label>
+          <nz-form-control [nzSpan]="24" class="mt-2">
+            <input nz-input name="privacyPolicy" type="text" id="privacyPolicy" placeholder="https://my_privacy_policy.com" formControlName="privacyPolicy">
           </nz-form-control>
         </nz-form-item>
       </nz-space>

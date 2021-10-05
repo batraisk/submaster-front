@@ -20,6 +20,15 @@
           </div>
         </nz-form-control>
       </div>
+      <div *nzSpaceItem [ngClass]="{'ant-form-item-has-error': this.metaTagError}">
+        <nz-form-label [nzSpan]="24">{{ 'DOMAIN.META TAG' | translate }}</nz-form-label>
+        <nz-form-control [nzSpan]="24" class="mt-2">
+          <div class="d-flex domain-input-container">
+            <input (ngModelChange)="onChangeMetaTagModel($event)" [(ngModel)]="metaTag" [ngModelOptions]="{standalone: true}" nz-input name="metaTag" type="metaTag" id="metaTag">
+          </div>
+        </nz-form-control>
+      </div>
+
 
     </nz-space>
   </div>

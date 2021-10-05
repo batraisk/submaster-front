@@ -30,7 +30,7 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import {DomainBindingComponent} from './domain-binding/domain-binding.component';
-import {DomainsService, PagesService, LoginsService, StatisticsService} from './services';
+import {DomainsService, PagesService, LoginsService, StatisticsService, ReferralInvitationsService} from './services';
 // @ts-ignore
 import {InterceptService} from '@core-services';
 import {TranslateModule} from '@ngx-translate/core';
@@ -99,6 +99,7 @@ import { MobileDashboardStatisticsComponent } from './dashboard/mobile-dashboard
     LoginsService,
     DomainsService,
     StatisticsService,
+    ReferralInvitationsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptService,

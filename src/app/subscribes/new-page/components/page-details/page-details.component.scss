@@ -5,6 +5,27 @@
     }
   }
 }
+
+.return-link-container {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border: 1px solid #d9d9d9;
+  background-color: #fafafa;
+  width: 100%;
+  .return-link {
+    width: calc(100% - 30px);
+    overflow: scroll;
+    flex-wrap: nowrap;
+    white-space: pre;
+  }
+
+  i {
+    margin-left: 8px;
+    cursor: pointer;
+  }
+}
+
 @media only screen and (max-width: 669px) {
   .metrics-container {
     margin-top: 24px;

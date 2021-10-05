@@ -25,9 +25,10 @@
         <i nz-icon nzType="question-circle" nzTheme="fill"></i>
         <a (click)="closeMenu()" [routerLink]="['/', 'faq']">FAQ</a>
       </li>
-      <li nz-menu-item>
+      <li nz-menu-item *ngIf="onlineCourseLink" (click)="courseLink.click()">
         <i nz-icon nzType="thunderbolt" nzTheme="fill"></i>
         <span>{{ 'MENU.ONLINE COURSE' | translate }}</span>
+        <a hidden target="_blank" [href]="onlineCourseLink" #courseLink></a>
       </li>
       <li nz-menu-item (click)="logOut()">
         <i nz-icon nzType="logout" nzTheme="outline"></i>
