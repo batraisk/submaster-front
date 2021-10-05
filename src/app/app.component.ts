@@ -45,6 +45,10 @@ export class AppComponent implements OnInit {
     return this.applicationSettingsService.instance.getValue().supportLink;
   }
 
+  get onlineCourseLink(): string {
+    return this.applicationSettingsService.instance.getValue().onlineCourseLink;
+  }
+
   goToHome(): void {
     this.router.navigate(['/']);
   }

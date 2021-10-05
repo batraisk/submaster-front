@@ -40,7 +40,7 @@
   <button nz-button nzType="primary" class="ml-4" (click)="next()" *ngIf="current < 2">
     <span>{{ 'ACTIONS.NEXT' | translate }}</span>
   </button>
-  <button nz-button nzType="primary" class="ml-4" (click)="done()" *ngIf="current === 2">
+  <button nz-button nzType="primary" class="ml-4" [disabled]="isLoading" (click)="done()" *ngIf="current === 2">
     <span>{{ 'ACTIONS.FINISH' | translate }}</span>
   </button>
 </div>

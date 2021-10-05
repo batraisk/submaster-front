@@ -3,4 +3,5 @@ export interface IDomain {
   key?: string;
   url: string;
   status?: string;
+  meta_tag?: string;
 }

@@ -6,6 +6,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import {DomainsService, PagesService} from '@subscribes-services';
 import {TranslateService} from '@ngx-translate/core';
 import {environment} from '@environment';
+import {NzMessageService} from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-page-settings',
@@ -43,9 +44,8 @@ export class PageSettingsComponent implements OnInit {
     private router: Router, private pagesService: PagesService,
     private translate: TranslateService,
     private domainsService: DomainsService,
-  ) {
-    const foo: string = this.translate.instant('PAGE.CONFIRM DELETE');
-  }
+    private message: NzMessageService,
+  ) {}
 
   ngOnInit(): void {
     this.pageForm = this.fb.group({
@@ -55,7 +55,7 @@ export class PageSettingsComponent implements OnInit {
       instagramLogin: [this.page.instagramLogin, Validators.compose([Validators.required])],
       facebookPixelId: [this.page.facebookPixelId],
       yandexMetrika: [this.page.yandexMetrika],
-
+      privacyPolicy: [this.page.privacyPolicy],
       welcomeTitle: [this.page.welcomeTitle , [Validators.required]],
       welcomeDescription: [this.page.welcomeDescription , [Validators.required]],
       welcomeButtonText: [this.page.welcomeButtonText , [Validators.required]],
@@ -86,6 +86,25 @@ export class PageSettingsComponent implements OnInit {
     this.domainsService.getDomains(1, 100).subscribe(data => {
       this.domains = [{id: 0, url: 'submaster.pro'}, ...data.data.filter(item => item.status === 'connected')];
     });
+  }
+
+  onCopy(value): void {
+    const aux = document.createElement('input');
+    aux.setAttribute('value', this.returnLink);
+    document.body.appendChild(aux);
+    aux.select();
+    document.execCommand('copy');
+
+    document.body.removeChild(aux);
+    this.message.success(this.translate.instant('ACTIONS.COPIED'));
+  }
+
+  get returnLink(): string {
+    const activeDomain = this.domains.filter(domain => domain.id === this.domain)[0];
+    if (!activeDomain) {
+      return '';
+    }
+    return `${activeDomain.url}/pages/${this.pageForm.get('url').value}/enter_login?action=check`;
   }
 
   onSelectFile(event): void {
