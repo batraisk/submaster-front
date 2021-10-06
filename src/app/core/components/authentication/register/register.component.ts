@@ -80,7 +80,7 @@ export class RegisterComponent implements OnInit {
       password: String(this.registerFormControl.password.value),
       password_confirmation: String(this.registerFormControl.password.value),
     };
-    if (this.referral.access_token) { user.invite_token = this.referral.access_token; }
+    if (this.referral?.access_token) { user.invite_token = this.referral.access_token; }
 
     this.authService.register(user).subscribe(res => {
       if (res) {
