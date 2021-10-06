@@ -157,6 +157,7 @@ export class DomainBindingComponent implements OnInit, OnDestroy {
     this.domainsService.createDomain(req).subscribe(
       res => {
         this.domain = '';
+        this.metaTag = '';
         this.getDomains();
       },
       err => {

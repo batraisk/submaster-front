@@ -32,7 +32,7 @@ export class LoginsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLogins();
-    this.dowloadLink = `${this.baseUrl}/api/v1/subscribe_pages/{{page.id}}/logins/report.xlsx`;
+    this.dowloadLink = `${this.baseUrl}/api/v1/subscribe_pages/${this.page.id}/logins/report.xlsx`;
     this.isMobile = document.body.clientWidth < 670;
   }
 
