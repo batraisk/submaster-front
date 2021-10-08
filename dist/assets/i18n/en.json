@@ -119,7 +119,10 @@
     "SHOW MORE": "Show more",
     "VIEW PAGE": "View page",
     "TEMPLATE": "Template",
-    "LINK FOR PROFILE HEADER": "Link for profile header"
+    "LINK FOR PROFILE HEADER": "Link for profile header",
+    "PAGE COPIED": "Page successfully duplicated",
+    "COPY": "Create a copy",
+    "REMOVED": "Page removed"
   },
   "PROFILE": {
     "PROFILE": "Profile",
