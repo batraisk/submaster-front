@@ -12,18 +12,17 @@
       <div class="d-flex align-items-center">
         <div class="avatar" *ngIf="!page.instaAvatar"><img src="assets/images/icons/instagram.png" alt=""></div>
         <div class="avatar" *ngIf="page.instaAvatar"><img [src]="src | safe: 'resourceUrl'" alt=""></div>
-<!--        <div class="avatar"><img src="data:image/jpg;base64, {{avatar}}" alt=""></div>-->
-<!--        <iframe [src]="link | safe: 'resourceUrl'" frameborder="0"></iframe>-->
-<!--        <iframe-->
-<!--          width=100"-->
-<!--          height=100"-->
-<!--          src="https://scontent-arn2-1.cdninstagram.com/v/t51.2885-19/s150x150/78712384_2493008157420466_4620789072762241024_n.jpg?_nc_ht=scontent-arn2-1.cdninstagram.com&_nc_ohc=AXyO3tvjujkAX-0acUZ&tn=1mLkkDV3dL54Edfp&edm=ABfd0MgBAAAA&ccb=7-4&oh=18befb7e67c16f940466b50b34c137e4&oe=615B73A6&_nc_sid=7bff83"-->
-<!--        ></iframe>-->
 
-<!--        <img src="https://scontent-arn2-1.cdninstagram.com/v/t51.2885-19/s150x150/78712384_2493008157420466_4620789072762241024_n.jpg?_nc_ht=scontent-arn2-1.cdninstagram.com&_nc_ohc=AXyO3tvjujkAX-0acUZ&tn=1mLkkDV3dL54Edfp&edm=ABfd0MgBAAAA&ccb=7-4&oh=18befb7e67c16f940466b50b34c137e4&oe=615B73A6&_nc_sid=7bff83" alt="">-->
+
         <span class="ml-3">{{page.instagramLogin}}</span>
       </div>
-      <botton hidden nz-button nzType="text"><i nz-icon nzType="more" nzTheme="outline"></i></botton>
+      <botton class="submenu" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" nz-button nzType="text"><i nz-icon nzType="more" nzTheme="outline"></i></botton>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu>
+          <li nz-menu-item (click)="copy()"><i nz-icon nzType="copy" nzTheme="outline"></i>{{"PAGE.COPY" | translate}}</li>
+          <li nz-menu-item (click)="showDeleteConfirm()"><i nz-icon nzType="delete" nzTheme="outline"></i>{{"ACTIONS.DELETE" | translate}}</li>
+        </ul>
+      </nz-dropdown-menu>
     </div>
     <div class="body">
       <div class="d-flex justify-space-between">
@@ -114,15 +113,9 @@
     </div>
   </div>
 
-
-
   <div class="footer">
     <a (click)="toggleFullMode()" nz-button nzType="link">{{ 'PAGE.SHOW MORE' | translate }}</a>
   </div>
-<!--  <div class="picture">-->
-
-<!--  </div>-->
-<!--  <div class="picture" [ngStyle]="{'background-image': 'url(' + background + ')'}"></div>-->
 </div>
 
 <nz-modal
@@ -141,7 +134,7 @@
       <nz-list-item (click)="goToInfo('statistics')">{{ 'PAGE.STATISTICS' | translate }}</nz-list-item>
       <nz-list-item (click)="goToInfo('utm')">{{ 'PAGE.UTM TAGS' | translate }}</nz-list-item>
 <!--      <nz-list-item>{{ 'PAGE.COPY PAGE LINK' | translate }}</nz-list-item>-->
-      <nz-list-item>{{ 'ACTIONS.DELETE' | translate }}</nz-list-item>
+<!--      <nz-list-item>{{ 'ACTIONS.DELETE' | translate }}</nz-list-item>-->
       <nz-list-item (click)="handleCancel()">{{ 'ACTIONS.CANCEL' | translate }}</nz-list-item>
     </nz-list>
   </ng-container>

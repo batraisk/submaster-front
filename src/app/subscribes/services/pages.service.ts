@@ -27,6 +27,11 @@ export class PagesService {
       .pipe(map((res: any[]) => res.map(page => (toCamelCaseObject(page)))));
   }
 
+  copyPage(pageId: number): Observable<any> {
+    return this.http.get<any>(`/api/v1/subscribe_pages/${pageId}/copy`)
+      .pipe(map((res: any) => toCamelCaseObject(res)));
+  }
+
   getPage(pageId: number): Observable<any> {
     return this.http.get<ILogin[]>(`/api/v1/subscribe_pages/${pageId}`)
       .pipe(map((res: any) => toCamelCaseObject(res)));

@@ -121,7 +121,10 @@
     "SHOW MORE": "Показать еще",
     "VIEW PAGE": "Перейти на страницу",
     "TEMPLATE": "Шаблон",
-    "LINK FOR PROFILE HEADER": "Ссылка для шапки профиля"
+    "LINK FOR PROFILE HEADER": "Ссылка для шапки профиля",
+    "PAGE COPIED": "Страница успешно продублирована",
+    "COPY": "Создать копию",
+    "REMOVED": "Страница удалена"
   },
   "PROFILE": {
     "PROFILE": "Профиль",

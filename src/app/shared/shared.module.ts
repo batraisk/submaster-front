@@ -17,6 +17,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {CustomValidationService} from '@validation-services';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import {SafePipe} from './pipes/safe.pipe';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // @ts-ignore
 import {GraphWrapperComponent} from './graph/graph-wrapper.component';
@@ -56,7 +57,8 @@ import { Template6Component } from './components/mobile-view/templates/template6
     NzListModule,
     NzSwitchModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NzDropDownModule
   ],
   exports: [
     GraphWrapperComponent,

@@ -29,6 +29,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import {DomainBindingComponent} from './domain-binding/domain-binding.component';
 import {DomainsService, PagesService, LoginsService, StatisticsService, ReferralInvitationsService} from './services';
 // @ts-ignore
@@ -79,6 +80,7 @@ import { MobileDashboardStatisticsComponent } from './dashboard/mobile-dashboard
     NzSpaceModule,
     NzSwitchModule,
     NzRadioModule,
+    NzDropDownModule,
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
