@@ -1,10 +1,22 @@
-import {AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  Renderer2,
+  ViewChild,
+  EventEmitter,
+  Output
+} from '@angular/core';
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 
 import {environment} from '@environment';
 import {TranslateService} from '@ngx-translate/core';
 import {Router} from '@angular/router';
 import {PagesService} from '@subscribes-services';
+import {NzMessageService} from 'ng-zorro-antd/message';
+import {NzModalService} from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-page-card',
@@ -14,6 +26,7 @@ import {PagesService} from '@subscribes-services';
 export class PageCardComponent implements OnInit, AfterViewInit {
   @ViewChild('card', {static: false}) card: ElementRef;
   @ViewChild('picture', {static: false}) picture: ElementRef;
+  @Output() updateList = new EventEmitter<any>();
   @Input() page: any;
   fullMode = false;
   isVisibleMenu = false;
@@ -27,7 +40,9 @@ export class PageCardComponent implements OnInit, AfterViewInit {
     private router: Router,
     private renderer: Renderer2,
     private pagesService: PagesService,
-    private sanitization: DomSanitizer
+    private sanitization: DomSanitizer,
+    private modal: NzModalService,
+    private message: NzMessageService,
   ) { }
 
   ngOnInit(): void {
@@ -84,6 +99,31 @@ export class PageCardComponent implements OnInit, AfterViewInit {
   //     }));
   // }
   // https://www.instagram.com/user/?__a=1
+  copy(): void {
+    this.pagesService.copyPage(this.page.id).subscribe(res => {
+      this.message.success(this.translate.instant('PAGE.PAGE COPIED'));
+      this.updateList.emit();
+      // this.page.status = res.status;
+      // this.router.navigate(['/']);
+    });
+  }
+  removePage(): void {
+    this.pagesService.removePage(this.page.id).subscribe(res => {
+      this.message.success(this.translate.instant('PAGE.REMOVED'));
+      this.updateList.emit();
+    });
+  }
+
+  showDeleteConfirm(): void {
+    this.modal.confirm({
+      nzTitle: this.translate.instant('PAGE.CONFIRM DELETE'),
+      nzOkText: this.translate.instant('ACTIONS.YES'),
+      nzOkType: 'primary',
+      nzOkDanger: true,
+      nzOnOk: () => this.removePage(),
+      nzCancelText: this.translate.instant('ACTIONS.CANCEL'),
+    });
+  }
 
   goToInfo(tab: string): void {
     this.router.navigate(['/subscribe-pages', this.page.id], { queryParams: { tab } });

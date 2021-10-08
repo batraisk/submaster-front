@@ -29,6 +29,10 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.navigationService.header = 'MY PAGES';
+    this.getPages();
+  }
+
+  getPages(): void {
     this.pagesService.getPages().subscribe(res => {
       this.pages = res;
     });

@@ -23,7 +23,7 @@
     </a>
 
     <div *ngFor="let page of pages; index as i" class="mt-5">
-      <app-page-card [page]="page"></app-page-card>
+      <app-page-card (updateList)="getPages()" [page]="page"></app-page-card>
     </div>
   </div>
 
